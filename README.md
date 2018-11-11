@@ -49,7 +49,7 @@ Finally, launch FastBuilder:
 
 `FastBuilder`
 
-Type command `/connet [ip]:8080` in game.
+Type command `/connect [ip]:8080` in game.
 #### For Windows:
 First,download NodeJS from `nodejs.org` and install.
 
@@ -61,7 +61,7 @@ Finally, launch FastBuilder:
 
 `FastBuilder`
 
-Type command `/connet [ip]:8080` in game.
+Type command `/connect [ip]:8080` in game.
 
 ### How to use FastBuilder?
 
