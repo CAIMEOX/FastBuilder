@@ -1,9 +1,6 @@
-#FastBuilder
+# FastBuilder
 ![](https://coding.net/u/CAIMEO/p/FastBuilder/git/raw/master/images/FastBuilder.jpg)
 FastBuilder can help you building fast in MinecraftPE.
-## Fast Install and launch
-`npm install FastBuilder -g`
-`FastBuilder`
 ## What is FastBuilder?
 It's a NodeJS WebSocket Script,Everyone can connet it who is in your game, but you need to follow the next steps.
 ## What can FastBuilder do?
