@@ -2,16 +2,16 @@
 ![](https://coding.net/u/CAIMEO/p/FastBuilder/git/raw/master/images/FastBuilder.jpg)
 FastBuilder can help you building fast in MinecraftPE.
 ## What is FastBuilder?
-It's a NodeJS WebSocket Script,Everyone can connet it who is in your game, but you need to follow the next steps.
+It's a NodeJS WebSocket Script,Everyone who is in your game can connet to the server which is using it, but you have to follow next steps.
 ## What can FastBuilder do?
 Make any complex buildings in less time!
 ## How FastBuilder do?
 Use the WebSocket script to catch clients' chat data, and output the commands by processing the data from clients.
 ## Why use WebSocketServer but not any Game ModPE or JS?
 ### WebsocketServer
-　　  Available on any device.
+　　  Support any devices.
 
-　　  Compatible with any MinecraftBE 0.16+.
+　　  Compatible with any MinecraftBE with 0.16+ versions.
 
 　　  Algorithms keeps upgrading!
 
@@ -19,7 +19,7 @@ Use the WebSocket script to catch clients' chat data, and output the commands by
 
 　　  Useable in most servers and Minecraft Realms!
 ### ModPE
-　　  Only Android devices, need Third Party Apps.
+　　  Only Android devices, need Third-Party Apps.
 
 　　  Many functions is no longer avaliable.
 
@@ -29,29 +29,29 @@ Use the WebSocket script to catch clients' chat data, and output the commands by
 
 　　  Not compatible with servers or Minecraft Realms.
 ## How to launch FastBuilder?
-This is a NodeJS script, you just need a PC,VPS, or an Android phone.
+This is a NodeJS script, you just need a PC,VPS, or even an Android phone（actually we haven't found any ways to run NodeJS on iOS, please tell us if you know, thanks).
 #### For Android:
 First, install Termux from `https://termux.com`
 
 Then open Termux,check update:
 
-`apt update && apt upgrade`
+<code>apt update && apt upgrade</code>
 
 Next,install NodeJS:
 
-`apt install nodejs`
+<code>apt install nodejs</code>
 
 Use npm to install FastBuilder:
 
-`npm install fastbuilder -g`
+<code>npm install fastbuilder -g</code>
 
 Finally, launch FastBuilder:
 
-`FastBuilder`
+<code>FastBuilder</code>
 
 Type command `/connect [ip]:8080` in game.
 #### For Windows:
-First,download NodeJS from `nodejs.org` and install.
+First,download and install NodeJS from `nodejs.org`.
 
 Then use npm to install FastBuilder:
 
