@@ -43,7 +43,7 @@ Next,install NodeJS:
 
 Use npm to install FastBuilder:
 
-<code>npm install fastbuilder -g</code>
+<code>npm install mcpefastbuilder -g</code>
 
 Finally, launch FastBuilder:
 
@@ -97,19 +97,13 @@ Variables that allow change.
 @oc Console information output color
 ```
 #### Structures generate commands.
-
-Round:
-
+##### Round
 `round [x/y/z] [radius:int] [height:int]`
-
-Circle:
-
+##### Circle
 `circle [x/y/z] [radius:int] [height:int]`
-
-Sphere:
-
+##### Sphere
 `sphere [solid/framework/hollow] [radius:int]`
-
-Ligature:
-
+##### Ligature
 `ligature [position:x y z] [position2:x y z]`
+##### Ellipse
+`ellipse [x/y/z] [p1] [p2] [q]`

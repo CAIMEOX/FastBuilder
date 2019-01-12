@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const Constants = require('./constants');
 const WebSocket = require('ws');
 const uuid = require('node-uuid');
@@ -68,7 +70,7 @@ let z = 0;
   function sendText(text){
   	sendCommand(ot + text, ExternalId);
 }
-  //默认延迟
+  //default delay
   let DefaultMillis = 10;
   let block = "iron_block";
   let data = 0;
