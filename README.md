@@ -86,7 +86,7 @@ $ node FastBuilder.js -debug
 
 ## 贡献
 
-任何人都可以加入FastBuilderProject,为FastBuilder贡献算法，具体流程请[点击这里](https://github.com/CAIMEOX/FastBuilder/blob/master/Algorithms.md)
+任何人都可以加入FastBuilderProject,为FastBuilder贡献算法，具体流程请[点击这里](https://github.com/CAIMEOX/FastBuilder/wiki/contribute)
 
 ## 贡献者(Contributors)
 ### Maintainer
