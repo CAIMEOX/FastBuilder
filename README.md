@@ -67,7 +67,23 @@ ellipsoid <width:x> <width:y> <width:z> <accuracy:Int>
 //ellipse 方向 x长度 z宽度 高度 精度
 ellipse <direction:String> <width:x> <width:z> <accuracy:Int>
 ```
+## 为什么不使用ModPE,而是WebsocketServer
 
+我来告诉你为什么
+
+### ModPE
+* 需要第三方启动器
+* 通常免费但是有广告
+* 不同版本需要不同的启动器 
+* 受到设备限制
+* 无法在服务器或领域使用 
+
+### WebsocketServer
+* 支持任何设备
+* 没有任何广告
+* 算法在不断更新
+* 可以在服务器或领域使用
+* 支持 0.16 及以上的版本
 
 ## 运行测试模式
 
