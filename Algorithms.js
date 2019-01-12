@@ -1,3 +1,13 @@
+function clear(array){
+  var n = []; //一个新的临时数组
+  //遍历当前数组
+  for(var i = 0; i < array.length; i++){
+    //如果当前数组的第i已经保存进了临时数组，那么跳过，
+    //否则把当前项push到临时数组里面
+    if (n.indexOf(array[i]) == -1) n.push(array[i]);
+  }
+  return n;
+}
 module.exports = {
 ligature(PosArray1, PosArray2){
     var session = new Array();
@@ -105,5 +115,45 @@ sphere(d, r, x, y, z){
     break;
   }
   return session;
-}
+},
+  ellipse(d,a,b,x,y,z,f){
+    var accuracy = 1 / f;
+    var tmin = -1 * Math.PI;
+    var tmax = Math.PI;
+    var session = [];
+    switch (d) {
+      case "x":
+      for (var i = tmin; i < tmax; i = i + accuracy) {
+        session.push([x,Math.floor(y + a * Math.cos(i)),Math.floor(z + b * Math.sin(i))]);
+      }
+      break;
+      case "y":
+      for (var i = tmin; i < tmax; i = i + accuracy) {
+        session.push([Math.floor(x + a * Math.cos(i)),y,Math.floor(z + b * Math.sin(i))]);
+      }
+      break;
+      case "z":
+      for (var i = tmin; i < tmax; i = i + accuracy) {
+        session.push([Math.floor(x + a * Math.cos(i)),Math.floor(y + b * Math.sin(i)),z]);
+      }
+      break;
+      default:
+      break;
+    }
+     return session;
+  },
+  ellipsoid(a,b,c,x,y,z,f){
+    var session = [];
+    var accuracy = 1 / f;
+    var tminP = Math.PI / -2;
+    var tmaxP = Math.PI / 2;
+    var tminA = Math.PI * -1;
+    var tmaxA = Math.PI ;
+      for (var i = tminP ; i < tmaxP ; i = i + accuracy){
+        for (var j = tminA ; j < tmaxA ; j = j + accuracy){
+          session.push([Math.floor(x + a * Math.cos(i) * Math.cos(j)),Math.floor(y + b * Math.cos(i) * Math.sin(j)),Math.floor(z + c * Math.sin(i))]);
+        }
+      }
+      return session;
+  }
 }
