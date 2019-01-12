@@ -9,11 +9,18 @@ const generate = require('./Algorithms');
 const socket = new WebSocket.Server({
 	port: Constants.port
 });
-
+const os = require("os");
+var localhost = ''
+try {
+    var network = os.networkInterfaces()
+    localhost = network[Object.keys(network)[0]][1].address
+} catch (e) {
+    localhost = 'localhost'
+}
 
 console.log("==FastBuilder==");
 console.log("Maintianers: CAIMEO,LNSSPsd,Torrekie");
-console.log("Server running at ws://127.0.0.1:"+Constants.port);
+console.log("Server running at ws://"+ localhost + ":"+Constants.port);
 socket.on('connection', function connection(ws, req) {
 console.log("[Info]%s Connected!", req.connection.remoteAddress);
 let x = 0;
