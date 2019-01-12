@@ -171,6 +171,7 @@ sendText("§3FastBuilder connected!");
         if(Constants.log){console.log(Achat);}
         if(Achat[0] == "help"){
 		if(Achat[1]==undefined){var cmdz="";helps.forEach(function(i,m){cmdz+=i+" "});sendText("Avalible Commands for help:");sendText(cmdz);}
+		if(Achat[1]=="-l"){sendText("Help:");helps.forEach(function(i,c){sendText(c);});}
           eval("if(helps."+Achat[1]+"!=undefined){sendText(helps."+Achat[1]+");}else{sendText(\"Help of command \\\""+Achat[1]+"\\\" not found.\");}");
 			 }else {
         switch(Achat[0]){
