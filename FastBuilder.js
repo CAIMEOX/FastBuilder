@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const helps = require("./helpz");
 const Constants = require('./constants');
 const WebSocket = require('ws');
 const uuid = require('node-uuid');
@@ -166,21 +167,8 @@ sendText("§3FastBuilder connected!");
         var chat = json.body.properties.Message;
         var Achat = chat.trim().split(" ");
         console.log(Achat)
-        if(Achat[1] == "-help" || Achat[1] == "-h" || Achat[1] == "h" || Achat[1] == "help"){
-          switch(Achat[0]){
-          case "round":
-          	sendText(helps.round);
-          	break;
-          case "circle":
-           sendText(helps.circle);
-           break;
-          case "ligature":
-           sendText(helps.ligature);
-           break;
-          default:
-           sendText("§4Method not found");
-           break;
-				 }
+        if(Achat[0] == "help"){
+          eval("if(helps."+Achat[1]+"!=undefined){sendText(helps."+Achat[1]+");}else{sendText(\"Help of command \\\""+Achat[1]+"\\\" not found.\");}");
 			 }else {
         switch(Achat[0]){
 					case "get":
@@ -198,13 +186,17 @@ sendText("§3FastBuilder connected!");
               case "mod":
                 buildMod = Achat[2];
               break;
+		    default:sendText("§4Let: Variable \""+Achat[1]+"\" not found.");return;
             }
+			sendText("Let: "+Achat[1]+"="+Achat[2]+"done.");
           break;
           case "ligature":
+			if(Achat[6]==undefined){sendText("§4Ligature: Parameters Error.\nhelp ligature for help.");
             setblock(generate.ligature([Achat[1],Achat[2],Achat[3]],[Achat[4],Achat[5],Achat[6]]),block,data,buildMod);
            break;
           case "round":
           //round 方向 半径 高度
+				if(Achat[3]==undefined){sendText("§4Round: Parameters Error.\nhelp round for help.");
             fill(generate.round(Achat[1],Achat[2],x,y,z),Achat[1],Achat[3],block,data,buildMod);
            break;
 					case "ellipse":
@@ -213,13 +205,16 @@ sendText("§3FastBuilder connected!");
 						break;
           case "circle":
           //circle 方向 半径 高度
+		if(Achat[3]==undefined){sendText("§4Circle: Parameters Error.\nhelp circle for help.");
             fill(generate.circle(Achat[1],Achat[2],x,y,z),Achat[1],Achat[3],block,data,buildMod);
            break;
           case "sphere":
           //sphere 状态 半径
+			if(Achat[2]==undefined){sendText("§4Sphere: Parameters Error.\nhelp sphere for help.");
 					  setblock(generate.sphere(Achat[1],Achat[2],x,y,z),block,data,buildMod);
 						break;
 					case "ellipsoid":
+						if(Achat[4]==undefined){sendText("§4Ellipsoid: Parameters Error.\nhelp ellipsoid for help.");
 					//ellipsoid x宽度 y宽度 z宽度 精度
 						setblock(generate.ellipsoid(Achat[1],Achat[2],Achat[3],x,y,z,Achat[4]),block,data,buildMod);
 						break;
