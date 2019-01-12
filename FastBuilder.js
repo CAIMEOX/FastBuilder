@@ -139,6 +139,9 @@ let z = 0;
     }
     return session;
   }
+
+sendText("§3FastBuilder connected!");
+
 	ws.on("message", function incoming(message) {
       var json = JSON.parse(message);
       if(json.header.requestId == collectorID){
@@ -175,7 +178,7 @@ let z = 0;
            sendText(helps.ligature);
            break;
           default:
-           sendText("Method not found");
+           sendText("§4Method not found");
            break;
 				 }
 			 }else {
@@ -220,7 +223,7 @@ let z = 0;
 					//ellipsoid x宽度 y宽度 z宽度 精度
 						setblock(generate.ellipsoid(Achat[1],Achat[2],Achat[3],x,y,z,Achat[4]),block,data,buildMod);
 						break;
-					default:break;
+					default:sendText("§4Method not found");break;
         	}
 				}
       }
