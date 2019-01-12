@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const helps = require("./helpz");
+const helpz = require("./helpz");
 const Constants = require('./constants');
 const WebSocket = require('ws');
 const fs=require("fs");
@@ -72,7 +72,7 @@ let z = 0;
   let ot = om + oc;
   let ExternalId = uuid.v4();
   function sendText(text){
-  	sendCommand(ot + text, ExternalId);
+  	sendCommand(ot + "§\""+ text+"§\"", ExternalId);
 }
   //default delay
   let DefaultMillis = 10;
@@ -171,9 +171,9 @@ sendText("§3FastBuilder connected!");
         var Achat = chat.trim().split(" ");
         if(Constants.log){console.log(Achat);}
         if(Achat[0] == "help"){
-		if(Achat[1]==undefined){var cmdz="";for(let i in helps){cmdz+=i+" "}sendText("Avalible Commands for help:");sendText(cmdz);}
-		if(Achat[1]=="-l"){sendText("Help:");for(let i in helps){sendText(eval("helps."+i));}}
-          eval("if(helps."+Achat[1]+"!=undefined){sendText(helps."+Achat[1]+");}else{sendText(\"§4Help of command \\\""+Achat[1]+"\\\" not found.\");}");
+		if(Achat[1]==undefined){var cmdz="";for(let i in helpz){cmdz+=i+"  "}sendText("Avalible Commands for help:");sendText(cmdz);return;}
+		if(Achat[1]=="-l"){sendText("Helps:");for(let i in helpz){eval("sendText(helpz."+i+")");}return;}
+          try{eval("if(helpz."+Achat[1]+"!=undefined){sendText(helpz."+Achat[1]+");}else{sendText(\"§4Help of command \\\""+Achat[1]+"\\\" not found.\");}");}catch(err){sendText("§4Error when we're trying to get help: "+err);}
 			 }else {
         switch(Achat[0]){
 					case "get":
