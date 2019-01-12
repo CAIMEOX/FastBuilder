@@ -66,7 +66,7 @@ let z = 0;
 	}));
 }
   let om = "say ";
-  let oc = "§l§e";
+  let oc = "";//"§l§e";
   let ot = om + oc;
   let ExternalId = uuid.v4();
   function sendText(text){
@@ -169,9 +169,9 @@ sendText("§3FastBuilder connected!");
         var Achat = chat.trim().split(" ");
         if(Constants.log){console.log(Achat);}
         if(Achat[0] == "help"){
-		if(Achat[1]==undefined){var cmdz="";helps.forEach(function(i,m){cmdz+=i+" "});sendText("Avalible Commands for help:");sendText(cmdz);}
-		if(Achat[1]=="-l"){sendText("Help:");helps.forEach(function(i,c){sendText(c);});}
-          eval("if(helps."+Achat[1]+"!=undefined){sendText(helps."+Achat[1]+");}else{sendText(\"Help of command \\\""+Achat[1]+"\\\" not found.\");}");
+		if(Achat[1]==undefined){var cmdz="";for(let i of helps){cmdz+=i+" "}sendText("Avalible Commands for help:");sendText(cmdz);}
+		if(Achat[1]=="-l"){sendText("Help:");for(let i of helps){sendText(helps[i]);});}
+          eval("if(helps."+Achat[1]+"!=undefined){sendText(helps."+Achat[1]+");}else{sendText(\"§4Help of command \\\""+Achat[1]+"\\\" not found.\");}");
 			 }else {
         switch(Achat[0]){
 					case "get":
