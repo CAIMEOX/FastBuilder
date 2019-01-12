@@ -1,3 +1,13 @@
+function clear(array){
+  var n = []; //一个新的临时数组
+  //遍历当前数组
+  for(var i = 0; i < array.length; i++){
+    //如果当前数组的第i已经保存进了临时数组，那么跳过，
+    //否则把当前项push到临时数组里面
+    if (n.indexOf(array[i]) == -1) n.push(array[i]);
+  }
+  return n;
+}
 module.exports = {
 ligature(PosArray1, PosArray2){
     var session = new Array();
@@ -114,17 +124,29 @@ sphere(d, r, x, y, z){
     switch (d) {
       case "x":
       for (var i = tmin; i < tmax; i = i + accuracy) {
+<<<<<<< HEAD
+        session.push([x,Math.round(y + a * Math.cos(i)),Math.round(z + b * Math.sin(i))]);
+=======
         session.push([x,Math.floor(y + a * Math.cos(i)),Math.floor(z + b * Math.sin(i))]);
+>>>>>>> 2fbac1c1d8290550924742f02457f0561e288d27
       }
       break;
       case "y":
       for (var i = tmin; i < tmax; i = i + accuracy) {
+<<<<<<< HEAD
+        session.push([Math.round(x + a * Math.cos(i)),y,Math.round(z + b * Math.sin(i))]);
+=======
         session.push([Math.floor(x + a * Math.cos(i)),y,Math.floor(z + b * Math.sin(i))]);
+>>>>>>> 2fbac1c1d8290550924742f02457f0561e288d27
       }
       break;
       case "z":
       for (var i = tmin; i < tmax; i = i + accuracy) {
+<<<<<<< HEAD
+        session.push([Math.round(x + a * Math.cos(i)),Math.round(y + b * Math.sin(i)),z]);
+=======
         session.push([Math.floor(x + a * Math.cos(i)),Math.floor(y + b * Math.sin(i)),z]);
+>>>>>>> 2fbac1c1d8290550924742f02457f0561e288d27
       }
       break;
       default:
@@ -141,7 +163,11 @@ sphere(d, r, x, y, z){
     var tmaxA = Math.PI ;
       for (var i = tminP ; i < tmaxP ; i = i + accuracy){
         for (var j = tminA ; j < tmaxA ; j = j + accuracy){
+<<<<<<< HEAD
+          session.push([Math.round(x + a * Math.cos(i) * Math.cos(j)),Math.round(y + b * Math.cos(i) * Math.sin(j)),Math.round(z + c * Math.sin(i))]);
+=======
           session.push([Math.floor(x + a * Math.cos(i) * Math.cos(j)),Math.floor(y + b * Math.cos(i) * Math.sin(j)),Math.floor(z + c * Math.sin(i))]);
+>>>>>>> 2fbac1c1d8290550924742f02457f0561e288d27
         }
       }
       return session;
