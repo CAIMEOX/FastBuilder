@@ -223,7 +223,7 @@ sendText("§3FastBuilder connected!");
 					//ellipsoid x宽度 y宽度 z宽度 精度
 						setblock(generate.ellipsoid(Achat[1],Achat[2],Achat[3],x,y,z,Achat[4]),block,data,buildMod);
 						break;
-					default:sendText("§4Method not found");break;
+					default:break;
         	}
 				}
       }
