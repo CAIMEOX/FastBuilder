@@ -1,6 +1,6 @@
 {
   "name": "mcpefastbuilder",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Generate structures for MCPE.",
   "main": "fastbuilder.js",
   "bin": {
