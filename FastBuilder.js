@@ -1,15 +1,10 @@
 const Constants = require('./constants');
 const WebSocket = require('ws');
 const uuid = require('node-uuid');
-const generate = require('./Algorithms')
+const generate = require('./Algorithms');
 const socket = new WebSocket.Server({
 	port: Constants.port
 });
-const helps = {
-	"round":"round <direction:String> <radius:Int> <height:Int>",
-	"circle":"circle <direction:String> <radius:Int> <height:Int>",
-  "ligature":"ligature <Position:x y z> <Position2:x y z>"
-	}
 console.log("FastBuilder: v" + Constants.VERSION);
 console.log("Copyright (C) CAIMEO");
 console.log("Server running at ws://127.0.0.1:"+Constants.port);
@@ -79,6 +74,7 @@ let z = 0;
   let data = 0;
   let buildMod = "replace";
   function setblock(session, tile, data, mode, Millis){
+		if(session.length === 0)return;
     //for(var i = 0; i < session.length; i++){}
     var times = 0;
     var BuilderID = uuid.v4();
@@ -95,11 +91,15 @@ let z = 0;
       }, Millis);
   }
   function fill(session, direction, offset, tile, data, mode, Millis){
+		if(session.length === 0)return;
   	var times = 0;
   	var BuilderID = uuid.v4();
   	if(Millis == undefined){
     let Millis = DefaultMillis;
     }
+		if(session == []){
+			return;
+		}
     let dx = 0,dy = 0,dz = 0;
 		switch(direction){
 				case "x":
@@ -176,8 +176,12 @@ let z = 0;
            sendText("Method not found");
            break;
 				 }
-        }
+			 }else {
         switch(Achat[0]){
+					case "get":
+					target = Achat[1];
+	        	sendCommand("testforblock ~~~ air", collectorID);
+						break;
           case "let":
             switch(Achat[1]){
               case "block":
@@ -198,20 +202,25 @@ let z = 0;
           //round 方向 半径 高度
             fill(generate.round(Achat[1],Achat[2],x,y,z),Achat[1],Achat[3],block,data,buildMod);
            break;
+					case "ellipse":
+					//ellipse 方向 x长度 z宽度 高度 精度
+						fill(generate.ellipse(Achat[1],Achat[2],Achat[3],x,y,z,Achat[5]),Achat[1],Achat[4],block,data,buildMod);
+						break;
           case "circle":
           //circle 方向 半径 高度
             fill(generate.circle(Achat[1],Achat[2],x,y,z),Achat[1],Achat[3],block,data,buildMod);
            break;
           case "sphere":
           //sphere 状态 半径
-					  setblock(generate.sphere(Achat[1],Achat[2]),block,data,buildMod);
+					  setblock(generate.sphere(Achat[1],Achat[2],x,y,z),block,data,buildMod);
+						break;
+					case "ellipsoid":
+					//ellipsoid x宽度 y宽度 z宽度 精度
+						setblock(generate.ellipsoid(Achat[1],Achat[2],Achat[3],x,y,z,Achat[4]),block,data,buildMod);
 						break;
 					default:break;
         	}
-        if(Achat[0] == "get"){
-        target = Achat[1];
-        	sendCommand("testforblock ~~~ air", collectorID);
-        }
+				}
       }
 	});
 });
