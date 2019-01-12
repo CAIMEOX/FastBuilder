@@ -1,0 +1,31 @@
+{
+  "name": "mcpefastbuilder",
+  "version": "0.3.9",
+  "description": "Generate structures for MCPE.",
+  "main": "fastbuilder.js",
+  "bin": {
+    "fastbuilder": "fastbuilder.js"
+  },
+  "scripts": {
+    "nopexD": "exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CAIMEOX/FastBuilder.git"
+  },
+  "keywords": [
+    "minecraftpe",
+    "minecraftbe",
+    "fastbuilder"
+  ],
+  "author": "CAIMEOX,Torrekie,LNSSPsd",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/CAIMEOX/FastBuilder/issues"
+  },
+  "homepage": "https://github.com/CAIMEOX/FastBuilder",
+  "dependencies": {
+    "node-uuid": "^1.4.8",
+    "ws": "^6.0.0"
+  }
+}
