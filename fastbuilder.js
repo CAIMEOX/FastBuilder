@@ -3,16 +3,18 @@
 const helps = require("./helpz");
 const Constants = require('./constants');
 const WebSocket = require('ws');
+const fs=require("fs");
 const uuid = require('node-uuid');
 const generate = require('./Algorithms');
 const socket = new WebSocket.Server({
 	port: Constants.port
 });
-console.log("FastBuilder: v" + Constants.VERSION);
-console.log("Copyright (C) CAIMEO");
+var packj=JSON.parse(fs.readFileSync("package.json").toString());
+console.log("FastBuilder: v" + packj.version/*Constants.VERSION*/);
+console.log("Maintianers: CAIMEO,LNSSPsd,Torrekie");
 console.log("Server running at ws://127.0.0.1:"+Constants.port);
 socket.on('connection', function connection(ws, req) {
-console.log("%s connected!", req.connection.remoteAddress);
+console.log("[Info]%s Connected!", req.connection.remoteAddress);
 let x = 0;
 let y = 0;
 let z = 0;
@@ -86,7 +88,7 @@ let z = 0;
     }
     var interval = setInterval(function (){
     	sendCommand("setblock " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + tile + " " + data + " " + mode, BuilderID);
-    	console.log("setblock " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + tile + " " + data + " " + mode);
+    	if(Constants.log){console.log("setblock " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + tile + " " + data + " " + mode);}
       	times++;
       	if(times == session.length){
         clearInterval(interval);
@@ -121,7 +123,7 @@ let z = 0;
 		// if (dz == undefined){ let dz = 0; }
     var interval = setInterval(function (){
     	sendCommand("fill " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + (session[times][0]*1 + dx) + " " + (session[times][1]*1 + dy) + " " + (session[times][2]*1 + dz)+ " " + tile + " " + data + " " + mode, BuilderID);
-      console.log("fill " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + (session[times][0]*1 + dx) + " " + (session[times][1]*1 + dy) + " " + (session[times][2]*1 + dz) + " " + tile + " " + data + " " + mode, BuilderID);
+      if(Constants.log){console.log("fill " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + (session[times][0]*1 + dx) + " " + (session[times][1]*1 + dy) + " " + (session[times][2]*1 + dz) + " " + tile + " " + data + " " + mode, BuilderID);}
       	times++;
       	if(times == session.length){
         clearInterval(interval);
@@ -166,8 +168,9 @@ sendText("§3FastBuilder connected!");
       if(json.body.eventName == "PlayerMessage" && json.header.requestId != ExternalId) {
         var chat = json.body.properties.Message;
         var Achat = chat.trim().split(" ");
-        console.log(Achat)
+        if(Constants.log){console.log(Achat);}
         if(Achat[0] == "help"){
+		if(Achat[1]==undefined){var cmdz="";helps.forEach(function(i,m){cmdz+=i+" "});sendText("Avalible Commands for help:");sendText(cmdz);}
           eval("if(helps."+Achat[1]+"!=undefined){sendText(helps."+Achat[1]+");}else{sendText(\"Help of command \\\""+Achat[1]+"\\\" not found.\");}");
 			 }else {
         switch(Achat[0]){
@@ -191,30 +194,33 @@ sendText("§3FastBuilder connected!");
 			sendText("Let: "+Achat[1]+"="+Achat[2]+"done.");
           break;
           case "ligature":
-			if(Achat[6]==undefined){sendText("§4Ligature: Parameters Error.\nhelp ligature for help.");
+			if(Achat[6]==undefined){sendText("§4Ligature: Parameters Error.\nhelp ligature for help.");}
             setblock(generate.ligature([Achat[1],Achat[2],Achat[3]],[Achat[4],Achat[5],Achat[6]]),block,data,buildMod);
            break;
           case "round":
           //round 方向 半径 高度
-				if(Achat[3]==undefined){sendText("§4Round: Parameters Error.\nhelp round for help.");
+				if(Achat[3]==undefined){sendText("§4Round: Parameters Error.\nhelp round for help.");}
             fill(generate.round(Achat[1],Achat[2],x,y,z),Achat[1],Achat[3],block,data,buildMod);
            break;
 					case "ellipse":
 					//ellipse 方向 x长度 z宽度 高度 精度
+			if(Achat[5]==undefined){sendText("§4Ellipse: Parameters Error.\nhelp ellipse for help.");}
 						fill(generate.ellipse(Achat[1],Achat[2],Achat[3],x,y,z,Achat[5]),Achat[1],Achat[4],block,data,buildMod);
 						break;
           case "circle":
           //circle 方向 半径 高度
-		if(Achat[3]==undefined){sendText("§4Circle: Parameters Error.\nhelp circle for help.");
+		if(Achat[3]==undefined){sendText("§4Circle: Parameters Error.\nhelp circle for help.");}
             fill(generate.circle(Achat[1],Achat[2],x,y,z),Achat[1],Achat[3],block,data,buildMod);
            break;
+		case ("dc"||"disconnect"||"bye"):
+			ws.terminate();
           case "sphere":
           //sphere 状态 半径
-			if(Achat[2]==undefined){sendText("§4Sphere: Parameters Error.\nhelp sphere for help.");
+			if(Achat[2]==undefined){sendText("§4Sphere: Parameters Error.\nhelp sphere for help.");}
 					  setblock(generate.sphere(Achat[1],Achat[2],x,y,z),block,data,buildMod);
 						break;
 					case "ellipsoid":
-						if(Achat[4]==undefined){sendText("§4Ellipsoid: Parameters Error.\nhelp ellipsoid for help.");
+						if(Achat[4]==undefined){sendText("§4Ellipsoid: Parameters Error.\nhelp ellipsoid for help.");}
 					//ellipsoid x宽度 y宽度 z宽度 精度
 						setblock(generate.ellipsoid(Achat[1],Achat[2],Achat[3],x,y,z,Achat[4]),block,data,buildMod);
 						break;
