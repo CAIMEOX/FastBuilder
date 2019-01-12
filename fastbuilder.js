@@ -9,8 +9,7 @@ const generate = require('./Algorithms');
 const socket = new WebSocket.Server({
 	port: Constants.port
 });
-var packj=JSON.parse(fs.readFileSync("package.json").toString());
-console.log("FastBuilder: v" + packj.version/*Constants.VERSION*/);
+console.log("==FastBuilder==");
 console.log("Maintianers: CAIMEO,LNSSPsd,Torrekie");
 console.log("Server running at ws://127.0.0.1:"+Constants.port);
 socket.on('connection', function connection(ws, req) {
