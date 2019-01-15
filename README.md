@@ -1,5 +1,5 @@
 # FastBuilder
-![](https://coding.net/u/CAIMEO/p/FastBuilder/git/raw/master/images/FastBuilder.jpg)
+![](./images/FastBuilder.jpg)
 一个为Minecraft Bedrock设计的快速建造程序
 
 ## 快速开始
@@ -40,10 +40,6 @@ let block <tileName:String>
 ```
 OK,设置基本完成了，接着就能使用建筑命令了：  
 ```
-//使用help命令可以查看目前所有命令
-//help -l可以查看所有命令的解释。
-
-//round 方向 半径 高度
 round <direction:String> <radius:Int> <height:Int>
 //sphere 状态 半径
 sphere <method:hollow/solid> <radius:Int>
@@ -56,6 +52,24 @@ ellipsoid <width:x> <width:y> <width:z> <accuracy:Int>
 //ellipse 方向 x长度 z宽度 高度 精度
 ellipse <direction:String> <width:x> <width:z> <accuracy:Int>
 ```
+
+## 参数列表
+
+FastBuilder命令允许玩家在结尾追加参数，此参数的使用范围为单条命令．
+
+如果是let更改的变量，这些参数将被写入默认值．
+```
+-b 方块
+-t 延迟(ms)
+-m 方块处理方式
+-d 数据值
+-p 坐标
+-f 精度
+-r 半径(circle,round,sphere必要参数)
+-h 高度(circle,round,ellipse必要参数)
+-s 形状(ellipsoid必要参数)
+```
+
 ## 为什么不使用ModPE,而是WebsocketServer
 
 ### ModPE
@@ -63,14 +77,14 @@ ellipse <direction:String> <width:x> <width:z> <accuracy:Int>
 * 通常免费但是有广告
 * 不同版本需要不同的启动器 
 * 受到设备限制
-* 无法在服务器或领域使用 
+* 无法在服务器或领域使用
 
 ### WebsocketServer
 * 支持任何设备
 * 没有任何广告
 * 算法在不断更新
 * 可以在服务器(BDS除外)或领域使用
-* 支持 1.0 及以上的版本
+* 支持 0.16 及以上的版本
 
 ## 运行测试模式
 
@@ -78,6 +92,16 @@ ellipse <direction:String> <width:x> <width:z> <accuracy:Int>
 $ node FastBuilder.js -debug
 ```
 用于查找bug.
+
+## 开发笔记
+* [2019-1-9]添加了椭圆和椭球算法
+
+* [2019-1-12]修复help的bug
+
+* [2019-1-13]添加参数支持
+
+* [2019-1-14]添加了Torus（圆环）算法
+
 
 ## 开发相关
 
@@ -92,7 +116,7 @@ $ node FastBuilder.js -debug
 ### Maintainer
 * [**CAIMEO**](https://github.com/CAIMEOX)
 
-一位极不起眼的开发者
+一位极不起眼的开发者,可以在QQ联系他（1843884864）
 
 ### Other Contributors
 * [**Torrekie**](https://github.com/Torrekie)

@@ -1,15 +1,16 @@
-function clear(array){
-  var n = []; //一个新的临时数组
-  //遍历当前数组
-  for(var i = 0; i < array.length; i++){
-    //如果当前数组的第i已经保存进了临时数组，那么跳过，
-    //否则把当前项push到临时数组里面
-    if (n.indexOf(array[i]) == -1) n.push(array[i]);
+function multiDimensionalUnique(arr) {
+  var uniques = [];
+  var itemsFound = {};
+  for(var i = 0, l = arr.length; i < l; i++) {
+    var stringified = JSON.stringify(arr[i]);
+    if(itemsFound[stringified]) { continue; }
+    uniques.push(arr[i]);
+    itemsFound[stringified] = true;
   }
-  return n;
+  return uniques;
 }
 module.exports = {
-ligature(PosArray1, PosArray2){
+  ligature(PosArray1, PosArray2){
     var session = new Array();
   	var x1 = PosArray1[0]*1, y1 = PosArray1[1]*1, z1 = PosArray1[2]*1;
     var x2 = PosArray2[0]*1, y2 = PosArray2[1]*1, z2= PosArray2[2]*1;
@@ -19,7 +20,7 @@ ligature(PosArray1, PosArray2){
     }
     return session;
   },
-round(direction, r, x, y, z){
+  round(direction, r, x, y, z){
   var session = [];
     switch(direction){
       case "x":
@@ -53,7 +54,7 @@ round(direction, r, x, y, z){
     }
     return session
   },
-circle(direction, r, x, y, z){
+  circle(direction, r, x, y, z){
   var session = [];
   switch(direction){
     case "x":
@@ -88,7 +89,7 @@ circle(direction, r, x, y, z){
   }
   return session;
   },
-sphere(d, r, x, y, z){
+  sphere(d, r, x, y, z){
   var session = [];
   switch(d){
     case "hollow":
@@ -124,25 +125,28 @@ sphere(d, r, x, y, z){
     switch (d) {
       case "x":
       for (var i = tmin; i < tmax; i = i + accuracy) {
-        session.push([x,Math.round(y + a * Math.cos(i)),Math.round(z + b * Math.sin(i))]);
+        session.push([x,Math.ceil(y + a * Math.cos(i)),Math.ceil(z + b * Math.sin(i))]);
       }
       break;
       case "y":
       for (var i = tmin; i < tmax; i = i + accuracy) {
-        session.push([Math.round(x + a * Math.cos(i)),y,Math.round(z + b * Math.sin(i))]);
+        session.push([Math.ceil(x + a * Math.cos(i)),y,Math.ceil(z + b * Math.sin(i))]);
       }
       break;
       case "z":
       for (var i = tmin; i < tmax; i = i + accuracy) {
-        session.push([Math.round(x + a * Math.cos(i)),Math.round(y + b * Math.sin(i)),z]);
+        session.push([Math.ceil(x + a * Math.cos(i)),Math.ceil(y + b * Math.sin(i)),z]);
       }
       break;
       default:
       break;
     }
-     return session;
+     return multiDimensionalUnique(session);
   },
   ellipsoid(a,b,c,x,y,z,f){
+    a = a * 2 + 1;
+    b = b * 2 + 1;
+    c = c * 2 + 1;
     var session = [];
     var accuracy = 1 / f;
     var tminP = Math.PI / -2;
@@ -151,9 +155,29 @@ sphere(d, r, x, y, z){
     var tmaxA = Math.PI ;
       for (var i = tminP ; i < tmaxP ; i = i + accuracy){
         for (var j = tminA ; j < tmaxA ; j = j + accuracy){
-          session.push([Math.round(x + a * Math.cos(i) * Math.cos(j)),Math.round(y + b * Math.cos(i) * Math.sin(j)),Math.round(z + c * Math.sin(i))]);
+          session.push([Math.ceil(x + a * Math.cos(i) * Math.cos(j)),Math.ceil(y + b * Math.cos(i) * Math.sin(j)),Math.ceil(z + c * Math.sin(i))]);
         }
       }
-      return session;
-  }
-}
+      return multiDimensionalUnique(session);
+  },
+  torus(a,c,x,y,z,f){
+    a = a * 1;
+    c = c * 1;
+    var session = [];
+    var accuracy = 1 / f ;
+    var umin = 0;
+    var umax = Math.PI * 2;
+    var vmin = 0;
+    var vmax = Math.PI * 2;
+     for (var v = vmin ; v < vmax ; v = v + accuracy){
+       for (var u = umin ; u < umax ; u = u + accuracy){
+         var newx = Math.round(Math.cos(u)*(a * Math.cos(v) + c));
+         var newy = Math.round(a * Math.sin(v));
+         var newz = Math.round(Math.sin(u)*(a * Math.cos(v) + c));
+         session.push([newx + x, newz + y , newy + z]);
+       }
+    }
+     console.log(session);
+     return multiDimensionalUnique(session);
+   }
+};
