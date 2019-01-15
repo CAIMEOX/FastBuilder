@@ -7,4 +7,4 @@ module.exports={
       "ellipsoid": "ellipsoid <width:x> <width:y> <width:z> <accuracy:Int>",
       "ellipse": "ellipse <direction:String> <width:x> <width:z> <accuracy:Int>"
   }
-}
+};

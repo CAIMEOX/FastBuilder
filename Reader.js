@@ -1,10 +1,11 @@
 module.exports = {
-    ReadMessage(message,x,y,z,b,d,mod) {
+    ReadMessage(message,x,y,z,b,d,mod,e) {
         if(message == undefined)return;
         var defaultJSON = {
+            "entity":e,
+            "entityMod":false,
             "float":10,
             "others":[0,0,0],
-            "builder":"block",
             "shape":"hollow",
             "height":0,
             "delays":10,
@@ -56,8 +57,17 @@ module.exports = {
         if (chat.indexOf("-f") != -1){
             defaultJSON.float = chat[chat.indexOf("-f") + 1]
         }
+        if (chat.indexOf("-em") != -1){
+            defaultJSON.entityMod = chat[chat.indexOf("-em") + 1]
+        }
+        if (chat.indexOf("-e") != -1){
+            defaultJSON.entity =chat[chat.indexOf("-e") + 1]
+        }
         if (chat[0] == "let") {
             switch (chat[1]) {
+                case "entity":
+                    defaultJSON.entity = chat[2];
+                    break;
                 case "block":
                     defaultJSON.block = chat[2];
                     break;
@@ -77,7 +87,6 @@ module.exports = {
         }
         if (chat[0] == "ellipse" || chat[0] == "ellipsoid" || chat[0] == "torus"){
             defaultJSON.others = [chat[1],chat[2],chat[3]];
-            console.log("==========",defaultJSON.others)
         }else if (chat[1] == "x" || chat[1] == "y" || chat[1] == "z")defaultJSON.direction = chat[1];
         return defaultJSON;
     }

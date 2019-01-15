@@ -7,7 +7,7 @@ const reader = require('./Reader');
 var debug = false;
 if (process.argv.splice(2).indexOf("-debug") != -1){
     console.log(clc.green("Debug mod!"));
-    var debug = true
+    debug = true;
 };
 var localhost = null;
 try {
@@ -42,6 +42,7 @@ function get_number(String) {
 console.log(clc.yellow.bold("Server is running at ws://" + localhost + ":" + port));
 Socket.on('connection',function connection( ws, request) {
     if(debug)console.log(clc.green(request.connection.remoteAddress + clc.green(" connected!")));
+    //Subscribe events
     function subscribe(event) {
         ws.send(JSON.stringify({
             "body": {
@@ -56,6 +57,7 @@ Socket.on('connection',function connection( ws, request) {
         }));
     }
     subscribe("PlayerMessage");
+    //Send commands
     function sendCommand(command, requestId) {
         ws.send(JSON.stringify({
             "body": {
@@ -74,6 +76,12 @@ Socket.on('connection',function connection( ws, request) {
         }));
     }
     var ExternalId = uuid.v4();
+    //Send text.
+    /*
+    * @om Output mod
+    * @oc Output color
+    * @text Output message
+    * */
     function sendText(text,om,oc) {
         if (om == undefined) var om = "say";
         if (oc == undefined) var oc = "§l§e";
@@ -81,19 +89,19 @@ Socket.on('connection',function connection( ws, request) {
         sendCommand(ot + " " + text, ExternalId);
         if(debug)console.log(clc.yellow("SendCommand:" + ot + " " + text));
     }
-
     sendText("FastBuilder connected!");
-    let block = "iron_block";
-    let position = [0,0,0];
-    let data = 0;
-    let buildMod = "replace";
+    let _block = "iron_block";
+    let _position = [0,0,0];
+    let _data = 0;
+    let _buildMod = "replace";
+    let _entity = "sheep";
     let target = null;
     let statusMessage = null;
     function setblock(session, tile, data, mode, millis) {
         if (session.length === 0) {
             if(debug)console.log(clc.red("Setblock: Input Error!"));
             sendText("Input Error!","say", "§l§4");
-            sendText("Type \'help\` to get help.","say","§l§e");
+            sendText("Please type \'help\` to get help.","say","§l§e");
             return;}
         var times = 0;
         var BuilderID = uuid.v4();
@@ -109,7 +117,7 @@ Socket.on('connection',function connection( ws, request) {
         if (session.length === 0) {
             if(debug)console.log(clc.red("Fill: Input Error!"));
             sendText("Input Error!","say", "§l§4");
-            sendText("Type \'help\` to get help.","say","§l§e");
+            sendText("Please type \'help\` to get help.","say","§l§e");
             return;}
         var times = 0;
         var BuilderID = uuid.v4();
@@ -142,34 +150,71 @@ Socket.on('connection',function connection( ws, request) {
         var times = 0;
         var BuilderID = uuid.v4();
         var interval = setInterval(function () {
-                sendCommand("summon " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + entity, BuilderID);
+                sendCommand("summon "  + entity + " " + session[times][0] + " " + session[times][1] + " " + session[times][2] , BuilderID);
                 if (debug)console.log(clc.yellowBright("Summon: " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + entity));
                 times++;
                 if (times == session.length)clearInterval(interval);
             },
             millis);
     }
-    function start(shape, position, block, data, direction,buildMod, Type, radius, delays, height, otherValue, float) {
-        switch (Type) {
+    function start(read) {
+        var direction = read.direction;
+        var position = read.position;
+        var radius = read.radius;
+        var shape = read.shape;
+        var height = read.height * 1;
+        var otherValue = read.others;
+        var float = read.float;
+        var block = read.block;
+        var data = read.data;
+        var buildMod = read.buildMod;
+        var delays = read.delays;
+        if (read.entityMod) var entity = read.entity;
+        switch (read.buildType) {
             case "round":
-                fill(generate.round(direction,radius,position[0]*1,position[1]*1,position[2]*1),direction,height*1,block,data,buildMod,delays);
+                if (read.entityMod) {
+                    summon(generate.round(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, delays)
+                } else {
+                    fill(generate.round(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), direction, height, block, data, buildMod, delays);
+                }
                 break;
             case "circle":
-                fill(generate.circle(direction,radius,position[0]*1,position[1]*1,position[2]*1),direction,height*1,block,data,buildMod,delays);
+                if (read.entityMod) {
+                    summon(generate.circle(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, delays)
+                } else {
+                    fill(generate.circle(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), direction, height, block, data, buildMod, delays);
+                }
                 break;
             case "sphere":
-                setblock(generate.sphere(shape,radius,position[0]*1,position[1]*1,position[2]*1),block,data,buildMod,delays);
+                if (read.entityMod) {
+                    summon(generate.sphere(shape, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, delays)
+                } else {
+                    setblock(generate.sphere(shape, radius, position[0] * 1, position[1] * 1, position[2] * 1), block, data, buildMod, delays);
+                }
                 break;
             case "torus":
-                setblock(generate.torus(otherValue[0],otherValue[1],position[0]*1,position[1]*1,position[2]*1,float),block,data,buildMod,delays);
+                if (read.entityMod) {
+                    summon(generate.torus(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, delays)
+                } else {
+                    setblock(generate.torus(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), block, data, buildMod, delays);
+                }
                 break;
             case "ellipse":
-                fill(generate.ellipse(otherValue[0],otherValue[1],otherValue[2],position[0]*1,position[1]*1,position[2]*1,float),otherValue[0],height*1,block,data,buildMod,delays);
+                if (read.entityMod) {
+                    summon(generate.ellipse(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, delays)
+                } else {
+                    fill(generate.ellipse(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), otherValue[0], height, block, data, buildMod, delays);
+                }
                 break;
             case "ellipsoid":
-                setblock(generate.ellipsoid(otherValue[0],otherValue[1],otherValue[2],position[0]*1,position[1]*1,position[2]*1,float),block,data,buildMod,delays);
+                if (read.entityMod) {
+                    summon(generate.ellipsoid(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, delays)
+                } else {
+                    setblock(generate.ellipsoid(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), block, data, buildMod, delays);
+                }
                 break;
-            default:break;
+            default:
+                break;
         }
     }
     let collectorID = uuid.v4();
@@ -215,9 +260,9 @@ Socket.on('connection',function connection( ws, request) {
                 if (statusMessage != null){
                     switch (target) {
                         case "pos" || "position":
-                            position = get_number(statusMessage);
-                            console.log(clc.red(position));
-                            sendCommand("Position get: " + position);
+                            _position = get_number(statusMessage);
+                            console.log(clc.red(_position));
+                            sendText("Position get: " + _position);
                             break;
                         case "player":
                             break;
@@ -226,8 +271,8 @@ Socket.on('connection',function connection( ws, request) {
                 }
             }else if (json.body.eventName == "PlayerMessage") {
                 var chat = json.body.properties.Message;
-                var read = reader.ReadMessage(chat,position[0],position[1],position[2],block,data,buildMod);
-                console.log(read.showhelp);
+                var read = reader.ReadMessage(chat,_position[0],_position[1],_position[2],_block,_data,_buildMod, _entity);
+                console.log(read);
                 if (read.showhelp != undefined){
                     sendHelp(read.showhelp);
                 }else if(read.get != undefined){
@@ -242,12 +287,13 @@ Socket.on('connection',function connection( ws, request) {
                         default:break;
                     }
                 }else if(read.writeDefaultData){
-                    block = read.block;
-                    position = read.position;
-                    data = read.data;
-                    buildMod = read.buildMod;
+                    _block = read.block;
+                    _position = read.position;
+                    _data = read.data;
+                    _buildMod = read.buildMod;
+                    _entity = read.entity;
                 }else if(!read.writeDefaultData){
-                    start(read.shape, read.position, read.block, read.data, read.direction, read.buildMod, read.buildType, read.radius, read.delays, read.height, read.others, read.float);
+                    start(read);
                 }
                 console.log(read);
             }
