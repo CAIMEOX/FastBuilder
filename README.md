@@ -63,6 +63,8 @@ ellipsoid <width:x> <width:y> <width:z> -f <accuracy:Int>
 ellipse <direction:String> <width:x> <width:z> -f <accuracy:Int>
 //torus 方向　半径　环半径　精度
 torus <direction:String> <radius:Int> <torus-radius:Int> -f <accuracy:Int> 
+//cone 方向　半径　高度
+cone <direction:String> -r <radius:Int> -h <height:Int> -f <accuracy:Int>
 ```
 
 ## 参数列表
@@ -98,7 +100,7 @@ FastBuilder命令允许玩家在结尾追加参数，此参数的使用范围为
 * 没有任何广告
 * 算法在不断更新
 * 可以在服务器(BDS除外)或领域使用
-* 支持 0.16 及以上的版本
+* 支持 1.2 及以上的版本
 
 ## 运行测试模式
 
@@ -118,7 +120,7 @@ $ node Main.js -debug
 
 * [2019-1-15]添加实体生成算法
 
-* [2019-1-16]输入close或disconnet使客户端与FastBuilder断开连接
+* [2019-1-16]输入close或disconnet使客户端与FastBuilder断开连接,加入cone算法
 ## 开发相关
 
 * [Nodejs](http://nodejs.org) - 程序语言
