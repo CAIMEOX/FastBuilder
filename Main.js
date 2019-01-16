@@ -83,7 +83,7 @@ Socket.on('connection',function connection( ws, request) {
         if (om == undefined) var om = "say";
         if (oc == undefined) var oc = "§l§e";
         var ot = om + " " + oc;
-        sendCommand(ot + " " + text, ExternalId);
+        sendCommand(ot + "§\"" + text + "§\"", ExternalId);
         if(debug)console.log(clc.yellow("SendCommand:" + ot + " " + text));
     }
     sendText("FastBuilder connected!");
@@ -108,7 +108,7 @@ Socket.on('connection',function connection( ws, request) {
                 sendCommand("fill " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + tile + " " + data + " " + mode, BuilderID);
                 if (debug)console.log(clc.yellowBright("Setblock:" + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + tile + " " + data + " " + mode));
                 times++;
-                if (times == session.length)clearInterval(interval);
+                if (times == session.length){sendText("Session done.");clearInterval(interval);}
             },
             millis);
     }
@@ -142,7 +142,7 @@ Socket.on('connection',function connection( ws, request) {
                 sendCommand("fill " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + (session[times][0] * 1 + dx) + " " + (session[times][1] * 1 + dy) + " " + (session[times][2] * 1 + dz) + " " + tile + " " + data + " " + mode, BuilderID);
                 if (debug)console.log(clc.yellowBright("Fill: " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + (session[times][0] * 1 + dx) + " " + (session[times][1] * 1 + dy) + " " + (session[times][2] * 1 + dz) + " " + tile + " " + data + " " + mode));
                 times++;
-                if (times == session.length) clearInterval(interval);
+                if (times == session.length){sendText("Session Done.");clearInterval(interval);}
             },
             millis);
     }
@@ -160,7 +160,7 @@ Socket.on('connection',function connection( ws, request) {
                 sendCommand("summon "  + entity + " " + session[times][0] + " " + session[times][1] + " " + session[times][2] , BuilderID);
                 if (debug)console.log(clc.yellowBright("Summon: " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + entity));
                 times++;
-                if (times == session.length)clearInterval(interval);
+                if (times == session.length){sendText("Session done.");clearInterval(interval);}
             },
             millis);
     }
@@ -230,7 +230,7 @@ Socket.on('connection',function connection( ws, request) {
         target = ctarget;
     }
     function sendHelp(help){
-        switch (help) {
+        /*switch (help) {
             case "help":
                 sendText(helps.help,"say","§e");
                 break;
@@ -256,7 +256,8 @@ Socket.on('connection',function connection( ws, request) {
                 sendText(helps.sphere,"say","§e");
                 break;
             default:break;
-        }
+        }*/
+	    sendText(helps[help],"say","");
     }
     ws.on('message',function incoming(message) {
         var json = JSON.parse(message);
