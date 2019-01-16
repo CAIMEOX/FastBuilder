@@ -29,6 +29,10 @@ module.exports = {
             defaultJSON = {
                 "get": chat[1]
             };
+        }else if (chat[0] == "close" || chat[0] == "disconnect"){
+            defaultJSON = {
+                "leave":true
+            }
         }
         if (chat.indexOf("-p") != -1) {
             defaultJSON.position = [chat[chat.indexOf("-p") + 1], chat[chat.indexOf("-p") + 2], chat[chat.indexOf("-p") + 3]]
@@ -90,5 +94,4 @@ module.exports = {
         }else if (chat[1] == "x" || chat[1] == "y" || chat[1] == "z")defaultJSON.direction = chat[1];
         return defaultJSON;
     }
-}
-//console.log(ReadMessage("round",10,10,10,"glass",10,"keep"));
+};

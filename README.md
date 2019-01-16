@@ -103,7 +103,7 @@ FastBuilder命令允许玩家在结尾追加参数，此参数的使用范围为
 ## 运行测试模式
 
 ```
-$ node FastBuilder.js -debug
+$ node Main.js -debug
 ```
 用于查找bug.
 
@@ -118,7 +118,7 @@ $ node FastBuilder.js -debug
 
 * [2019-1-15]添加实体生成算法
 
-* [2019-1-16]作者打算写锥形算法
+* [2019-1-16]输入close或disconnet使客户端与FastBuilder断开连接
 ## 开发相关
 
 * [Nodejs](http://nodejs.org) - 程序语言

@@ -5,10 +5,7 @@ const helps = require('./core/helps');
 const generate = require('./core/Algorithms');
 const reader = require('./core/Reader');
 var debug = false;
-if (process.argv.splice(2).indexOf("-debug") != -1){
-    console.log(clc.green("Debug mod!"));
-    debug = true;
-};
+var debug = process.argv.splice(2).indexOf("debug") != -1 && console.log(clc.green("Debug mod!"));
 var localhost = null;
 try {
     localhost = require('os').networkInterfaces()[Object.keys(require('os').networkInterfaces())[1]][0].address;
@@ -30,7 +27,7 @@ const Socket = new WebSocket.Server({
     port: port
 });
 function get_number(String) {
-    var List = String.match(/\-?[0-9]*/g);//[1-9]
+    var List = String.match(/\-?[0-9]*/g);
     for(var i = 0;i<List.length;i++){
         if(List[i]==''){
             List.splice(i,1);
@@ -103,10 +100,12 @@ Socket.on('connection',function connection( ws, request) {
             sendText("Input Error!","say", "§l§4");
             sendText("Please type \'help\` to get help.","say","§l§e");
             return;}
+        sendText("Time need: " + session.length * millis / 1000 + "s");
+        sendText("Please wait patiently!");
         var times = 0;
         var BuilderID = uuid.v4();
         var interval = setInterval(function() {
-                sendCommand("setblock " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + tile + " " + data + " " + mode, BuilderID);
+                sendCommand("fill " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + tile + " " + data + " " + mode, BuilderID);
                 if (debug)console.log(clc.yellowBright("Setblock:" + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + tile + " " + data + " " + mode));
                 times++;
                 if (times == session.length)clearInterval(interval);
@@ -119,6 +118,8 @@ Socket.on('connection',function connection( ws, request) {
             sendText("Input Error!","say", "§l§4");
             sendText("Please type \'help\` to get help.","say","§l§e");
             return;}
+        sendText("Time need: " + session.length * millis / 1000 + "s");
+        sendText("Please wait patiently!");
         var times = 0;
         var BuilderID = uuid.v4();
         let dx = 0,
@@ -146,7 +147,13 @@ Socket.on('connection',function connection( ws, request) {
             millis);
     }
     function summon(session, entity, height, millis){
-        if (session.length === 0)return;
+        if (session.length === 0) {
+            if(debug)console.log(clc.red("Fill: Input Error!"));
+            sendText("Input Error!","say", "§l§4");
+            sendText("Please type \'help\` to get help.","say","§l§e");
+            return;}
+        sendText("Time need: " + session.length * millis / 1000 + "s");
+        sendText("Please wait patiently!");
         var times = 0;
         var BuilderID = uuid.v4();
         var interval = setInterval(function () {
@@ -275,6 +282,8 @@ Socket.on('connection',function connection( ws, request) {
                 console.log(read);
                 if (read.showhelp != undefined){
                     sendHelp(read.showhelp);
+                }else if(read.leave != undefined){
+                    sendCommand("closewebsocket",uuid.v4());
                 }else if(read.get != undefined){
                     switch (read.get) {
                         case "pos" || "position":
