@@ -235,7 +235,7 @@ Socket.on('connection',function connection( ws, request) {
         sendCommand(cmd,collectorID);
         target = ctarget;
     }
-    function sendHelp(help){
+    function sendHelp(reader){
         /*switch (help) {
             case "help":
                 sendText(helps.help,"say","§e");
@@ -263,7 +263,9 @@ Socket.on('connection',function connection( ws, request) {
                 break;
             default:break;
         }*/
-	    sendText(helps[help],"say","");
+	    if(reader.showhelp!=undefined){sendText(helps[reader.showhelp],"say","");}
+	    else if(reader.listhelpe!=undefined){var hps="";for(let i in helps){hps+=i+"  "}hps+="\nFor verbose info,type help -v.";sendText(hps,"say","");}
+	    else if(reader.listhelp!=undefined){for(let i in helps){sendText(helps[i],"say","");}}
     }
     ws.on('message',function incoming(message) {
         var json = JSON.parse(message);
@@ -287,8 +289,8 @@ Socket.on('connection',function connection( ws, request) {
                 var chat = json.body.properties.Message;
                 var read = reader.ReadMessage(chat,_position[0],_position[1],_position[2],_block,_data,_buildMod, _entity);
                 console.log(read);
-                if (read.showhelp != undefined){
-                    sendHelp(read.showhelp);
+                if (read.listhelpe!=undefined||read.listhelp!=undefined||read.showhelp != undefined){
+                    sendHelp(read);
                 }else if(read.leave != undefined){
                     sendCommand("closewebsocket",uuid.v4());
                 }else if(read.get != undefined){

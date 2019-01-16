@@ -20,12 +20,19 @@ module.exports = {
         };
         var chat = message.trim().split(" ");
         defaultJSON.buildType = chat[0];
-        if (chat[1] == "-h" || chat[1] == "-help" || chat[1] == "h" || chat[1] == "help") {
+        if (chat[1] == "-h" || chat[1] == "--help" || chat[1] == "h" || chat[1] == "help") {
             defaultJSON = {
                 "showhelp": chat[0]
             };
             return defaultJSON;
-        }else if (chat[0] == "get"){
+        }else if(chat[0]=="help"){
+		if(chat[1]==undefined){defaultJSON={"listhelpe":true}}
+		else if(chat[1]=="-v"||chat[1]=="--verbose"){defaultJSON={"listhelp":true}}
+		else{
+			defaultJSON={"showhelp":chat[0]}
+		}
+
+	}else if (chat[0] == "get"){
             defaultJSON = {
                 "get": chat[1]
             };
