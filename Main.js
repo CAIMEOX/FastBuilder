@@ -1,9 +1,9 @@
 const WebSocket = require('ws');
 const uuid = require('node-uuid');
 const clc = require('cli-color');
-const helps = require('./helps');
-const generate = require('./Algorithms');
-const reader = require('./Reader');
+const helps = require('./core/helps');
+const generate = require('./core/Algorithms');
+const reader = require('./core/Reader');
 var debug = false;
 if (process.argv.splice(2).indexOf("-debug") != -1){
     console.log(clc.green("Debug mod!"));
@@ -145,7 +145,7 @@ Socket.on('connection',function connection( ws, request) {
             },
             millis);
     }
-    function summon(session, entity, millis){
+    function summon(session, entity, height, millis){
         if (session.length === 0)return;
         var times = 0;
         var BuilderID = uuid.v4();
@@ -173,42 +173,42 @@ Socket.on('connection',function connection( ws, request) {
         switch (read.buildType) {
             case "round":
                 if (read.entityMod) {
-                    summon(generate.round(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, delays)
+                    summon(generate.round(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, height, delays)
                 } else {
                     fill(generate.round(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), direction, height, block, data, buildMod, delays);
                 }
                 break;
             case "circle":
                 if (read.entityMod) {
-                    summon(generate.circle(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, delays)
+                    summon(generate.circle(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, height, delays)
                 } else {
                     fill(generate.circle(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), direction, height, block, data, buildMod, delays);
                 }
                 break;
             case "sphere":
                 if (read.entityMod) {
-                    summon(generate.sphere(shape, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, delays)
+                    summon(generate.sphere(shape, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, height, delays)
                 } else {
                     setblock(generate.sphere(shape, radius, position[0] * 1, position[1] * 1, position[2] * 1), block, data, buildMod, delays);
                 }
                 break;
             case "torus":
                 if (read.entityMod) {
-                    summon(generate.torus(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, delays)
+                    summon(generate.torus(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, height, delays)
                 } else {
                     setblock(generate.torus(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), block, data, buildMod, delays);
                 }
                 break;
             case "ellipse":
                 if (read.entityMod) {
-                    summon(generate.ellipse(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, delays)
+                    summon(generate.ellipse(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, height, delays)
                 } else {
                     fill(generate.ellipse(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), otherValue[0], height, block, data, buildMod, delays);
                 }
                 break;
             case "ellipsoid":
                 if (read.entityMod) {
-                    summon(generate.ellipsoid(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, delays)
+                    summon(generate.ellipsoid(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, height, delays)
                 } else {
                     setblock(generate.ellipsoid(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), block, data, buildMod, delays);
                 }

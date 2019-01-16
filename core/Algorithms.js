@@ -181,10 +181,11 @@ module.exports = {
       case "x":
         for (var v = vmin; v < vmax; v = v + accuracy) {
           for (var u = umin; u < umax; u = u + accuracy) {
-            session.push([Math.round(a * Math.sin(v)) + x, Math.round(Math.cos(u) * (a * Math.cos(v) + c)) + y, Math.round(Math.sin(u) * (a * Math.cos(v) + c)) + z]);
+            session.push([Math.round(Math.cos(u) * (a * Math.cos(v) + c)) + x, Math.round(Math.sin(u) * (a * Math.cos(v) + c)) + y, Math.round(a * Math.sin(v)) + z]);
           }
         }
         break;
+
       case "y":
         for (var v = vmin; v < vmax; v = v + accuracy) {
           for (var u = umin; u < umax; u = u + accuracy) {
@@ -195,9 +196,10 @@ module.exports = {
       case "z":
         for (var v = vmin; v < vmax; v = v + accuracy) {
           for (var u = umin; u < umax; u = u + accuracy) {
-            session.push([Math.round(Math.cos(u) * (a * Math.cos(v) + c)) + x, Math.round(Math.sin(u) * (a * Math.cos(v) + c)) + y, Math.round(a * Math.sin(v)) + z]);
+            session.push([Math.round(a * Math.sin(v)) + x, Math.round(Math.cos(u) * (a * Math.cos(v) + c)) + y, Math.round(Math.sin(u) * (a * Math.cos(v) + c)) + z]);
           }
         }
+        break;
       default:break;
     }
     return multiDimensionalUnique(session);

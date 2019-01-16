@@ -7,7 +7,7 @@
 ```
 $ git clone https://github.com/CAIMEOX/FastBuilder.git
 $ cd FastBuilder
-$ node FastBuilder.js
+$ node Main.js
 ```
 
 ### 依赖项
@@ -15,6 +15,7 @@ $ node FastBuilder.js
 ```
 $ npm install ws
 $ npm install node-uuid
+$ npm iinstall cli-color
 ```
 
 ### 开始使用
@@ -34,23 +35,34 @@ FastBuilder的使用并不复杂，请耐心看完操作流程（不然存档暴
 ```
 get pos
 ```
-设置方块（默认为铁块）：  
+设置方块（默认为铁块，这个选项比较常用）：  
 ```
 let block <tileName:String>
 ```
+
+其他变量
+```
+let data <data:Int>
+let entity <entityName:String>
+let mod <bulidMod:String>
+let pos <x:Int> <y:Int> <z:Int>
+```
 OK,设置基本完成了，接着就能使用建筑命令了：  
 ```
-round <direction:String> <radius:Int> <height:Int>
+//round 方向　半径　高度
+round <direction:String> -r <radius:Int> -h <height:Int>
 //sphere 状态 半径
-sphere <method:hollow/solid> <radius:Int>
+sphere -s <method:hollow/solid> -r <radius:Int>
 //circle 方向 半径 高度
-circle <direction:String> <radius:Int> <height:Int>
+circle <direction:String> -r <radius:Int> -h <height:Int>
 //ligature 坐标1 坐标2
 ligature <Position:x y z> <Position2:x y z>
 //ellipsoid x宽度 y宽度 z宽度 精度
-ellipsoid <width:x> <width:y> <width:z> <accuracy:Int>
+ellipsoid <width:x> <width:y> <width:z> -f <accuracy:Int>
 //ellipse 方向 x长度 z宽度 高度 精度
-ellipse <direction:String> <width:x> <width:z> <accuracy:Int>
+ellipse <direction:String> <width:x> <width:z> -f <accuracy:Int>
+//torus 方向　半径　环半径　精度
+torus <direction:String> <radius:Int> <torus-radius:Int> -f <accuracy:Int> 
 ```
 
 ## 参数列表
@@ -68,6 +80,8 @@ FastBuilder命令允许玩家在结尾追加参数，此参数的使用范围为
 -r 半径(circle,round,sphere必要参数)
 -h 高度(circle,round,ellipse必要参数)
 -s 形状(ellipsoid必要参数)
+-em 是否生成实体(布尔值)
+-e 实体类型
 ```
 
 ## 为什么不使用ModPE,而是WebsocketServer
@@ -102,7 +116,9 @@ $ node FastBuilder.js -debug
 
 * [2019-1-14]添加了Torus（圆环）算法
 
+* [2019-1-15]添加实体生成算法
 
+* [2019-1-16]作者打算写锥形算法
 ## 开发相关
 
 * [Nodejs](http://nodejs.org) - 程序语言
