@@ -220,6 +220,12 @@ Socket.on('connection',function connection( ws, request) {
                     setblock(generate.ellipsoid(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), block, data, buildMod, delays);
                 }
                 break;
+            case "cone":
+                if (read.entityMod){
+                    summon(generate.cone(direction, height,radius,position[0]*1,position[1]*1,position[2]*1,float),entity, height, delays);
+                }
+                setblock(generate.cone(direction, height,radius,position[0]*1,position[1]*1,position[2]*1,float),block,data,buildMod,delays);
+                break;
             default:
                 break;
         }
@@ -305,7 +311,6 @@ Socket.on('connection',function connection( ws, request) {
                 }else if(!read.writeDefaultData){
                     start(read);
                 }
-                console.log(read);
             }
         }
     });

@@ -203,5 +203,38 @@ module.exports = {
       default:break;
     }
     return multiDimensionalUnique(session);
+  },
+  cone(d, h, r, x, y, z, f){
+    var session = [];
+    h = parseInt(h);
+    r = parseInt(r);
+    var max = Math.PI * 2;
+    var accuracy = 1 / f;
+    switch (d) {
+      case "z":
+        for (var u = 0 ; u < h; u++) {
+          for (var i = 0; i < max; i = i + accuracy) {
+            session.push([Math.floor(((h - u)/h )* r * Math.cos(i))+x,Math.floor(((h - u)/h )* r * Math.sin(i))+y,u+z]);
+          }
+        }
+        break;
+      case "y":
+        for (var u = 0 ; u < h; u++) {
+          for (var i = 0; i < max; i = i + accuracy) {
+            session.push([Math.floor(((h - u)/h )* r * Math.cos(i))+x,u+y,Math.floor(((h - u)/h )* r * Math.sin(i))+z]);
+          }
+        }
+        break;
+      case "x":
+        for (var u = 0 ; u < h; u++) {
+          for (var i = 0; i < max; i = i + accuracy) {
+            session.push([u+x,Math.floor(((h - u)/h )* r * Math.cos(i))+y,Math.floor(((h - u)/h )* r * Math.sin(i))+z]);
+          }
+        }
+        break;
+      default:break;
+    }
+
+    return multiDimensionalUnique(session);
   }
 };

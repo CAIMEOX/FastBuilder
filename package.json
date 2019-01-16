@@ -27,6 +27,6 @@
   "dependencies": {
     "cli-color": "^1.4.0",
     "node-uuid": "^1.4.8",
-    "ws": "^6.0.0"
+    "ws": "^6.1.2"
   }
 }
