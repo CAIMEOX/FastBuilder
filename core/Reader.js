@@ -26,10 +26,16 @@ module.exports = {
             };
             return defaultJSON;
         }else if(chat[0]=="help"){
-		if(chat[1]==undefined){defaultJSON={"listhelpe":true}}
-		else if(chat[1]=="-v"||chat[1]=="--verbose"){defaultJSON={"listhelp":true}}
+		if(chat[1]==undefined)defaultJSON={"listhelpe":true};
+		else if(chat[1]=="-l"||chat[1]=="--list"){
+		    defaultJSON={
+		        "listhelp":true
+		    }
+		}
 		else{
-			defaultJSON={"showhelp":chat[0]}
+			defaultJSON={
+			    "showhelp":chat[0]
+			}
 		}
 
 	}else if (chat[0] == "get"){

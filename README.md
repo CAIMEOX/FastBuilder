@@ -15,7 +15,7 @@ $ node Main.js
 ```
 $ npm install ws
 $ npm install node-uuid
-$ npm iinstall cli-color
+$ npm install cli-color
 ```
 
 ### 开始使用
@@ -50,7 +50,7 @@ let pos <x:Int> <y:Int> <z:Int>
 OK,设置基本完成了，接着就能使用建筑命令了：  
 ```
 //round 方向　半径　高度
-round <direction:String> -r <radius:Int> -h <height:Int>
+round <direction:String> -r <radius:Int> ~~~~-h <height:Int>
 //sphere 状态 半径
 sphere -s <method:hollow/solid> -r <radius:Int>
 //circle 方向 半径 高度
