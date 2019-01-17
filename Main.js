@@ -144,19 +144,23 @@ Socket.on('connection',function connection( ws, request) {
         var dx = direction == "x" ? height : 0;
         var dy = direction == "y" ? height : 0;
         var dz = direction == "z" ? height : 0;
+        var new_session = [];
         var times = 0;
         var BuilderID = uuid.v4();
-        var interval = setInterval(function () {
-            for(var x = 0 ; x <= dx ; x++){
-                for (var y = 0 ; y <= dy ; y++){
-                    for(var z = 0 ; z <= dz ; z++){
-                        sendCommand("summon "  + entity + " " + session[times][0]+x + " " + session[times][1]+y + " " + session[times][2]+z , BuilderID);
+        for(var c = 0 ; c < session.length ; c++){
+            for(var x = -1 ; x < dx ; x++){
+                for (var y = -1 ; y < dy ; y++){
+                    for(var z = -1 ; z < dz ; z++){
+                        new_session.push([session[c][0]+x,session[c][1]+y,session[c][2]+z]);
                     }
                 }
             }
-                debug && console.log(clc.yellowBright("Summon: " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + entity));
+        }
+        var interval = setInterval(function () {
+                sendCommand("summon "  + entity + " " + new_session[times][0] + " " + new_session[times][1] + " " + new_session[times][2] , BuilderID);
+                debug && console.log(clc.yellowBright("Summon: " + new_session[times][0] + " " + new_session[times][1] + " " + new_session[times][2] + " " + entity));
                 times++;
-                if (times == session.length){sendText("Entities structure has been summoned!");clearInterval(interval);}
+                if (times == new_session.length){sendText("Entities structure has been summoned!");clearInterval(interval);}
             },
             millis);
     }
