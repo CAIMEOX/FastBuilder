@@ -1,6 +1,13 @@
 # FastBuilder
 ![](./images/FastBuilder.jpg)
-一个为Minecraft Bedrock设计的快速建造程序
+一个为Minecraft Bedrock设计的快速建造程序.
+FastBuilder是一个NodeJS程序，它让Minecraft复杂的结构设计变得简单！
+* 用更少的时间创建更令人印象深刻且更大的建筑！
+* 在几秒钟内快速创建，替换或删除数千个方块
+* 生成球体，圆柱体，椭圆，环等复杂结构
+* 迷失于各种绝妙的结构之中！
+
+FastBuilder是开源的！我们希望更多人参与到FastBuilder的开发和维护．
 
 ## 快速开始
 
@@ -20,7 +27,7 @@ $ npm install cli-color
 
 ### 开始使用
 
-基于MinecraftWS的特性，FastBuilder完全采用命令操作（以后可能有图形界面，如果你想帮忙，请私信我）  
+基于MinecraftWebSocket的特性，FastBuilder完全采用命令操作（以后可能有图形界面，如果你想帮忙，请私信我）  
 FastBuilder的使用并不复杂，请耐心看完操作流程（不然存档暴毙就怪不得我了）
 
 在此之前，先完成‘快速开始’里面的内容.控制台没出错就代表启动成功了：  
@@ -142,7 +149,12 @@ $ node Main.js -debug
 ## 版权许可证
 
 此项目使用  [GPL](LICENSE.md) LICENSE
+* 禁止将此项目商业化，FastBuilder对于所有人都是免费和自由的
+* 使用了FastBuilder的建筑作品同样禁止商业化:)
+* 你不能使用FastBuilder制作付费地图，建筑作品，诺发布，必须是开源作品
+* 建筑团队有偿建筑禁止使用FastBuilder
 
+当然你可以购买商业许可:$20(作者不建议你买这个，我也不知道你该如何付款......)
 ## 鸣谢
 
 * Nodejs
