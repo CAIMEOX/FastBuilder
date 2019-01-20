@@ -23,8 +23,7 @@ console.log(clc.blue.bold("\n" +
     "                                                         \n"));
 console.log(clc.yellow.bold("Maintianers: CAIMEO"));
 console.log(clc.yellow.bold("Other Contributors: LNSSPsd , Torrekie"));
-var port = 8080;
-const Socket = new WebSocket.Server({port: port});
+const Socket = new WebSocket.Server({port: 8080});
 process.stdin.resume();
 process.on("SIGINT",function(){
     Socket.close();
@@ -167,18 +166,23 @@ Socket.on('connection',function connection( ws, request) {
         sendText("Time need: " + session.length * millis / 1000 + "s");
         sendText("Please wait patiently!");
         var new_session = [];
-        if(direction == "x"){for(var i = 0 ; i < session.length ; i++){
+        console.log(direction);
+        if(height == 1 || height == 0){new_session = session}
+        else if(direction == "x"){for(var i = 0 ; i < session.length ; i++){
             for(var x = 0 ; x < height; x++){
+                console.log("Pushing");
                 new_session.push([session[i][0]+x,session[i][1],session[i][2]]);
             }
         }}
-        if(direction == "y"){for(var i = 0 ; i < session.length ; i++){
+        else if(direction == "y"){for(var i = 0 ; i < session.length ; i++){
             for(var y = 0 ; y < height; y++){
+                console.log("Pushing");
                 new_session.push([session[i][0],session[i][1]+y,session[i][2]]);
             }
         }}
-        if(direction == "z"){for(var i = 0 ; i < session.length ; i++){
+        else if(direction == "z"){for(var i = 0 ; i < session.length ; i++){
             for(var z = 0 ; z < height; z++){
+                console.log("Pushing");
                 new_session.push([session[i][0],session[i][1],session[i][2]+z]);
             }
         }}
@@ -223,7 +227,7 @@ Socket.on('connection',function connection( ws, request) {
                 break;
             case "sphere":
                 if (read.entityMod) {
-                    summon(sudo, generate.sphere(shape, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, height, delays)
+                    summon(sudo, generate.sphere(shape, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, direction, height, delays)
                 } else {
                     setblock(sudo, generate.sphere(shape, radius, position[0] * 1, position[1] * 1, position[2] * 1), block, data, buildMod, delays);
                 }
@@ -244,7 +248,7 @@ Socket.on('connection',function connection( ws, request) {
                 break;
             case "ellipsoid":
                 if (read.entityMod) {
-                    summon(sudo, generate.ellipsoid(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, height, delays)
+                    summon(sudo, generate.ellipsoid(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, direction, height, delays)
                 } else {
                     setblock(sudo, generate.ellipsoid(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), block, data, buildMod, delays);
                 }
@@ -265,16 +269,16 @@ Socket.on('connection',function connection( ws, request) {
         target = ctarget;
     }
     function sendHelp(reader){
-        if(reader.listhelpe!=undefined && reader.listhelpe){
-            var hps="";
+        if(reader.listhelps!=undefined && reader.listhelps){
+            var _helps="";
             for(let i in helps){
-                hps += i + "  "
+                _helps += i + "  "
             };
-            hps += "\nFor more helps,type help -l.";
-            sendText(hps,"say","");
-        }else if(reader.showhelp!=undefined){
+            _helps += "\nFor more helps, type help -l.";
+            sendText(_helps,"say","");
+        }else if(reader.showhelp){
 	        sendText(helps[reader.showhelp],"say","");
-	    }else if(reader.listhelp!=undefined && reader.listhelp){
+	    }else if(reader.listhelp){
 	        for(let i in helps){sendText(helps[i],"say","");}}
     }
     ws.on('message',function incoming(message) {
@@ -299,11 +303,11 @@ Socket.on('connection',function connection( ws, request) {
                 var chat = json.body.properties.Message;
                 var read = reader.ReadMessage(root, chat,_position[0],_position[1],_position[2],_block,_data,_buildMod, _entity);
                 console.log(read);
-                if (read.listhelpe || read.listhelp || read.showhelp){
+                if (!read.listhelps || !read.listhelp || read.showhelp != null){
                     debug && console.log(clc.yellow("Showing help."));
                     sendHelp(read);
                     return;
-                }else if(read.leave != undefined){
+                }else if(read.close){
                     debug && console.log(clc.red("User disconnected!"));
                     sendCommand("closewebsocket",uuid.v4());
                 }else if(read.get != null){
@@ -320,7 +324,7 @@ Socket.on('connection',function connection( ws, request) {
                     }
                 }else if(read.sudo != undefined && read.sudo) {
                     debug && console.log(clc.red("Root mod"));
-                    sendText("I hope you know what you are doing.\n§lROOT MODE Activated§r.","say","§4");
+                    sendText("I hope you know what you are doing.\n§lROOT MODE Activated.","say","§4");
                     root = read.root;
                 } if(read.writeDefaultData){
                     debug && console.log(clc.yellow("Writing Data now."));

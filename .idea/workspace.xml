@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/Main.js" line="327" mnemonic="0" />
+    <bookmark url="file://$PROJECT_DIR$/Main.js" line="326" mnemonic="0" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1311408-cb91-4c6c-8a74-b9dd296ec510" name="Default Changelist" comment="Merge branch 'master' of https://github.com/CAIMEOX/FastBuilder&#10;&#10;# Conflicts:&#10;#&#9;Algorithms.js&#10;#&#9;FastBuilder.md&#10;#&#9;fastbuilder.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Algorithms.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/Algorithms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/LReader.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/LReader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/TestReader.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/TestReader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,14 +21,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="322" column="105" lean-forward="true" selection-start-line="322" selection-start-column="105" selection-end-line="322" selection-end-column="105" />
+            <state relative-caret-position="-1800">
+              <caret line="100" column="39" lean-forward="true" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
               <folding>
                 <element signature="n#!!block;n#get_number#0" />
+                <element signature="e#2419#2870#0" />
+                <element signature="e#2924#3006#0" />
+                <element signature="e#3310#3480#0" />
+                <element signature="e#3774#5059#0" />
+                <element signature="e#5138#6734#0" />
+                <element signature="e#6804#8960#0" />
+                <element signature="e#9472#12852#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/TestReader.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="720">
+              <caret line="30" column="2" lean-forward="true" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -37,38 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/LReader.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="43" column="14" lean-forward="true" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/TestReader.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="5" column="58" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="3936">
-                <caret line="164" selection-start-line="164" selection-end-line="164" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="302">
+              <caret line="89" column="26" lean-forward="true" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -76,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/helps.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="3" column="64" selection-start-line="3" selection-start-column="64" selection-end-line="3" selection-end-column="64" />
+            <state>
+              <caret column="16" selection-start-column="16" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -85,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package-lock.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3288">
-              <caret line="137" column="19" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
+            <state relative-caret-position="28584">
+              <caret line="1191" column="19" selection-start-line="1191" selection-start-column="19" selection-end-line="1191" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -108,6 +93,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -142,32 +128,52 @@
         <option value="$PROJECT_DIR$/Algorithms.js" />
         <option value="$PROJECT_DIR$/Reader.js" />
         <option value="$PROJECT_DIR$/reader.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/core/Algorithms.js" />
         <option value="$PROJECT_DIR$/core/helps.js" />
         <option value="$PROJECT_DIR$/core/constants.js" />
         <option value="$PROJECT_DIR$/core/Reader.js" />
-        <option value="$PROJECT_DIR$/core/LReader.js" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/core/TestReader.js" />
+        <option value="$PROJECT_DIR$/node_modules/main.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/Main.js" />
+        <option value="$PROJECT_DIR$/core/LReader.js" />
+        <option value="$PROJECT_DIR$/core/TestReader.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-42" />
-    <option name="y" value="211" />
-    <option name="width" value="1717" />
-    <option name="height" value="945" />
+    <option name="y" value="24" />
+    <option name="width" value="960" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FastBuilder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FastBuilder" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FastBuilder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FastBuilder" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -191,11 +197,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.Main.js">
+  <component name="RunManager" selected="Node.js.main.js">
     <configuration name="Algorithms.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/core/Algorithms.js" working-dir="$PROJECT_DIR$">
-      <method v="2" />
-    </configuration>
-    <configuration name="FastBuilder.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="fastbuilder.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="Main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Main.js" working-dir="$PROJECT_DIR$">
@@ -204,16 +207,19 @@
     <configuration name="TestReader.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/core/TestReader.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
+    <configuration name="main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/node_modules/main.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
     <configuration name="reader.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/reader.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.main.js" />
         <item itemvalue="Node.js.Main.js" />
         <item itemvalue="Node.js.TestReader.js" />
         <item itemvalue="Node.js.Algorithms.js" />
         <item itemvalue="Node.js.reader.js" />
-        <item itemvalue="Node.js.FastBuilder.js" />
       </list>
     </recent_temporary>
   </component>
@@ -248,12 +254,13 @@
       <workItem from="1547802142486" duration="72000" />
       <workItem from="1547882006786" duration="4933000" />
       <workItem from="1547900209901" duration="6408000" />
-      <workItem from="1547952702116" duration="2350000" />
+      <workItem from="1547952702116" duration="5431000" />
+      <workItem from="1547968788525" duration="1603000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93252000" />
+    <option name="totallyTimeSpent" value="97936000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -268,13 +275,13 @@
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.13343883" />
-      <window_info id="Structure" order="1" side_tool="true" visible="true" weight="0.015822785" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49784946" visible="true" weight="0.1329114" />
+      <window_info id="Structure" order="1" sideWeight="0.50215054" side_tool="true" visible="true" weight="0.1329114" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.11935484" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.055913977" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -282,7 +289,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32903227" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.40107527" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.86451614" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -336,6 +343,20 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'master' of https://github.com/CAIMEOX/FastBuilder&#10;&#10;# Conflicts:&#10;#&#9;Algorithms.js&#10;#&#9;FastBuilder.md&#10;#&#9;fastbuilder.js" />
@@ -376,15 +397,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/f.js">
+    <entry file="file://$PROJECT_DIR$/f.js" />
+    <entry file="file://$PROJECT_DIR$/node_modules/ws/lib/receiver.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4608" />
+        <state relative-caret-position="182">
+          <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="3936">
+          <first_editor relative-caret-position="609">
             <caret line="164" selection-start-line="164" selection-end-line="164" />
           </first_editor>
           <second_editor />
@@ -393,22 +417,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/helps.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="64" selection-start-line="3" selection-start-column="64" selection-end-line="3" selection-end-column="64" />
+        <state relative-caret-position="682">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3288">
-          <caret line="137" column="19" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
+        <state relative-caret-position="28584">
+          <caret line="1191" column="19" selection-start-line="1191" selection-start-column="19" selection-end-line="1191" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -422,34 +439,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/TestReader.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="58" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="58" />
+        <state relative-caret-position="240">
+          <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/LReader.js">
+    <entry file="file://$PROJECT_DIR$/core/helps.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="43" column="14" lean-forward="true" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/ws/lib/receiver.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+        <state relative-caret-position="230">
+          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="322" column="105" lean-forward="true" selection-start-line="322" selection-start-column="105" selection-end-line="322" selection-end-column="105" />
+        <state relative-caret-position="-1800">
+          <caret line="100" column="39" lean-forward="true" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
           <folding>
             <element signature="n#!!block;n#get_number#0" />
+            <element signature="e#2419#2870#0" />
+            <element signature="e#2924#3006#0" />
+            <element signature="e#3310#3480#0" />
+            <element signature="e#3774#5059#0" />
+            <element signature="e#5138#6734#0" />
+            <element signature="e#6804#8960#0" />
+            <element signature="e#9472#12852#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/LReader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="89" column="26" lean-forward="true" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/TestReader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="30" column="2" lean-forward="true" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
         </state>
       </provider>
     </entry>

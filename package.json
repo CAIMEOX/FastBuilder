@@ -2,9 +2,9 @@
   "name": "mcpefastbuilder",
   "version": "0.6.0",
   "description": "Generate structures for MCPE.",
-  "main": "Main.js",
+  "main": "main.js",
   "bin": {
-    "fastbuilder": "Main.js"
+    "fastbuilder": "ain.js"
   },
   "scripts": {
     "nopexD": "exit"
@@ -26,6 +26,7 @@
   "homepage": "https://github.com/CAIMEOX/FastBuilder",
   "dependencies": {
     "cli-color": "^1.4.0",
+    "electron": "^4.0.1",
     "node-uuid": "^1.4.8",
     "ws": "^6.1.2"
   }
