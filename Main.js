@@ -23,7 +23,8 @@ console.log(clc.blue.bold("\n" +
     "                                                         \n"));
 console.log(clc.yellow.bold("Maintianers: CAIMEO"));
 console.log(clc.yellow.bold("Other Contributors: LNSSPsd , Torrekie"));
-const Socket = new WebSocket.Server({port: 8080});
+var port = 8080;
+const Socket = new WebSocket.Server({port: port});
 process.stdin.resume();
 process.on("SIGINT",function(){
     Socket.close();

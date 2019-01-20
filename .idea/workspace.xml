@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/Main.js" line="326" mnemonic="0" />
+    <bookmark url="file://$PROJECT_DIR$/Main.js" line="327" mnemonic="0" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1311408-cb91-4c6c-8a74-b9dd296ec510" name="Default Changelist" comment="Merge branch 'master' of https://github.com/CAIMEOX/FastBuilder&#10;&#10;# Conflicts:&#10;#&#9;Algorithms.js&#10;#&#9;FastBuilder.md&#10;#&#9;fastbuilder.js">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/TestReader.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/TestReader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1800">
-              <caret line="100" column="39" lean-forward="true" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
+            <state relative-caret-position="600">
+              <caret line="49" column="21" lean-forward="true" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
               <folding>
                 <element signature="n#!!block;n#get_number#0" />
                 <element signature="e#2419#2870#0" />
@@ -40,7 +37,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/TestReader.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="720">
@@ -136,9 +133,9 @@
         <option value="$PROJECT_DIR$/node_modules/main.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/Main.js" />
         <option value="$PROJECT_DIR$/core/LReader.js" />
         <option value="$PROJECT_DIR$/core/TestReader.js" />
+        <option value="$PROJECT_DIR$/Main.js" />
       </list>
     </option>
   </component>
@@ -255,12 +252,12 @@
       <workItem from="1547882006786" duration="4933000" />
       <workItem from="1547900209901" duration="6408000" />
       <workItem from="1547952702116" duration="5431000" />
-      <workItem from="1547968788525" duration="1603000" />
+      <workItem from="1547968788525" duration="1782000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97936000" />
+    <option name="totallyTimeSpent" value="98115000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -460,23 +457,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1800">
-          <caret line="100" column="39" lean-forward="true" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
-          <folding>
-            <element signature="n#!!block;n#get_number#0" />
-            <element signature="e#2419#2870#0" />
-            <element signature="e#2924#3006#0" />
-            <element signature="e#3310#3480#0" />
-            <element signature="e#3774#5059#0" />
-            <element signature="e#5138#6734#0" />
-            <element signature="e#6804#8960#0" />
-            <element signature="e#9472#12852#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/LReader.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
@@ -488,6 +468,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
           <caret line="30" column="2" lean-forward="true" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="49" column="21" lean-forward="true" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+          <folding>
+            <element signature="n#!!block;n#get_number#0" />
+            <element signature="e#2419#2870#0" />
+            <element signature="e#2924#3006#0" />
+            <element signature="e#3310#3480#0" />
+            <element signature="e#3774#5059#0" />
+            <element signature="e#5138#6734#0" />
+            <element signature="e#6804#8960#0" />
+            <element signature="e#9472#12852#0" />
+          </folding>
         </state>
       </provider>
     </entry>
