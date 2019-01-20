@@ -13,17 +13,17 @@ function multiDimensionalUnique(arr) {
   return uniques;
 }
 module.exports = {
-  ligature(PosArray1, PosArray2) {
+  ligature(PosArraj, PosArray2) {
     var session = new Array();
-    var x1 = PosArray1[0] * 1,
-        y1 = PosArray1[1] * 1,
-        z1 = PosArray1[2] * 1;
+    var i = PosArraj[0] * 1,
+        j = PosArraj[1] * 1,
+        k = PosArraj[2] * 1;
     var x2 = PosArray2[0] * 1,
         y2 = PosArray2[1] * 1,
         z2 = PosArray2[2] * 1;
-    var line = Math.max(Math.abs(x1 - x2), Math.abs(y1 - y2), Math.abs(z1 - z2)) * 1;
+    var line = Math.max(Math.abs(i - x2), Math.abs(j - y2), Math.abs(k - z2)) * 1;
     for (var i = 0; i <= line; i++) {
-      session.push([Math.round(x1 + i / line * (x2 - x1)), Math.round(y1 + i / line * (y2 - y1)), Math.round(z1 + i / line * (z2 - z1))]);
+      session.push([Math.round(i + i / line * (x2 - i)), Math.round(j + i / line * (y2 - j)), Math.round(k + i / line * (z2 - k))]);
     }
     return session;
   },
@@ -101,20 +101,22 @@ module.exports = {
     var session = [];
     switch (d) {
       case "hollow":
-        for (var x1 = -r; x1 <= r; x1++) for (var y1 = -r; y1 <= r; y1++) {
-          for (var z1 = -r; z1 <= r; z1++) {
-            if (x1 * x1 + y1 * y1 + z1 * z1 <= r * r && x1 * x1 + y1 * y1 + z1 * z1 >= (r - 1) * (r - 1)) {
-              session.push([x + x1, y + y1, z + z1]);
+        for (var i = -r; i <= r; i++) {
+        for (var j = -r; j <= r; j++) {
+          for (var k = -r; k <= r; k++) {
+            if (i * i + j * j + k * k <= r * r && i * i + j * j + k * k >= (r - 1) * (r - 1)) {
+              session.push([x + i, y + j, z + k]);
             }
+          }
           }
         }
         break;
       case "solid":
-        for (var x1 = -r; x1 <= r; x1++) {
-          for (var y1 = -r; y1 <= r; y1++) {
-            for (var z1 = -r; z1 <= r; z1++) {
-              if (x1 * x1 + y1 * y1 + z1 * z1 <= r * r) {
-                session.push([x + x1, y + y1, z + z1]);
+        for (var i = -r; i <= r; i++) {
+          for (var j = -r; j <= r; j++) {
+            for (var k = -r; k <= r; k++) {
+              if (i * i + j * j + k * k <= r * r) {
+                session.push([x + i, y + j, z + k]);
               }
             }
           }
@@ -125,34 +127,42 @@ module.exports = {
     }
     return session;
   },
-  ellipse(d, a, b, x, y, z, f) {
-    var accuracy = 1 / f;
-    var tmin = -1 * Math.PI;
-    var tmax = Math.PI;
+  ellipse(d, a, b, x, y, z) {
     var session = [];
     switch (d) {
       case "x":
-        for (var i = tmin; i < tmax; i = i + accuracy) {
-          session.push([x, Math.ceil(y + a * Math.cos(i)), Math.ceil(z + b * Math.sin(i))]);
+      for (var i  = -a ; i <= a ; i++){
+        for (var j = -b ; j <= b ; j++){
+          if((i * i)/(a * a) + (j * j)/(b * b) < 1){
+            session.push([x,y+i,j+z]);
+          }
+        }
+      }
+        break;
+        case "y":
+        for (var i  = -a ; i <= a ; i++){
+          for (var j = -b ; j <= b ; j++){
+            if((i * i)/(a * a) + (j * j)/(b * b) < 1){
+              session.push([x+i,y,j+z]);
+            }
+          }
         }
         break;
-      case "y":
-        for (var i = tmin; i < tmax; i = i + accuracy) {
-          session.push([Math.ceil(x + a * Math.cos(i)), y, Math.ceil(z + b * Math.sin(i))]);
+        case "z":
+        for (var i  = -a ; i <= a ; i++){
+          for (var j = -b ; j <= b ; j++){
+            if((i * i)/(a * a) + (j * j)/(b * b) < 1){
+              session.push([x+i,y+z,j]);
+            }
+          }
         }
         break;
-      case "z":
-        for (var i = tmin; i < tmax; i = i + accuracy) {
-          session.push([Math.ceil(x + a * Math.cos(i)), Math.ceil(y + b * Math.sin(i)), z]);
-        }
-        break;
-      default:
-        break;
+      default:break;
     }
-    return multiDimensionalUnique(session);
+    return session;
   },
-  ellipsoid(a, b, c, x, y, z, f) {
-    a = a * 2 + 1;
+  ellipsoid(a, b, c, x, y, z) {
+    /*a = a * 2 + 1;
     b = b * 2 + 1;
     c = c * 2 + 1;
     var session = [];
@@ -166,9 +176,21 @@ module.exports = {
         session.push([Math.ceil(x + a * Math.cos(i) * Math.cos(j)), Math.ceil(y + b * Math.cos(i) * Math.sin(j)), Math.ceil(z + c * Math.sin(i))]);
       }
     }
-    return multiDimensionalUnique(session);
+    return multiDimensionalUnique(session);*/
+    var session = [];
+    for (var i = -a ; i <= a ;i++){
+      for (var j = -b ; j <= b ; j++){
+        for (var k = -c ; k <= c; k++){
+          if((i * i)/(a * a) + (j * j)/(b * b) + (k * k)/(c * c) <= 1){
+            session.push([x+i,y+j,z+k]);
+          }
+        }
+      }
+    }
+    return session;
   },
-  torus(d, a, c, x, y, z, f) {
+  torus(d, _R, r, x, y, z, f) {
+    var session = [];
     a = a * 1;
     c = c * 1;
     var session = [];
@@ -236,5 +258,14 @@ module.exports = {
     }
 
     return multiDimensionalUnique(session);
+  },
+  conoid(a, b, x, y, z){
+    for (var _x = -a ; _x <= a ; _x++){
+      for (var _y = -b ; _y <= b ; _y++){
+        if(a * (_x * _x) + b * (_y * _y) - z * (_x * _x) - z * (_y * _y) == 0){
+          session.push([x+_x,y+_y,z]);
+        }
+      }
+    }
   }
 };

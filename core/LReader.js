@@ -25,7 +25,7 @@ module.exports = {
                 "showhelp": chat[0]
             };
             return defaultJSON;
-        }else if(ch at[0]=="help"){
+        }else if(chat[0]=="help"){
 		if(chat[1]==undefined)defaultJSON={"listhelpe":true};
 		else if(chat[1]=="-l"||chat[1]=="--list"){
 		    defaultJSON={
@@ -47,7 +47,6 @@ module.exports = {
                 "leave":true
             }
         }
-        defaultJSON.position = chat.indexOf("-p") != -1 ? [chat[chat.indexOf("-p") + 1], chat[chat.indexOf("-p") + 2], chat[chat.indexOf("-p") + 3]] : [x,y,z];
         if (chat.indexOf("-p") != -1) {
             defaultJSON.position = [chat[chat.indexOf("-p") + 1], chat[chat.indexOf("-p") + 2], chat[chat.indexOf("-p") + 3]]
         }

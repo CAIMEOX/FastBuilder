@@ -1,9 +1,10 @@
-//module.exports = {
-    function ReadMessage(message,x,y,z,b,d,mod,e){
+module.exports = {
+    ReadMessage(root,message,x,y,z,b,d,mod,e){
         if(message == undefined)return;
         var defaultJSON = {};
         var chat = message.trim().split(" ");
-        defaultJSON.buildType = chat[0];
+        defaultJSON.get = chat[0] == "get" ? chat[1] :null;
+        defaultJSON.buildType = chat[0] == "sudo" ? chat[1] : chat[0];
         defaultJSON.position = chat.indexOf("-p") != -1 ? [chat[chat.indexOf("-p") + 1], chat[chat.indexOf("-p") + 2], chat[chat.indexOf("-p") + 3]] : [x,y,z];
         defaultJSON.block = chat.indexOf("-b") != -1 ? chat[chat.indexOf("-b") + 1] : b;
         defaultJSON.data =  chat.indexOf("-d") != -1 ? chat[chat.indexOf("-d") + 1] : d;
@@ -21,10 +22,10 @@
         defaultJSON.listhelp = (chat[0] == "help" && (chat[1] == "-l" || chat[1] == "--list")) ? true : false;
         defaultJSON.close = (chat[0] == "close" || chat[0] == "closewebsocket") ? true : false;
         defaultJSON.writeDefaultData = chat[0] == "let" ? true : false;
-        defaultJSON.sudo = chat[0] == "sudo" ? true : false;
-        defaultJSON.others = (chat.indexOf("ellipse") != -1 || chat.indexOf("ellipsoid") != -1 || chat.indexOf("torus") != -1) ? [chat[chat.indexOf("ellipse")+1],chat[chat.indexOf("ellipse")+2],chat[chat.indexOf("ellipse")+3]]:[0,0,0];
+        defaultJSON.sudo = chat[0] == "sudo" ? true : root;
+        defaultJSON.root = chat[0] == "sudo" && chat[1] == "su" ? true : false;
+        defaultJSON.others = chat.indexOf("ellipse") != -1 ? [chat[chat.indexOf("ellipse")+1],chat[chat.indexOf("ellipse")+2],chat[chat.indexOf("ellipse")+3]]:chat.indexOf("ellipsoid") != -1?[chat[chat.indexOf("ellipsoid")+1],chat[chat.indexOf("ellipsoid")+2],chat[chat.indexOf("ellipsoid")+3]]:[chat[chat.indexOf("torus")+1],chat[chat.indexOf("torus")+2],chat[chat.indexOf("torus")+3]];
         defaultJSON.direction = chat.indexOf("x") != -1 ? "x":chat.indexOf("y") != -1?"y":"z";
         return defaultJSON;
     }
-//};
-console.log(ReadMessage(" x -r 5"));
+};
