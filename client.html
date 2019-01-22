@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client</title>
+    <link rel = "stylesheet" href = "./css/button.css" />
+    <link rel = "stylesheet" href = "./css/text.css" />
+    <link rel="stylesheet" href="./css/checkboxes.css"/>
+    <link rel="stylesheet" href="./css/checkboxes.min.css">
+</head>
+<body bgcolor="#2b2b2b">
+<h4 class="cmd_log_font">Player connected!<br></h4>
+<script>
+    const {ipcRenderer} = require('electron');
+    const $ = require('jquery');
+    ipcRenderer.on('main-process-messages', (event, arg) => {
+        $('h4').append(arg,'<br>');
+    });
+</script>
+</body>
+</html>

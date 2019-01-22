@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/Main.js" line="327" mnemonic="0" />
+    <bookmark url="file://$PROJECT_DIR$/Main.js" line="407" mnemonic="0" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1311408-cb91-4c6c-8a74-b9dd296ec510" name="Default Changelist" comment="Merge branch 'master' of https://github.com/CAIMEOX/FastBuilder&#10;&#10;# Conflicts:&#10;#&#9;Algorithms.js&#10;#&#9;FastBuilder.md&#10;#&#9;fastbuilder.js">
+      <change afterPath="$PROJECT_DIR$/client.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/text.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/windows.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Algorithms.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/Algorithms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/TestReader.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/TestReader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,17 +30,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="49" column="21" lean-forward="true" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+            <state relative-caret-position="397">
+              <caret line="354" column="55" selection-start-line="354" selection-start-column="55" selection-end-line="354" selection-end-column="55" />
               <folding>
+                <element signature="e#1686#1785#0" />
+                <element signature="n#!!block;n#createMainWindow#0" />
                 <element signature="n#!!block;n#get_number#0" />
-                <element signature="e#2419#2870#0" />
-                <element signature="e#2924#3006#0" />
-                <element signature="e#3310#3480#0" />
-                <element signature="e#3774#5059#0" />
-                <element signature="e#5138#6734#0" />
-                <element signature="e#6804#8960#0" />
-                <element signature="e#9472#12852#0" />
+                <element signature="e#5685#7160#0" />
+                <element signature="e#7239#9133#0" />
+                <element signature="e#9203#11536#0" />
+                <element signature="e#11562#15434#0" />
+                <element signature="e#12048#15428#0" />
+                <element signature="e#15502#15573#0" />
+                <element signature="e#16316#16904#0" />
+                <element signature="e#17254#17408#0" />
               </folding>
             </state>
           </provider>
@@ -40,47 +52,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/TestReader.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="30" column="2" lean-forward="true" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
+            <state relative-caret-position="264">
+              <caret line="17" column="62" lean-forward="true" selection-start-line="17" selection-start-column="62" selection-end-line="17" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/LReader.js">
+        <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="89" column="26" lean-forward="true" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
+            <state relative-caret-position="272">
+              <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/helps.js">
+        <entry file="file://$PROJECT_DIR$/css/text.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="16" selection-start-column="16" selection-end-column="16" />
+            <state relative-caret-position="168">
+              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package-lock.json">
+        <entry file="file://$PROJECT_DIR$/client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28584">
-              <caret line="1191" column="19" selection-start-line="1191" selection-start-column="19" selection-end-line="1191" selection-end-column="19" />
+            <state relative-caret-position="242">
+              <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/Algorithms.js">
+        <entry file="file://$PROJECT_DIR$/css/button.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5784">
-              <caret line="270" column="2" selection-start-line="270" selection-start-column="2" selection-end-line="270" selection-end-column="2" />
-              <folding>
-                <element signature="e#2721#3492#0" />
-              </folding>
+            <state relative-caret-position="710">
+              <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -90,8 +99,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -131,18 +140,23 @@
         <option value="$PROJECT_DIR$/core/Reader.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/node_modules/main.js" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/core/LReader.js" />
+        <option value="$PROJECT_DIR$/css/button.css" />
+        <option value="$PROJECT_DIR$/windows.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/css/text.css" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/client.html" />
         <option value="$PROJECT_DIR$/core/TestReader.js" />
         <option value="$PROJECT_DIR$/Main.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="95" />
     <option name="y" value="24" />
-    <option name="width" value="960" />
-    <option name="height" value="1056" />
+    <option name="width" value="950" />
+    <option name="height" value="1052" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -150,7 +164,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -163,10 +176,27 @@
               <item name="FastBuilder" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="FastBuilder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FastBuilder" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FastBuilder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FastBuilder" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="checkboxes.css" type="620a8d5e:NestingTreeNode" />
+            </path>
+            <path>
+              <item name="FastBuilder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FastBuilder" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -252,12 +282,19 @@
       <workItem from="1547882006786" duration="4933000" />
       <workItem from="1547900209901" duration="6408000" />
       <workItem from="1547952702116" duration="5431000" />
-      <workItem from="1547968788525" duration="1782000" />
+      <workItem from="1547968788525" duration="1887000" />
+      <workItem from="1547989284558" duration="3622000" />
+      <workItem from="1548039123504" duration="2147000" />
+      <workItem from="1548046646475" duration="7996000" />
+      <workItem from="1548076699707" duration="3131000" />
+      <workItem from="1548140618436" duration="4434000" />
+      <workItem from="1548159429437" duration="1795000" />
+      <workItem from="1548163048111" duration="2790000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98115000" />
+    <option name="totallyTimeSpent" value="124135000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -270,15 +307,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49784946" visible="true" weight="0.1329114" />
-      <window_info id="Structure" order="1" sideWeight="0.50215054" side_tool="true" visible="true" weight="0.1329114" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48876405" weight="0.1329114" />
+      <window_info id="Structure" order="1" sideWeight="0.51123595" side_tool="true" weight="0.1329114" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.055913977" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5225806" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -286,19 +322,19 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32903227" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.86451614" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.31612903" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13343883" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48876405" visible="true" weight="0.1329114" />
+      <window_info id="Structure" order="1" sideWeight="0.51123595" side_tool="true" visible="true" weight="0.1329114" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.032258064" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5225806" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -306,7 +342,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32903227" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.2516129" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.42580646" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -412,34 +448,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/node_modules/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="230">
+          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package-lock.json">
+    <entry file="file://$PROJECT_DIR$/core/LReader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28584">
-          <caret line="1191" column="19" selection-start-line="1191" selection-start-column="19" selection-end-line="1191" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/Algorithms.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5784">
-          <caret line="270" column="2" selection-start-line="270" selection-start-column="2" selection-end-line="270" selection-end-column="2" />
-          <folding>
-            <element signature="e#2721#3492#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        <state relative-caret-position="666">
+          <caret line="89" column="26" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -450,40 +469,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/main.js">
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+        <state relative-caret-position="666">
+          <caret line="1230" column="19" selection-start-line="1230" selection-start-column="19" selection-end-line="1230" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/LReader.js">
+    <entry file="file://$PROJECT_DIR$/core/Algorithms.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="89" column="26" lean-forward="true" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
+        <state relative-caret-position="666">
+          <caret line="270" column="2" selection-start-line="270" selection-start-column="2" selection-end-line="270" selection-end-column="2" />
+          <folding>
+            <element signature="e#2721#3492#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/checkboxes.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2880" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/checkboxes.min.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/windows.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="91" column="3" lean-forward="true" selection-start-line="91" selection-start-column="3" selection-end-line="91" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/button.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="710">
+          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/text.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/TestReader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="30" column="2" lean-forward="true" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
+        <state relative-caret-position="264">
+          <caret line="17" column="62" lean-forward="true" selection-start-line="17" selection-start-column="62" selection-end-line="17" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="49" column="21" lean-forward="true" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+        <state relative-caret-position="397">
+          <caret line="354" column="55" selection-start-line="354" selection-start-column="55" selection-end-line="354" selection-end-column="55" />
           <folding>
+            <element signature="e#1686#1785#0" />
+            <element signature="n#!!block;n#createMainWindow#0" />
             <element signature="n#!!block;n#get_number#0" />
-            <element signature="e#2419#2870#0" />
-            <element signature="e#2924#3006#0" />
-            <element signature="e#3310#3480#0" />
-            <element signature="e#3774#5059#0" />
-            <element signature="e#5138#6734#0" />
-            <element signature="e#6804#8960#0" />
-            <element signature="e#9472#12852#0" />
+            <element signature="e#5685#7160#0" />
+            <element signature="e#7239#9133#0" />
+            <element signature="e#9203#11536#0" />
+            <element signature="e#11562#15434#0" />
+            <element signature="e#12048#15428#0" />
+            <element signature="e#15502#15573#0" />
+            <element signature="e#16316#16904#0" />
+            <element signature="e#17254#17408#0" />
           </folding>
         </state>
       </provider>

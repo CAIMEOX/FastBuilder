@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FastBuilder</title>
+    <link rel = "stylesheet" href = "./css/button.css" />
+    <link rel = "stylesheet" href = "./css/text.css" />
+    <link rel="stylesheet" href="./css/checkboxes.css"/>
+    <link rel="stylesheet" href="./css/checkboxes.min.css">
+</head>
+<body background="./images/main.jpg" id="sleep">
+<p class="main_font" id="main">
+    Server is running at ws://127.0.0.1:8080
+    <br>
+    Waiting for user connect...
+</p>
+<script>
+    const {ipcRenderer} = require('electron');
+    const $ = require('jquery');
+    ipcRenderer.on('main-process-messages', (event, arg) => {
+        console.log(arg);
+        if (arg == "connected"){
+            document.getElementById('sleep').background = './images/client.jpg'
+            document.getElementById('main').innerHTML = `<p class="main_font" id="main">
+            Server is running at ws://127.0.0.1:8080<br>
+            Player connected!<br>
+            Don't be too over.</p>`
+        }
+    });
+</script>
+</body>
+</html>

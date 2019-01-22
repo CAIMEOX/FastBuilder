@@ -189,7 +189,7 @@ module.exports = {
     }
     return session;
   },
-  torus(d, _R, r, x, y, z, f) {
+  torus(d, a, c, x, y, z, f) {
     var session = [];
     a = a * 1;
     c = c * 1;

@@ -1,9 +1,13 @@
+const {app, BrowserWindow, Menu, ipcMain} = require('electron');
+const url = require('url');
+const path = require('path');
+const notifier = require('node-notifier');
 const WebSocket = require('ws');
 const uuid = require('node-uuid');
 const clc = require('cli-color');
 const helps = require('./core/helps');
 const generate = require('./core/Algorithms');
-const reader = require('./core/TestReader');
+const reader = require('./core/TestReader')
 var debug = process.argv.splice(2).indexOf("-debug") != -1 ? true : false;
 var root = false;
 debug && console.log(clc.green("Debug mod!"));
@@ -25,12 +29,46 @@ console.log(clc.yellow.bold("Maintianers: CAIMEO"));
 console.log(clc.yellow.bold("Other Contributors: LNSSPsd , Torrekie"));
 var port = 8080;
 const Socket = new WebSocket.Server({port: port});
+notifier.notify({
+    'title': 'FastBuilder',
+    'message': 'Server is running at ws://' + localhost + ":" + port ,
+    'icon': path.join(__dirname, 'main.jpg'),
+    'protocol':'file:',
+    'sound': true,
+});
 process.stdin.resume();
 process.on("SIGINT",function(){
     Socket.close();
     console.log(clc.yellow.bold("Websocket Closed."));
     process.exit(0);
 });
+function createMainWindow() {
+    win = new BrowserWindow({
+        width: 657,
+        height: 542,
+        x:100,
+        y:100,
+        resizable: false,
+        maximizable: false,
+        fullscreenable: false
+    });
+    win.loadURL(url.format ({
+        pathname: path.join(__dirname, 'index.html'),
+        protocol: 'file:',
+        slashes: true
+    }));
+    win.on('closed',function (e) {
+        process.exit(0);
+    });
+    win.on('blur',function (e) {
+        win.setTitle('FastBuilder 0.0')
+    });
+    win.on('focus',function (e) {
+        win.setTitle('FastBuilder!')
+    })
+}
+
+app.on('ready',createMainWindow);
 function get_number(String) {
     var List = String.match(/\-?[0-9]*/g);
     for(var i = 0;i<List.length;i++){
@@ -43,6 +81,13 @@ function get_number(String) {
 }
 console.log(clc.yellow.bold("Server is running at ws://" + localhost + ":" + port));
 Socket.on('connection',function connection( ws, request) {
+    notifier.notify({
+        'title': 'FastBuilder',
+        'message': request.connection.remoteAddress + 'connected!' ,
+        'icon': path.join(__dirname, 'main.jpg'),
+        'protocol':'file:',
+        'sound': true,
+    });
     if(debug)console.log(clc.green(request.connection.remoteAddress + clc.green(" connected!")));
     //Subscribe events
     function subscribe(event) {
@@ -78,6 +123,31 @@ Socket.on('connection',function connection( ws, request) {
             }
         }));
     }
+    function createClientWindow(userID){
+        client = new BrowserWindow({
+            title:userID,
+            width:676,
+            height:533,
+            x:100,
+            y:100,
+            resizable:false,
+            maximizable:false,
+            fullscreenable:false
+        });
+        client.loadURL(url.format({
+            pathname: path.join(__dirname, 'client.html'),
+            protocol:'file:',
+            slashes: true
+        }));
+        client.on('focus',function (e) {
+            client.setTitle(userID)
+        });
+        client.on('closed',function (e) {
+            sendCommand("closewebsocket",uuid.v4 ());
+        });
+    }
+    createClientWindow(request.connection.remoteAddress);
+    win.webContents.send('main-process-messages','connected');
     var ExternalId = uuid.v4();
     //Send text.
     /*
@@ -99,7 +169,6 @@ Socket.on('connection',function connection( ws, request) {
     * @_buildMod default build mod
     * @_entity default entity
     * */
-    sendText("FastBuilder connected!");
     let _block = "iron_block";
     let _position = [0,0,0];
     let _data = 0;
@@ -124,6 +193,7 @@ Socket.on('connection',function connection( ws, request) {
         var interval = setInterval(function() {
                 sendCommand("fill " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + tile + " " + data + " " + mode, BuilderID);
                 debug && console.log(clc.yellowBright("Setblock:" + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + tile + " " + data + " " + mode));
+                //client.webContents.send('main-process-messages', "Setblock:" + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + tile + " " + data + " " + mode);
                 times++;
                 if (times == session.length){sendText("Structure has been generated!");clearInterval(interval);}
             },
@@ -149,6 +219,7 @@ Socket.on('connection',function connection( ws, request) {
         var interval = setInterval(function() {
                 sendCommand("fill " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + (session[times][0] * 1 + dx) + " " + (session[times][1] * 1 + dy) + " " + (session[times][2] * 1 + dz) + " " + tile + " " + data + " " + mode, BuilderID);
                 debug && console.log(clc.yellowBright("Fill: " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + (session[times][0] * 1 + dx) + " " + (session[times][1] * 1 + dy) + " " + (session[times][2] * 1 + dz) + " " + tile + " " + data + " " + mode));
+                //client.webContents.send('main-process-messages', "Fill: " + session[times][0] + " " + session[times][1] + " " + session[times][2] + " " + (session[times][0] * 1 + dx) + " " + (session[times][1] * 1 + dy) + " " + (session[times][2] * 1 + dz) + " " + tile + " " + data + " " + mode);
                 times++;
                 if (times == session.length){sendText("Structure has been generated!");clearInterval(interval);}
             },
@@ -192,6 +263,7 @@ Socket.on('connection',function connection( ws, request) {
         var interval = setInterval(function () {
                 sendCommand("summon "  + entity + " " + new_session[times][0] + " " + new_session[times][1] + " " + new_session[times][2] , BuilderID);
                 debug && console.log(clc.yellowBright("Summon: " + new_session[times][0] + " " + new_session[times][1] + " " + new_session[times][2] + " " + entity));
+                //client.webContents.send('main-process-messages', "Summon: " + new_session[times][0] + " " + new_session[times][1] + " " + new_session[times][2] + " " + entity);
                 times++;
                 if (times == new_session.length){sendText("Entities structure has been summoned!");clearInterval(interval);}
             },
@@ -276,15 +348,20 @@ Socket.on('connection',function connection( ws, request) {
                 _helps += i + "  "
             };
             _helps += "\nFor more helps, type help -l.";
-            sendText(_helps,"say","");
+            sendText(_helps,"say");
         }else if(reader.showhelp){
-	        sendText(helps[reader.showhelp],"say","");
+	        sendText(helps[reader.showhelp],"say");
 	    }else if(reader.listhelp){
-	        for(let i in helps){sendText(helps[i],"say","");}}
+	        for(let i in helps){sendText(helps[i],"say");}}
     }
+    sendText("FastBuilder connected!");
     ws.on('message',function incoming(message) {
-        var json = JSON.parse(message);
-        console.log(json);
+        try{
+            var json = JSON.parse(message);
+        }catch (e) {
+            console.log(e);
+        }
+        //console.log(json);
         if(json.header.requestId != ExternalId) {
             if (json.header.requestId == collectorID){
                 statusMessage = json.body.statusMessage;
@@ -300,19 +377,22 @@ Socket.on('connection',function connection( ws, request) {
                         default:break;
                     }
                 }
-            }else if (json.body.eventName == "PlayerMessage") {
+            }
+            else if (json.body.eventName == "PlayerMessage") {
                 var chat = json.body.properties.Message;
                 var read = reader.ReadMessage(root, chat,_position[0],_position[1],_position[2],_block,_data,_buildMod, _entity);
                 console.log(read);
-                if (!read.listhelps || !read.listhelp || read.showhelp != null){
+                if (read.listhelps || read.listhelp || read.showhelp != null){
                     debug && console.log(clc.yellow("Showing help."));
                     sendHelp(read);
                     return;
-                }else if(read.close){
-                    debug && console.log(clc.red("User disconnected!"));
+                }
+                else if(read.close){
+                    client.webContents.send('main-process-messages','User disconnected:(');
+                    client.close();
                     sendCommand("closewebsocket",uuid.v4());
                 }else if(read.get != null){
-                    debug && console.log(clc.yellow("Getting info."))
+                    client.webContents.send('main-process-messages','Getting info now!');
                     switch (read.get) {
                         case "pos" || "position":
                             getInfo("testforblock ~ ~ ~ air","pos");
@@ -325,15 +405,17 @@ Socket.on('connection',function connection( ws, request) {
                     }
                 }else if(read.sudo != undefined && read.sudo) {
                     debug && console.log(clc.red("Root mod"));
-                    sendText("I hope you know what you are doing.\n§lROOT MODE Activated.","say","§4");
+                    sendText("I hope you know what you are doing!\n§lROOT MODE Activated.","say","§4");
+                    client.webContents.send('main-process-messages','root@FastBuilder:Root Mod!');
                     root = read.root;
                 } if(read.writeDefaultData){
-                    debug && console.log(clc.yellow("Writing Data now."));
+                    client.webContents.send('main-process-messages','Writing data now');
                     _block = read.block;
                     _position = read.position;
                     _data = read.data;
                     _buildMod = read.buildMod;
                     _entity = read.entity;
+                    sendText("Data wrote!")
                 }else if(!read.writeDefaultData){
                     debug && console.log(clc.yellow("Start!"));
                     start(read);
