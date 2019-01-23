@@ -7,28 +7,29 @@ const uuid = require('node-uuid');
 const clc = require('cli-color');
 const helps = require('./core/helps');
 const generate = require('./core/Algorithms');
-const reader = require('./core/TestReader')
+const reader = require('./core/TestReader');
 var debug = process.argv.splice(2).indexOf("-debug") != -1 ? true : false;
 var root = false;
 debug && console.log(clc.green("Debug mod!"));
+var sudo=false;
 var localhost = null;
 try {
     localhost = require('os').networkInterfaces()[Object.keys(require('os').networkInterfaces())[1]][0].address;
 }catch (e) {
-    debug && console.log(clc.red("Get localhost error:" + e));
+    debug && console.log("Get localhost error:" + e);
     localhost = "127.0.0.1";
 }
-console.log(clc.blue.bold("\n" +
+console.log(clc.blue("\n" +
     "    ______           __  ____        _ __    __          \n" +
     "   / ____/___ ______/ /_/ __ )__  __(_) /___/ /__  _____ \n" +
     "  / /_  / __ `/ ___/ __/ __  / / / / / / __  / _ \\/ ___/\n" +
     " / __/ / /_/ (__  ) /_/ /_/ / /_/ / / / /_/ /  __/ /     \n" +
     "/_/    \\__,_/____/\\__/_____/\\__,_/_/_/\\__,_/\\___/_/ \n" +
     "                                                         \n"));
-console.log(clc.yellow.bold("Maintianers: CAIMEO"));
-console.log(clc.yellow.bold("Other Contributors: LNSSPsd , Torrekie"));
+console.log(clc.yellowBright("Maintianers: CAIMEO,LNSSPsd,Torrekie"));
 var port = 8080;
 const Socket = new WebSocket.Server({port: port});
+console.log(clc.yellowBright("Server is running at ws://" + localhost + ":" + port));
 notifier.notify({
     'title': 'FastBuilder',
     'message': 'Server is running at ws://' + localhost + ":" + port ,
@@ -36,11 +37,15 @@ notifier.notify({
     'protocol':'file:',
     'sound': true,
 });
+
+function stop(){
+Socket.close();
+console.log(clc.red("Websocket Closed."));
+process.exit(0);
+}
 process.stdin.resume();
 process.on("SIGINT",function(){
-    Socket.close();
-    console.log(clc.yellow.bold("Websocket Closed."));
-    process.exit(0);
+	stop();
 });
 function createMainWindow() {
     win = new BrowserWindow({
@@ -79,7 +84,6 @@ function get_number(String) {
     }
     return List;
 }
-console.log(clc.yellow.bold("Server is running at ws://" + localhost + ":" + port));
 Socket.on('connection',function connection( ws, request) {
     notifier.notify({
         'title': 'FastBuilder',
@@ -102,7 +106,6 @@ Socket.on('connection',function connection( ws, request) {
                 "messageType": "commandRequest"
             }
         }));
-        debug && console.log(clc.yellow("Subscribed: " + event));
     }
     subscribe("PlayerMessage");
     //Send commands
@@ -160,7 +163,7 @@ Socket.on('connection',function connection( ws, request) {
         if (oc == undefined) var oc = "§e";
         var ot = om + " " + oc;
         sendCommand(ot + "§\"" + text + "§\"", ExternalId);
-        debug && console.log(clc.yellow("SendCommand:" + ot + " " + text));
+        debug && console.log("SendCommand:" + ot + " " + text);
     }
     /*
     * @_block default block
@@ -176,17 +179,17 @@ Socket.on('connection',function connection( ws, request) {
     let _entity = "sheep";
     let target = null;
     let statusMessage = null;
-    function setblock(root, session, tile, data, mode, millis) {
+    function setblock(sudo, session, tile, data, mode, millis) {
         if (session.length === 0) {
-            debug && console.log(clc.red("Setblock: Input Error!"));
+            debug && console.log("Setblock: Input Error!");
             sendText("Input Error!","say", "§l§4");
             sendText("Please type \'help\` to get help.","say","§l§e");
             return;}
-        if (session.length > 120000 && !root){
-            sendText("Warming:It will take you " + (session.length * millis) / 1000 + "s.\nPermission denied:Are you root?","say","§4");
-            return;
-        }
         sendText("Time need: " + session.length * millis / 1000 + "s");
+	    if(((session.length*millis/1000) >= 120) && !sudo){
+            sendText("Permission denied.You need " + session.length*millis/1000 + "s.Are you root?","say","§4");
+            return;
+	    }
         sendText("Please wait patiently!");
         var times = 0;
         var BuilderID = uuid.v4();
@@ -199,17 +202,17 @@ Socket.on('connection',function connection( ws, request) {
             },
             millis);
     }
-    function fill(root, session, direction, offset, tile, data, mode, millis) {
+    function fill(sudo, session, direction, offset, tile, data, mode, millis) {
         if (session.length === 0) {
-            if(debug)console.log(clc.red("Fill: Input Error!"));
+            if(debug)console.log("Fill: Input Error!");
             sendText("Input Error!","say", "§l§4");
             sendText("Please type \'help\` to get help.","say","§l§e");
             return;}
-        if (session.length > 120000 && !root){
-            sendText("Warming:It will take you " + (session.length * millis) / 1000 + "s.\nPermission denied:Are you root?","say","§4");
-            return;
-        }
         sendText("Time need: " + session.length * millis / 1000 + "s");
+		if(((session.length*millis/1000) >= 120) && !sudo){
+            sendText("Permission denied.You need " + session.length*millis/1000 + "s.Are you root?","say","§4");
+            return;
+	    }
         sendText("Please wait patiently!");
         var times = 0;
         var BuilderID = uuid.v4();
@@ -225,18 +228,21 @@ Socket.on('connection',function connection( ws, request) {
             },
             millis);
     }
-    function summon(root, session, entity, direction, height, millis){
+    function summon(sudo, session, entity, direction, height, millis){
         if (session.length === 0) {
-            debug && console.log(clc.red("Fill: Input Error!"));
+            debug && console.log("Fill: Input Error!");
             sendText("Input Error!","say", "§l§4");
             sendText("Please type \'help\` to get help.","say","§l§e");
             return;}
-        if (session.length > 120000 && !root){
-            sendText("Warming:It will summon " + session.length + " entities.It is very dangerous!Look before you leap.\nPermission denied:Are you root?","say","§4");
-            return;
-        }
         sendText("Time need: " + session.length * millis / 1000 + "s");
+        if(((session.length*millis/1000) >= !sudo) && !sudo){
+		    sendText("Permission denied.You need " + session.length*millis/1000 + "s.Are you root?","say","§4");
+			return;
+	    }
         sendText("Please wait patiently!");
+        var dx = direction == "x" ? height : 0;
+        var dy = direction == "y" ? height : 0;
+        var dz = direction == "z" ? height : 0;
         var new_session = [];
         console.log(direction);
         if(height == 1 || height == 0){new_session = session}
@@ -260,10 +266,20 @@ Socket.on('connection',function connection( ws, request) {
         }}
         var times = 0;
         var BuilderID = uuid.v4();
+        for(var c = 0 ; c < session.length ; c++){
+            for(var x = -1 ; x < dx ; x++){
+                for (var y = -1 ; y < dy ; y++){
+                    for(var z = -1 ; z < dz ; z++){
+                        new_session.push([session[c][0]+x,session[c][1]+y,session[c][2]+z]);
+                    }
+                }
+            }
+        }
         var interval = setInterval(function () {
                 sendCommand("summon "  + entity + " " + new_session[times][0] + " " + new_session[times][1] + " " + new_session[times][2] , BuilderID);
                 debug && console.log(clc.yellowBright("Summon: " + new_session[times][0] + " " + new_session[times][1] + " " + new_session[times][2] + " " + entity));
                 //client.webContents.send('main-process-messages', "Summon: " + new_session[times][0] + " " + new_session[times][1] + " " + new_session[times][2] + " " + entity);
+                debug && console.log("Summon: " + new_session[times][0] + " " + new_session[times][1] + " " + new_session[times][2] + " " + entity);
                 times++;
                 if (times == new_session.length){sendText("Entities structure has been summoned!");clearInterval(interval);}
             },
@@ -274,7 +290,7 @@ Socket.on('connection',function connection( ws, request) {
         var position = read.position;
         var radius = read.radius;
         var shape = read.shape;
-        var height = parseInt(read.height);
+        var height = read.height * 1;
         var otherValue = read.others;
         var float = read.float;
         var block = read.block;
@@ -286,51 +302,51 @@ Socket.on('connection',function connection( ws, request) {
         switch (read.buildType) {
             case "round":
                 if (read.entityMod) {
-                    summon(sudo, generate.round(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, direction, height, delays)
+                    summon(sudo,generate.round(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, direction, height, delays)
                 } else {
-                    fill(sudo, generate.round(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), direction, height, block, data, buildMod, delays);
+                    fill(sudo,generate.round(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), direction, height, block, data, buildMod, delays);
                 }
                 break;
             case "circle":
                 if (read.entityMod) {
-                    summon(sudo, generate.circle(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, direction, height, delays)
+                    summon(sudo,generate.circle(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, direction, height, delays)
                 } else {
-                    fill(sudo, generate.circle(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), direction, height, block, data, buildMod, delays);
+                    fill(sudo,generate.circle(direction, radius, position[0] * 1, position[1] * 1, position[2] * 1), direction, height, block, data, buildMod, delays);
                 }
                 break;
             case "sphere":
                 if (read.entityMod) {
                     summon(sudo, generate.sphere(shape, radius, position[0] * 1, position[1] * 1, position[2] * 1), entity, direction, height, delays)
                 } else {
-                    setblock(sudo, generate.sphere(shape, radius, position[0] * 1, position[1] * 1, position[2] * 1), block, data, buildMod, delays);
+                    setblock(sudo,generate.sphere(shape, radius, position[0] * 1, position[1] * 1, position[2] * 1), block, data, buildMod, delays);
                 }
                 break;
             case "torus":
                 if (read.entityMod) {
-                    summon(sudo, generate.torus(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, otherValue[0], height, delays)
+                    summon(sudo,generate.torus(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, otherValue[0], height, delays)
                 } else {
-                    setblock(sudo, generate.torus(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), block, data, buildMod, delays);
+                    setblock(sudo,generate.torus(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), block, data, buildMod, delays);
                 }
                 break;
             case "ellipse":
                 if (read.entityMod) {
-                    summon(sudo, generate.ellipse(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, otherValue[0], height, delays)
+                    summon(sudo,generate.ellipse(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, otherValue[0], height, delays)
                 } else {
-                    fill(sudo, generate.ellipse(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), otherValue[0], height, block, data, buildMod, delays);
+                    fill(sudo,generate.ellipse(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), otherValue[0], height, block, data, buildMod, delays);
                 }
                 break;
             case "ellipsoid":
                 if (read.entityMod) {
                     summon(sudo, generate.ellipsoid(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), entity, direction, height, delays)
                 } else {
-                    setblock(sudo, generate.ellipsoid(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), block, data, buildMod, delays);
+                    setblock(generate.ellipsoid(otherValue[0], otherValue[1], otherValue[2], position[0] * 1, position[1] * 1, position[2] * 1, float), block, data, buildMod, delays);
                 }
                 break;
             case "cone":
                 if (read.entityMod){
-                    summon(sudo, generate.cone(direction, height,radius,position[0]*1,position[1]*1,position[2]*1,float),entity, direction, height, delays);
+                    summon(sudo,generate.cone(direction, height,radius,position[0]*1,position[1]*1,position[2]*1,float),entity, direction, height, delays);
                 }
-                setblock(sudo, generate.cone(direction, height,radius,position[0]*1,position[1]*1,position[2]*1,float),block,data,buildMod,delays);
+                setblock(sudo,generate.cone(direction, height,radius,position[0]*1,position[1]*1,position[2]*1,float),block,data,buildMod,delays);
                 break;
             default:
                 break;
@@ -342,7 +358,7 @@ Socket.on('connection',function connection( ws, request) {
         target = ctarget;
     }
     function sendHelp(reader){
-        if(reader.listhelps!=undefined && reader.listhelps){
+        if(reader.listhelps){
             var _helps="";
             for(let i in helps){
                 _helps += i + "  "
@@ -355,13 +371,12 @@ Socket.on('connection',function connection( ws, request) {
 	        for(let i in helps){sendText(helps[i],"say");}}
     }
     sendText("FastBuilder connected!");
-    ws.on('message',function incoming(message) {
+    ws.on('message',function (message) {
         try{
             var json = JSON.parse(message);
-        }catch (e) {
+        }catch(e){
             console.log(e);
-        }
-        //console.log(json);
+            return;}
         if(json.header.requestId != ExternalId) {
             if (json.header.requestId == collectorID){
                 statusMessage = json.body.statusMessage;
@@ -369,7 +384,6 @@ Socket.on('connection',function connection( ws, request) {
                     switch (target) {
                         case "pos" || "position":
                             _position = get_number(statusMessage);
-                            console.log(clc.red(_position));
                             sendText("Position get: " + _position);
                             break;
                         case "player":
@@ -383,7 +397,7 @@ Socket.on('connection',function connection( ws, request) {
                 var read = reader.ReadMessage(root, chat,_position[0],_position[1],_position[2],_block,_data,_buildMod, _entity);
                 console.log(read);
                 if (read.listhelps || read.listhelp || read.showhelp != null){
-                    debug && console.log(clc.yellow("Showing help."));
+                    client.webContents.send('main-process-messages', "Showing helps");
                     sendHelp(read);
                     return;
                 }
@@ -391,24 +405,23 @@ Socket.on('connection',function connection( ws, request) {
                     client.webContents.send('main-process-messages','User disconnected:(');
                     client.close();
                     sendCommand("closewebsocket",uuid.v4());
-                }else if(read.get != null){
-                    client.webContents.send('main-process-messages','Getting info now!');
+                }
+                else if(read.get != null){
+                    client.webContents.send('main-process-messages', "Getting info!");
                     switch (read.get) {
                         case "pos" || "position":
                             getInfo("testforblock ~ ~ ~ air","pos");
-                            console.log(clc.red("getting info"));
                             break;
                         case "player":
                             getInfo("list","players");
                             break;
                         default:break;
                     }
-                }else if(read.sudo != undefined && read.sudo) {
-                    debug && console.log(clc.red("Root mod"));
+                }else if(read.root) {
                     sendText("I hope you know what you are doing!\n§lROOT MODE Activated.","say","§4");
                     client.webContents.send('main-process-messages','root@FastBuilder:Root Mod!');
                     root = read.root;
-                } if(read.writeDefaultData){
+                }else if(read.writeDefaultData){
                     client.webContents.send('main-process-messages','Writing data now');
                     _block = read.block;
                     _position = read.position;
@@ -416,8 +429,8 @@ Socket.on('connection',function connection( ws, request) {
                     _buildMod = read.buildMod;
                     _entity = read.entity;
                     sendText("Data wrote!")
-                }else if(!read.writeDefaultData){
-                    debug && console.log(clc.yellow("Start!"));
+                }else {
+                    client.webContents.send('main-process-messages', "Start build");
                     start(read);
                 }
             }

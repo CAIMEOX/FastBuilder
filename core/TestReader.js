@@ -1,6 +1,6 @@
 module.exports = {
-    ReadMessage(root,message,x,y,z,b,d,mod,e){
-        if(message == undefined)return;
+    ReadMessage(root, message,x,y,z,b,d,mod,e)
+    {
         var defaultJSON = {};
         var chat = message.trim().split(" ");
         defaultJSON.get = chat[0] == "get" ? chat[1] :null;
