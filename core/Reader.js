@@ -1,123 +1,31 @@
-var sudor=false;
 module.exports = {
-	TurnOffSudor(){sudor=false;},
-    ReadMessage(message,x,y,z,b,d,mod,e) {
-        if(message == undefined)return;
-        var defaultJSON = {
-            "entity":e,
-            "entityMod":false,
-            "float":10,
-            "others":[0,0,0],
-            "shape":"hollow",
-            "height":0,
-            "delays":10,
-            "radius":0,
-            "direction":null,
-            "writeDefaultData":false,
-            "position": [x, y, z],
-            "block": b,
-            "data": d,
-            "buildMod": mod,
-            "buildType":null
-        };
+    ReadMessage(root, message,x,y,z,b,d,mod,e)
+    {
+        var defaultJSON = {};
         var chat = message.trim().split(" ");
-        defaultJSON.buildType = chat[0];
-        if (chat[1] == "-h" || chat[1] == "--help" || chat[1] == "h" || chat[1] == "help") {
-            defaultJSON = {
-                "showhelp": chat[0]
-            };
-            return defaultJSON;
-        }else if(chat[0]=="help"){
-		if(chat[1]==undefined)defaultJSON={"listhelpe":true};
-		else if(chat[1]=="-l"||chat[1]=="--list"){
-		    defaultJSON={
-		        "listhelp":true
-		    }
-		}
-		else{
-			defaultJSON={
-			    "showhelp":chat[1]
-			}
-		}
-
-	}else if (chat[0] == "get"){
-            defaultJSON = {
-                "get": chat[1]
-            };
-        }else if (chat[0] == "close" || chat[0] == "disconnect"){
-            defaultJSON = {
-                "leave":true
-            }
-        }
-        if (chat.indexOf("-p") != -1) {
-            defaultJSON.position = [chat[chat.indexOf("-p") + 1], chat[chat.indexOf("-p") + 2], chat[chat.indexOf("-p") + 3]]
-        }
-        if (chat.indexOf("-b") != -1) {
-            defaultJSON.block = chat[chat.indexOf("-b") + 1]
-        }
-        if (chat.indexOf("-d") != -1) {
-            defaultJSON.data = chat[chat.indexOf("-d") + 1]
-        }
-        if (chat.indexOf("-m") != -1) {
-            defaultJSON.buildMod = chat[chat.indexOf("-m") + 1]
-        }
-        if (chat.indexOf("-r") != -1){
-            defaultJSON.radius = chat[chat.indexOf("-r") + 1]
-        }
-        if (chat.indexOf("-t") != -1){
-            defaultJSON.delays = chat[chat.indexOf("-t") + 1]
-        }
-        if (chat.indexOf("-h") != -1){
-            defaultJSON.height = chat[chat.indexOf("-h") + 1] - 1
-        }
-        if (chat.indexOf("-s") != -1){
-            defaultJSON.shape = chat[chat.indexOf("-s") + 1]
-        }
-        if (chat.indexOf("-f") != -1){
-            defaultJSON.float = chat[chat.indexOf("-f") + 1]
-		if(defaultJSON.float>500)defaultJSON.needsudo=true;
-        }
-        if (chat.indexOf("-em") != -1){
-            defaultJSON.entityMod = chat[chat.indexOf("-em") + 1]
-		defaultJSON.needsudo=true;
-        }
-        if (chat.indexOf("-e") != -1){
-            defaultJSON.entity =chat[chat.indexOf("-e") + 1]
-        }
-	    if(chat[0]=="!sudo"){
-		    defaultJSON.wantsudo=true;
-		    sudor=true;
-	    }
-	    if(message=="Yes,I really know what am I doing."&&sudor){
-		    sudor=false;
-		    defaultJSON.dosudo=true;
-	    }
-        if (chat[0] == "let") {
-            switch (chat[1]) {
-                case "entity":
-                    defaultJSON.entity = chat[2];
-                    break;
-                case "block":
-                    defaultJSON.block = chat[2];
-		    if(defaultJSON.block=="tnt")defaultJSON.needsudo=true;
-                    break;
-                case "data":
-                    defaultJSON.data = chat[2];
-                    break;
-                case "mod":
-                    defaultJSON.buildMod = chat[2];
-                    break;
-                case "pos" || "position": defaultJSON.position = [chat[2], chat[3], chat[4]];
-                    break;
-                default:
-                    break;
-            }
-            defaultJSON.writeDefaultData = true;
-            return defaultJSON;
-        }
-        if (chat[0] == "ellipse" || chat[0] == "ellipsoid" || chat[0] == "torus"){
-            defaultJSON.others = [chat[1],chat[2],chat[3]];
-        }else if (chat[1] == "x" || chat[1] == "y" || chat[1] == "z")defaultJSON.direction = chat[1];
+        defaultJSON.get = chat[0] == "get" ? chat[1] :null;
+        defaultJSON.buildType = chat[0] == "sudo" ? chat[1] : chat[0];
+        defaultJSON.entity = chat.indexOf("entity") != -1 ? chat[chat.indexOf("entity") + 1] : chat.indexOf("-e") != -1 ? chat[chat.indexOf("-e") + 1] : e;
+        defaultJSON.position = chat.indexOf("pos") != -1 ? [chat[chat.indexOf("pos")+1],chat[chat.indexOf("pos")+2],chat[chat.indexOf("pos")+3]] : chat.indexOf("-p") != -1 ? [chat[chat.indexOf("-p") + 1], chat[chat.indexOf("-p") + 2], chat[chat.indexOf("-p") + 3]] : [x,y,z];
+        defaultJSON.block = chat.indexOf("block") != -1 ? chat[chat.indexOf("block") + 1] : chat.indexOf("-b") != -1 ? chat[chat.indexOf("-b") + 1] : b;
+        defaultJSON.data =  chat.indexOf("data") != -1 ? chat[chat.indexOf("data") + 1] : chat.indexOf("-d") != -1 ? chat[chat.indexOf("-d") + 1] : d;
+        defaultJSON.buildMod = chat.indexOf("mod") != -1 ? chat[chat.indexOf("mod")+1] : chat.indexOf("-m") != -1 ? chat[chat.indexOf("-m") + 1] : mod;
+        defaultJSON.radius = chat.indexOf("-r") != -1 ? chat[chat.indexOf("-r") + 1] : 0;
+        defaultJSON.delays = chat.indexOf("-t") != -1 ? chat[chat.indexOf("-t") + 1] : 10;
+        defaultJSON.height = chat.indexOf("-h") != -1 ? chat[chat.indexOf("-h") + 1] - 1 : 0;
+        defaultJSON.shape = chat.indexOf("-s") != -1 ? chat[chat.indexOf("-s") + 1] : "hollow";
+        defaultJSON.float = chat.indexOf("-f") != -1 ? chat[chat.indexOf("-f") + 1] : 50;
+        defaultJSON.entityMod = chat.indexOf("-em") != -1 ? chat[chat.indexOf("-em") + 1] : false;
+        defaultJSON.showhelp = (chat[0] == "help" && (chat[1] != "-l" && chat[1] != "--list") && chat[1] != undefined)? chat[1]:(chat[1] == "help" || chat[1] == "h" || chat[1] == "-h" || chat[1] == "--help") ? chat[0] : null;
+        defaultJSON.listhelps = (chat[0] == "help" && chat[1] == undefined) ? true : false;
+        defaultJSON.listhelp = (chat[0] == "help" && (chat[1] == "-l" || chat[1] == "--list")) ? true : false;
+        defaultJSON.close = (chat[0] == "close" || chat[0] == "closewebsocket") ? true : false;
+        defaultJSON.writeDefaultData = chat[0] == "let" ? true : false;
+        defaultJSON.sudo = chat[0] == "sudo" ? true : root;
+        defaultJSON.root = chat[0] == "sudo" && chat[1] == "su" ? true : false;
+        defaultJSON.exitRoot = chat[0] == "sudo" && chat[1] == "exit" ? true : false;
+        defaultJSON.others = chat.indexOf("ellipse") != -1 ? [chat[chat.indexOf("ellipse")+1],chat[chat.indexOf("ellipse")+2],chat[chat.indexOf("ellipse")+3]]:chat.indexOf("ellipsoid") != -1?[chat[chat.indexOf("ellipsoid")+1],chat[chat.indexOf("ellipsoid")+2],chat[chat.indexOf("ellipsoid")+3]]:[chat[chat.indexOf("torus")+1],chat[chat.indexOf("torus")+2],chat[chat.indexOf("torus")+3]];
+        defaultJSON.direction = chat.indexOf("x") != -1 ? "x":chat.indexOf("y") != -1?"y":"z";
         return defaultJSON;
     }
 };

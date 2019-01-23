@@ -7,11 +7,10 @@ const uuid = require('node-uuid');
 const clc = require('cli-color');
 const helps = require('./core/helps');
 const generate = require('./core/Algorithms');
-const reader = require('./core/TestReader');
+const reader = require('./core/Reader');
 var debug = process.argv.splice(2).indexOf("-debug") != -1 ? true : false;
 var root = false;
 debug && console.log(clc.green("Debug mod!"));
-var sudo=false;
 var localhost = null;
 try {
     localhost = require('os').networkInterfaces()[Object.keys(require('os').networkInterfaces())[1]][0].address;
@@ -421,6 +420,10 @@ Socket.on('connection',function connection( ws, request) {
                     sendText("I hope you know what you are doing!\n§lROOT MODE Activated.","say","§4");
                     client.webContents.send('main-process-messages','root@FastBuilder:Root Mod!');
                     root = read.root;
+                }else if(read.exitRoot){
+                    sendText("Root mod exited.","say");
+                    client.webContents.send('main-process-messages','user@FastBuilder:Root mod exit!');
+                    root = read.exitRoot;
                 }else if(read.writeDefaultData){
                     client.webContents.send('main-process-messages','Writing data now');
                     _block = read.block;
