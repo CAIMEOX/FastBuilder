@@ -1,5 +1,5 @@
-module.exports = {
-    ReadMessage(root, message,x,y,z,b,d,mod,e)
+//module.exports = {
+    function  ReadMessage(root, message,x,y,z,b,d,mod,e)
     {
         var defaultJSON = {};
         var chat = message.trim().split(" ");
@@ -28,4 +28,5 @@ module.exports = {
         defaultJSON.direction = chat.indexOf("x") != -1 ? "x":chat.indexOf("y") != -1?"y":"z";
         return defaultJSON;
     }
-};
+    ReadMessage(true,"round y -b block -p 1 2 3 -mtv --em")
+//};
