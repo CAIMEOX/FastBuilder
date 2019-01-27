@@ -14,6 +14,7 @@ FastBuilder是开源的！我们希望更多人参与到FastBuilder的开发和�
 ```
 $ git clone https://github.com/CAIMEOX/FastBuilder.git
 $ cd FastBuilder
+$ npm install
 $ node Main.js
 ```
 
@@ -23,9 +24,6 @@ $ node Main.js
 $ npm install ws
 $ npm install node-uuid
 $ npm install cli-color
-$ npm install jquery
-$ npm install node-notifier
-$ npm install electron
 ```
 
 ### 开始使用
@@ -67,14 +65,14 @@ sphere -s <method:hollow/solid> -r <radius:Int>
 circle <direction:String> -r <radius:Int> -h <height:Int>
 //ligature 坐标1 坐标2
 ligature <Position:x y z> <Position2:x y z>
-//ellipsoid x宽度 y宽度 z宽度 精度
+//ellipsoid x宽度 y宽度 z宽度
 ellipsoid <width:x> <width:y> <width:z>
-//ellipse 方向 x长度 z宽度 高度 精度
+//ellipse 方向 x长度 z宽度 高度
 ellipse <direction:String> <width:x> <width:z>
 //torus 方向　半径　环半径　精度
-torus <direction:String> <radius:Int> <torus-radius:Int> -f <accuracy:Int> 
+torus <direction:String> <radius:Int> <torus-radius:Int> -a <accuracy:Int> 
 //cone 方向　半径　高度
-cone <direction:String> -r <radius:Int> -h <height:Int> -f <accuracy:Int>
+cone <direction:String> -r <radius:Int> -h <height:Int> -a <accuracy:Int>
 ```
 
 ## 参数列表
@@ -88,7 +86,7 @@ FastBuilder命令允许玩家在结尾追加参数，此参数的使用范围为
 -m 方块处理方式
 -d 数据值
 -p 坐标
--f 精度
+-a 精度
 -r 半径(circle,round,sphere必要参数)
 -h 高度(circle,round,ellipse必要参数)
 -s 形状(ellipsoid必要参数)
@@ -163,7 +161,7 @@ $ node Main.js -debug
 * [**LNSSPsd**](https://github.com/LNSSPsd)
 ## 版权许可证
 
-此项目使用  [GPL](LICENSE.md) LICENSE
+此项目使用  [GPL](LICENSE) LICENSE
 * 禁止将此项目商业化，FastBuilder对于所有人都是免费和自由的
 * 使用了FastBuilder的建筑作品同样禁止商业化:)
 * 你不能使用FastBuilder制作付费地图，建筑作品，诺发布，必须是开源作品
