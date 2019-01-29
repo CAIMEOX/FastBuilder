@@ -1,9 +1,11 @@
 const EventEmitter = require('events');
 const WebSocket = require('ws');
 const randomUUID = require('node-uuid');
-let positionHistory = [];
-let locateHistory = [];
-let playerHistory = [];
+let History = {
+  position:[],
+  locate:[],
+  players:[]
+}
 class WSServer extends WebSocket.Server {
     constructor (port, processor) {
         super({ port: port });
@@ -25,7 +27,7 @@ class Session extends EventEmitter {
     }
 
     subscribe (event, callback) {
-        var listeners = this.eventListeners.get(event);
+        let listeners = this.eventListeners.get(event);
         if (listeners == undefined) {
             listeners = new Set();
             this.eventListeners.set(event, listeners);
@@ -40,7 +42,7 @@ class Session extends EventEmitter {
     }
 
     unsubscribe (event, callback) {
-        var listeners = this.eventListeners.get(event);
+        let listeners = this.eventListeners.get(event);
         if (listeners == undefined) {
             return;
         }
@@ -57,7 +59,7 @@ class Session extends EventEmitter {
     }
 
     sendCommand (command, callback) {
-        var json = {
+        let json = {
             header: buildHeader('commandRequest'),
             body: {
                 version: 1,
@@ -70,18 +72,32 @@ class Session extends EventEmitter {
     }
 
     getHistory(type, key){
-      switch (type) {
-        case 'position' || 'pos':
-          return positionHistory[key];
+      if(key == 'last'){
+        switch (type) {
+          case 'position':
+          return History.position[History.position.length - 1];
           break;
-        case 'locate':
-          return locateHistory[key];
+          case 'locate':
+          return History.locate[History.locate.length - 1];
           break;
-        case 'player':
-          return playerHistory[key];
+          case 'players':
+          return History.players[History.players.length -1];
           break;
-        default:return '404 Not Found';
-        break;
+          default:break;
+        }
+      }else{
+        switch (type) {
+          case 'position':
+          return History.position[key];
+          break;
+          case 'locate':
+          return History.locate[key];
+          break;
+          case 'players':
+          return History.players[key];
+          break;
+          default:break;
+        }
       }
     }
 }
@@ -89,15 +105,15 @@ class Session extends EventEmitter {
 module.exports = WSServer;
 
 function onConn(socket, req) {
-    var session = new Session(this, socket);
+    let session = new Session(this, socket);
     this.sessions.add(session);
     this.emit('client', session, req);
 }
 
 function onMessage(message) {
-    var json = JSON.parse(message);
-    var header = json.header;
-    var body = json.body;
+    let json = JSON.parse(message);
+    let header = json.header;
+    let body = json.body;
     switch (header.messagePurpose) {
         case 'event':
             let listeners = this.eventListeners.get(json.body.eventName);
@@ -116,13 +132,13 @@ function onMessage(message) {
             let callback = this.responsers.get(header.requestId);
             this.responsers.delete(header.requestId);
             if(!!body.position){
-              positionHistory.push([body.position.x,body.position.y,body.position.z]);
+              History.position.push([body.position.x,body.position.y,body.position.z]);
             }
             if(!!body.feature){
-              locateHistory.push([body.destination.x,body.destination.y,body.destination.z]);
+              History.locate.push([body.destination.x,body.destination.y,body.destination.z]);
             }
             if(!!body.players){
-              playerHistory.push(toArray(body.players).toString());
+              History.players.push(toArray(body.players));
               console.log(toArray(body.players))
             }
             if (callback) {

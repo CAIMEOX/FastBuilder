@@ -1,9 +1,11 @@
 const readMessage = require('./argv');
 const builder = require('./algorithms');
-var Bheader = {}
+const helps = require('./profile').helps;
+const $Builder = require(./algorithms);
+let $default = {};
 class BuildSession {
   static createAndBind (session){
-    var r = new BuildSession();
+    let r = new BuildSession();
     r.session = session;
     r.init();
     return r;
@@ -12,58 +14,110 @@ class BuildSession {
   init(){
     this.sendText('FastBuilder connected!');
     this.session.subscribe('PlayerMessage', onPlayerMessage.bind(this));
-    header_write(true,{
-      p:[0,0,0],
-      b:'air',
-      d:0,
-      m:'replace',
+    $header(true,{
+      position:[0,0,0],
+      block:'air',
+      data:0,
+      method:'replace',
       su:false
     });
   }
 
   onChatMessage (msg, player, files){
-    if(msg == 'screenfetch'){
+    let x = readMessage(msg, $header());
+    if(x.server.close){
+      this.sendText('FastBuilder disconnecting...');
+      this.session.sendCommand('closewebsocket');
+    }else if(x.server.screenfetch){
       this.sendText('screenfetch' +
       '\n§bMinecraftVersion: §a' + files.Build +
       '\n§bUser: §a' + player +
       '\n§bLanguage: §a' + files.locale +
       '\n§bUserGamemode: §a' + files.PlayerGameMode +
       '\n§bBiome: §a' + files.Biome +
-      '\n§bOS: §a' + files.Plat);
+      '\n§bOS: §a' + (files.Plat != '' ? files.Plat : files.ClientId));
       }
-    if(msg == 'listd'){
-      this.session.sendCommand('listd');
-      this.sendText(this.session.getHistory('player',0));
-    }
-    if(msg == 'get'){
-      this.session.sendCommand('testforblock ~ ~ ~ air');
-      this.sendText(this.session.getHistory('position',0));
-    }
-    if(msg == 'locate'){
-      this.session.sendCommand('locate village');
-      this.sendText(this.session.getHistory('locate',0));
-    }
-    var x = readMessage(msg, header_write());
-    console.log('XXXXX:',x);
-    this.doit(x);
+    this.doit(x, player, msg);
   }
 
   sendText (text, opts){
     opts = opts ||'§b';
-    this.session.sendCommand(['say',opts,text].join(' '));
+    this.session.sendCommand(['say',opts,'§\"',text,'§\"'].join(' '));
     console.log('SendText: ' + text);
   }
 
-  doit(args){
-    let main = args.main;
-    if(main.toRoot){
-      header_write(true,{
-        su:true
-      });
+  showhelp(args){
+    if(args.helpMessage){
+      let $help = '';
+      for (let i in helps){
+        $help += i + ' ';
+      }
+      this.sendText($help);
+      this.sendText('For more helps , type \'help -l\'.');
+      return true;
+    }else if(args.listHelp){
+      for(let i in helps){
+        this.sendText(helps[i]);
+      }
+      return true;
+    }else if(args.showhelp){
+        this.sendText(helps[args.showhelp]);
+        return true;
+    }else{
+      return false;
     }
-    if(main.isCmd) this.sendText((header_write().su ? 'root' : player) + '@FastBuilder: # ' + msg);
-    let h = args.header;
-    let b = args.build;
+  }
+
+  doit(args, player, msg){
+    console.log(args);
+    let {main, header, build, collect, server} = args;
+
+    if(main.toRoot){
+      $default.su = true;
+    }else if(main.exitRoot){
+      $default.su = false;
+    }
+
+    if(main.isCmd){
+      this.sendText(($header().su ? 'root' : player) + '@FastBuilder: # ' + msg);
+      this.showhelp(args.server);
+    }
+
+    if(collect.writeData){
+      $header(true, header);
+      this.sendText('Data wrote!');
+    }
+
+    if(collect.get){
+      this.getValue(collect.get);
+    }else if(collect.locate){
+      this.session.sendCommand(['locate ',collect.locate].join(' '));
+      let that = this;
+      let $t = setTimeout(() => {
+        let $a = that.getValue('locate').join(' ');
+        that.session.sendCommand(['tp','@s',$a].join(' '));
+      }, 500);
+    }
+
+  }
+
+  getValue(type){
+    let that = this;
+    if(type == 'pos' || type == 'position'){
+      this.session.sendCommand(['testforblock','~','~','~','air'].join(' '));
+       let $b = setTimeout(() =>{
+         $default.position = this.session.getHistory('position','last');
+         that.sendText('Position get: ' + $default.position.join(' '));
+       }, 500);
+    }else if(type == 'player' || type == 'players'){
+      this.session.sendCommand('listd');
+      let $c = setTimeout(() => {
+        that.sendText('Online players: ' + that.session.getHistory('players','last'));
+      }, 500);
+    }else if(type == 'locate'){
+      let $d = this.session.getHistory('locate','last');
+      return $d;
+    }
   }
 
   setTile(root, list, block, data, mod, delays){
@@ -73,8 +127,8 @@ class BuildSession {
       return;
     }
     sendText('Please wait patiently!');
-    var t = 0;
-    var interval = setInterval(function () {
+    let t = 0;
+    let interval = setInterval(function () {
       this.session.sendCommand([
         'fill',
         list[t][0],list[t][1],list[t][2],
@@ -98,11 +152,11 @@ class BuildSession {
       return;
     }
     sendText('Please wait patiently!');
-    var t = 0;
-    var dx = direction == 'x' ? len : 0;
-    var dy = direction == 'y' ? len : 0;
-    var dz = direction == 'z' ? len : 0;
-    var interval = setInterval(function() {
+    let t = 0;
+    let dx = direction == 'x' ? len : 0;
+    let dy = direction == 'y' ? len : 0;
+    let dz = direction == 'z' ? len : 0;
+    let interval = setInterval(function() {
       this.session.sendCommand([
         'fill',
         list[t][0],list[t][1],list[t][2],
@@ -126,8 +180,8 @@ class BuildSession {
       return;
     }
     sendText('Please wait patiently!');
-    var t = 0;
-    var interval = setInterval(function () {
+    let t = 0;
+    let interval = setInterval(function () {
       this.session.sendCommand([
         'fill',
         list[t][0], list[t][1], list[t][2],
@@ -151,8 +205,8 @@ class BuildSession {
       return;
     }
     sendText('Please wait patiently!');
-    var t = 0;
-    var interval = setInterval(function () {
+    let t = 0;
+    let interval = setInterval(function () {
       this.session.sendCommand([
         'summon',
         entity,
@@ -173,28 +227,29 @@ class BuildSession {
       return;
     }
     sendText('Please wait patiently!');
-    var t = 0;
-    var dx = direction == 'x' ? len : 0;
-    var dy = direction == 'y' ? len : 0;
-    var dz = direction == 'z' ? len : 0;
+    let t = 0;
+    let dx = direction == 'x' ? len : 0;
+    let dy = direction == 'y' ? len : 0;
+    let dz = direction == 'z' ? len : 0;
   }
 
 }
 
-function header_write(r,opts){
+function $header(r,opts){
   if(r){
-    Bheader.p = opts.p;
-    Bheader.b = opts.b;
-    Bheader.d = opts.d;
-    Bheader.m = opts.m;
-    Bheader.su = opts.su;
+    $default.position = opts.position;
+    $default.block = opts.block;
+    $default.data = opts.data;
+    $default.method = opts.method;
+    $default.su = opts.su;
   }
-  return Bheader;
+  console.log($default);
+  return $default;
 }
 
 function onPlayerMessage(body){
-  var properties = body.properties;
-  console.log(properties);
+  let properties = body.properties;
+  //console.log(properties);
   if (properties.MessageType != 'chat') return;
   this.onChatMessage(properties.Message, properties.Sender, properties);
 }
