@@ -126,9 +126,13 @@ class BuildSession {
             this.setEntity(header.su, map, entity, delays);
             break;
 
+          case 'setLongEntity':
+            this.setLongEntity(header.su, map, build.height, entity, delays);
+            break;
+
           default:
             console.log('Unknown error!!Exiting...');
-            processor.exit();
+            process.exit();
             break;
         }
     }
@@ -140,7 +144,8 @@ class BuildSession {
 
     if(collect.get){
     this.getValue(collect.get);
-    }else if(collect.locate){
+    }
+    else if(collect.locate){
       this.session.sendCommand(['locate ',collect.locate].join(' '));
       let that = this;
       let $t = setTimeout(() => {
@@ -148,8 +153,6 @@ class BuildSession {
         that.session.sendCommand(['tp','@s',$a].join(' '));
       }, 250);
     }
-
-
   }
 
   getValue(type){
@@ -258,11 +261,33 @@ class BuildSession {
   setLongEntity(root, list, len, direction, entity, delays){
     this.sendText('Please wait patiently!');
     let t = 0;
-    let dx = direction == 'x' ? len : 0;
-    let dy = direction == 'y' ? len : 0;
-    let dz = direction == 'z' ? len : 0;
+    let that = this;
+    let dx = direction == 'x' ? len : 1;
+    let dy = direction == 'y' ? len : 1;
+    let dz = direction == 'z' ? len : 1;
+    let $List = [];
+    for(let s in list){
+      for(let i = 0 ; i < dx ; i ++){
+        for(let j = 0 ; j < dy ; j ++){
+          for(let k = 0 ; k < dz ; k ++){
+            $List.push([map[s] + i -1,map[s] + j -1,map[s] + k -1]);
+          }
+        }
+      }
+    };
+    let interval = setInterval(() => {
+      that.session.sendCommand([
+        'summon',
+        entity,
+        $List[t].join(' ')
+      ].join(' '));
+      t++;
+      if(t == $List.length){
+        that.sendText('Entity structure has been generated!');
+        clearInterval(interval);
+      }
+    }, delays);
   }
-
 }
 
 function $header(r,opts){
