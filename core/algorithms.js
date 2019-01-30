@@ -3,11 +3,7 @@ class Algorithms {
         let $b = new Algorithms();
         this.header = header;
         this.build = build;
-        let [
-            x,
-            y,
-            z
-        ] = header.position;
+        let [x,y,z] = header.position;
 
         let {
             type,
@@ -18,59 +14,58 @@ class Algorithms {
             delays,
             width,
             length,
-            height
+            height,
+            entityMod
         } = build;
 
         switch (type) {
           case 'round':
               return {
                   map:this.round(direction, radius, x, y, z),
-                  foo: 'setLongTile'
+                  foo: entityMod ? 'setLongEntity':'setLongTile'
               }
               break;
-          case 'cirlce':
+          case 'circle':
               return {
                   map:this.circle(direction, radius, x, y, z),
-                  foo: 'setLongTile'
+                  foo: entityMod ? 'setLongEntity':'setLongTile'
               }
               break;
           case 'sphere':
               return {
                   map:this.sphere(shape, radius, x, y, z),
-                  foo: 'setTile'
+                  foo: entityMod ? 'setEntity':'setTile'
               }
               break;
           case 'ellipse':
               return {
                   map:this.ellipse(direction, length, width, x, y, z),
-                  foo: 'setLongTile'
+                  foo: entityMod ? 'setLongEntity':'setLongTile'
               }
               break;
           case 'ellipsoid':
               return {
                   map:this.ellipsoid(length, width, height, x, y, z),
-                  foo: 'setTile'
+                  foo: entityMod ? 'setEntity':'setTile'
               }
               break;
           case 'torus':
               return {
                   map:this.torus(direction, width, radius, x, y, z, accuracy),
-                  foo: 'setTile'
+                  foo: entityMod ? 'setEntity':'setTile'
               }
               break;
           case 'cone':
               return {
                   map:this.cone(direction, height, radius, x, y, z, accuracy),
-                  foo: 'setTile'
+                  foo: entityMod ? 'setEntity':'setTile'
               };
               break;
-          default:
-              break;
+          default:break;
           }
     }
 
     static round(direction, r, x, y, z) {
-      console.log('Round: ',direction,r,x,y,z)
         let session = [];
         switch (direction) {
         case "x":
@@ -103,7 +98,7 @@ class Algorithms {
         default:
         break;
         }
-        return session
+        return session;
     }
 
     static circle(direction, r, x, y, z) {

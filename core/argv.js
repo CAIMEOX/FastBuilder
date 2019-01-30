@@ -2,7 +2,7 @@ function toArr(any) {
 	return any == null ? [] : Array.isArray(any) ? any : [any];
 }
 
-function ifHas(argv, input, alias){
+function hasFlags(argv, input, alias){
 	if(!!~argv.indexOf(input)){
 		return argv[argv.indexOf(input) + 1];
 	}else if(!!~argv.indexOf(alias)){
@@ -51,9 +51,12 @@ function read(msg, opts){
 				parseInt(args[args.indexOf('-p') + 2]),
 				parseInt(args[args.indexOf('-p') + 3])
 			] : toArr(opts.position),
-			block:ifHas(args, '-b', '--block') || opts.block,
-			data:ifHas(args, '-d', '--data') || opts.data,
-			method:ifHas(args, '-m', '--method') || opts.method
+			block:hasFlags(args, '-b', '--block') || opts.block,
+			data:hasFlags(args, '-d', '--data') || opts.data,
+			method:hasFlags(args, '-m', '--method') || opts.method,
+			$block:hasFlags(args, '-b2', '--block2') || opts.$block,
+			$data:hasFlags(args, '-d2', '--data2') || opts.$data,
+			entity:hasFlags(args, '-e', '--entity') || opts.entity
 	};
 
 	out.collect = {
@@ -76,14 +79,15 @@ function read(msg, opts){
 
 	out.build = {
 		type:getType(args),
-		direction:ifHas(args, '-f', '--facing') || 'y',
-		shape:ifHas(args, '-s', '--shape') || 'hollow',
-		radius:parseInt(ifHas(args, '-r', '--radius') || 0),
-		accuracy:parseInt(ifHas(args, '-a', '--accuracy') || 50),
-		delays:parseInt(ifHas(args, '-t', '--times') || 10),
-		width:parseInt(ifHas(args, '-w', '--width') || 0),
-		length:parseInt(ifHas(args, '-l', '--length') || 0),
-		height:parseInt(ifHas(args, '-h', '--height') || 1),
+		direction:hasFlags(args, '-f', '--facing') || 'y',
+		shape:hasFlags(args, '-s', '--shape') || 'hollow',
+		radius:parseInt(hasFlags(args, '-r', '--radius') || 0),
+		accuracy:parseInt(hasFlags(args, '-a', '--accuracy') || 50),
+		delays:parseInt(hasFlags(args, '-t', '--times') || 10),
+		width:parseInt(hasFlags(args, '-w', '--width') || 0),
+		length:parseInt(hasFlags(args, '-l', '--length') || 0),
+		height:parseInt(hasFlags(args, '-h', '--height') || 1),
+		entityMod:hasFlags(args, '-y', '--entityMod') || false
 	};
 
 	return out;

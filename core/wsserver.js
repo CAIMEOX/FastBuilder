@@ -127,7 +127,6 @@ function onMessage(message) {
             }
             break;
         case 'commandResponse':
-        console.log(json);
             let callback = this.responsers.get(header.requestId);
             this.responsers.delete(header.requestId);
             if(!!body.position){
@@ -138,7 +137,6 @@ function onMessage(message) {
             }
             if(!!body.players){
               History.players.push(toArray(body.players));
-              console.log(toArray(body.players))
             }
             if (callback) {
                 try {

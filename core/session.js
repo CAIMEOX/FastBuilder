@@ -13,13 +13,16 @@ class BuildSession {
   init(){
     this.sendText('FastBuilder connected!');
     this.session.subscribe('PlayerMessage', onPlayerMessage.bind(this));
-    $header(true,{
+    $default = {
       position:[0,0,0],
-      block:'air',
+      block:'iron_block',
       data:0,
-      method:'replace',
-      su:false
-    });
+      method:'normal',
+      su:false,
+      $block:'air',
+      $data:0,
+      entity:'ender_crystal'
+    }
   }
 
   onChatMessage (msg, player, files){
@@ -70,45 +73,64 @@ class BuildSession {
   doit(args, player, msg){
     console.log(args);
     let {main, header, build, collect, server} = args;
-    let {block, data, method} = header;
-    console.log(block, data, method)
+    let {block, data, method, $block, $data, entity} = header;
     let delays = build.delays;
+
+    method = method == 'normal' ? 'replace':[method,$block,$data].join(' ');
 
     if(main.toRoot){
       $default.su = true;
-    }else if(main.exitRoot){
+    }
+    else if(main.exitRoot){
       $default.su = false;
     }
 
     if(main.isCmd){
-      this.sendText(($default.su ? 'root' : player) + '@FastBuilder: # ' + msg);
+
+      this.sendText(($default.su ? 'root' : player) + '@FastBuilder: ' + msg);
       this.showhelp(args.server);
-      let {map, foo} = Algorithms.Builder(header,build) || {}
-      if((list.length * delays) / 1000 >= 120 && !root){
+
+      let {map, foo} = Algorithms.Builder(header,build) || {};
+
+      if(!map){
+        return;
+      }
+
+      else if(map.length === 0){
+        this.sendText('Input error.You can type \'' + build.type + ' help\' to get help');
+        return;
+      }
+
+      else if((map.length * delays) / 1000 >= 120 && !root){
         sendText('Permission denied: Time takes more than 2 minutes.Are you root?');
         return;
       }
-      if(!map){
-        return;
-      }else if(map.length === 0){
-        this.sendText('Input error.You can type \'' + build.type + ' help\' to get help');
-      }else{
+
+      if(build.entityMod){
+        this.sendText('Time need: ' + ((map.length * delays * build.height) / 1000) + 's.');
+      }
+      else{
+        this.sendText('Time need: ' + ((map.length * delays) / 1000) + 's.')
+      }
+
         switch (foo) {
           case 'setTile':
             this.setTile(header.su, map, block, data, method, delays);
             break;
+
           case 'setLongTile':
             this.setLongTile(header.su, map, build.height, build.direction, block, data, method, delays);
             break;
+
           case 'setEntity':
             this.setEntity(header.su, map, entity, delays);
             break;
+
           default:
             console.log('Unknown error!!Exiting...');
             processor.exit();
             break;
         }
-      }
     }
 
     if(collect.writeData){
@@ -117,7 +139,7 @@ class BuildSession {
     }
 
     if(collect.get){
-      this.getValue(collect.get);
+    this.getValue(collect.get);
     }else if(collect.locate){
       this.session.sendCommand(['locate ',collect.locate].join(' '));
       let that = this;
@@ -137,12 +159,12 @@ class BuildSession {
        let $b = setTimeout(() =>{
          $default.position = this.session.getHistory('position','last');
          that.sendText('Position get: ' + $default.position.join(' '));
-       }, 500);
+       }, 250);
     }else if(type == 'player' || type == 'players'){
       this.session.sendCommand('listd');
       let $c = setTimeout(() => {
         that.sendText('Online players: ' + that.session.getHistory('players','last'));
-      }, 500);
+      }, 250);
     }else if(type == 'locate'){
       let $d = this.session.getHistory('locate','last');
       return $d;
@@ -150,14 +172,10 @@ class BuildSession {
   }
 
   setTile(root, list, block, data, mod, delays){
-    if((list.length * delays) / 1000 >= 120 && !root){
-      sendText('Permission denied: Time takes more than 2 minutes.Are you root?');
-      return;
-    }
     this.sendText('Please wait patiently!');
     let t = 0;
     let that = this;
-    let interval = setInterval(function () {
+    let interval = setInterval(() => {
       that.session.sendCommand([
         'fill',
         list[t][0],list[t][1],list[t][2],
@@ -167,18 +185,14 @@ class BuildSession {
         mod
       ].join(' '));
       t++;
-      if(times == list.length){
-        this.sendText('Structure has been generated!');
+      if(t == list.length){
+        that.sendText('Structure has been generated!');
         clearInterval(interval);
       }
     }, delays);
   }
 
   setLongTile(root, list, len, direction, block, data, mod, delays){
-    if((list.length * delays) / 1000 >= 120 && !root){
-      this.sendText('Permission denied: Time takes more than 2 minutes.Are you root?');
-      return;
-    }
     this.sendText('Please wait patiently!');
     let t = 0;
     let dx = direction == 'x' ? len : 0;
@@ -216,7 +230,7 @@ class BuildSession {
         mod
       ].join(' '));
       t++;
-      if(times == list.length){
+      if(t == list.length){
         that.sendText('Structure has been generated!');
         clearInterval(interval);
       }
@@ -226,26 +240,23 @@ class BuildSession {
   setEntity(root, list, entity, delays){
     this.sendText('Please wait patiently!');
     let t = 0;
-    let interval = setInterval(function () {
-      this.session.sendCommand([
+    let that = this;
+    let interval = setInterval(() => {
+      that.session.sendCommand([
         'summon',
         entity,
         list[t].join(' ')
       ].join(' '));
       t++;
-      if(times == list.length){
-        sendText('Structure has been generated!');
+      if(t == list.length){
+        that.sendText('Entity structure has been generated!');
         clearInterval(interval);
       }
     }, delays);
   }
 
   setLongEntity(root, list, len, direction, entity, delays){
-    if((list.length * delays) / 1000 >= 120 && root){
-      sendText('Permission denied: Time takes more than 2 minutes.Are you root?');
-      return;
-    }
-    sendText('Please wait patiently!');
+    this.sendText('Please wait patiently!');
     let t = 0;
     let dx = direction == 'x' ? len : 0;
     let dy = direction == 'y' ? len : 0;
@@ -256,6 +267,7 @@ class BuildSession {
 
 function $header(r,opts){
   if(r){
+
     $default.position = opts.position;
     $default.block = opts.block;
     $default.data = opts.data;
