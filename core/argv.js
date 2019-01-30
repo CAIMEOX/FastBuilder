@@ -23,6 +23,15 @@ function isCmd(args) {
 	return false;
 }
 
+function getType(args){
+	for (let i in args){
+		if(isCmd(args[i])){
+			return args[i]
+		}
+	}
+}
+
+
 function read(msg, opts){
 	args = msg.trim().split(" ") || [];
 	opts = opts || {};
@@ -63,7 +72,10 @@ function read(msg, opts){
 		args[0] : false
 	}
 
+
+
 	out.build = {
+		type:getType(args),
 		direction:ifHas(args, '-f', '--facing') || 'y',
 		shape:ifHas(args, '-s', '--shape') || 'hollow',
 		radius:parseInt(ifHas(args, '-r', '--radius') || 0),

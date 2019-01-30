@@ -1,6 +1,5 @@
 const EventEmitter = require('events');
 const WebSocket = require('ws');
-const randomUUID = require('node-uuid');
 let History = {
   position:[],
   locate:[],
@@ -159,10 +158,17 @@ function onClose() {
     this.server.sessions.delete(this);
 }
 
+const crypto = require('crypto');
+
+const UUIDGeneratorNode = () =>
+  ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+    (c ^ (crypto.randomBytes(1)[0] & (15 >> (c / 4)))).toString(16)
+  );
+
 function buildHeader(purpose) {
     return {
         version: 1,
-        requestId: randomUUID.v4(),
+        requestId: UUIDGeneratorNode(),
         messagePurpose: purpose,
         messageType: 'commandRequest'
     };
