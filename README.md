@@ -22,8 +22,6 @@ $ node Main.js
 
 ```
 $ npm install ws
-$ npm install node-uuid
-$ npm install cli-color
 ```
 
 ### 开始使用
@@ -45,32 +43,32 @@ get pos
 ```
 设置方块（默认为铁块，这个选项比较常用）：  
 ```
-let block <tileName:String>
+let --block <tileName:String>
 ```
 
 其他变量
 ```
-let data <data:Int>
-let entity <entityName:String>
-let mod <bulidMod:String>
-let pos <x:Int> <y:Int> <z:Int>
+let --data <data:Int>
+let --entity <entityName:String>
+let --mod <bulidMod:String>
+let --position <x:Int> <y:Int> <z:Int>
 ```
 OK,设置基本完成了，接着就能使用建筑命令了：  
 ```
 //round 方向　半径　高度
-round <direction:String> -r <radius:Int> -h <height:Int>
+round -f <direction:String> -r <radius:Int> -h <height:Int>
 //sphere 状态 半径
 sphere -s <method:hollow/solid> -r <radius:Int>
 //circle 方向 半径 高度
-circle <direction:String> -r <radius:Int> -h <height:Int>
+circle -f <direction:String> -r <radius:Int> -h <height:Int>
 //ligature 坐标1 坐标2
 ligature <Position:x y z> <Position2:x y z>
 //ellipsoid x宽度 y宽度 z宽度
-ellipsoid <width:x> <width:y> <width:z>
+ellipsoid -l <width:x> -w <width:y> -h <width:z>
 //ellipse 方向 x长度 z宽度 高度
-ellipse <direction:String> <width:x> <width:z>
+ellipse -f <direction:String> -w <width:x> -l <width:z>
 //torus 方向　半径　环半径　精度
-torus <direction:String> <radius:Int> <torus-radius:Int> -a <accuracy:Int> 
+torus -f <direction:String> -w <radius:Int> -r <torus-radius:Int> -a <accuracy:Int> 
 //cone 方向　半径　高度
 cone <direction:String> -r <radius:Int> -h <height:Int> -a <accuracy:Int>
 ```
@@ -82,6 +80,7 @@ FastBuilder命令允许玩家在结尾追加参数，此参数的使用范围为
 如果是let更改的变量，这些参数将被写入默认值．
 ```
 -b 方块
+-f 方向
 -t 延迟(ms)
 -m 方块处理方式
 -d 数据值
@@ -90,7 +89,7 @@ FastBuilder命令允许玩家在结尾追加参数，此参数的使用范围为
 -r 半径(circle,round,sphere必要参数)
 -h 高度(circle,round,ellipse必要参数)
 -s 形状(ellipsoid必要参数)
--em 是否生成实体(布尔值)
+-y 是否生成实体(布尔值)
 -e 实体类型
 ```
 
