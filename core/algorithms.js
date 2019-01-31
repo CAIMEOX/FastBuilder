@@ -204,6 +204,11 @@ class Algorithms {
         return session;
     }
 
+    static ellipseh(d, a, b, x, y, z){
+      let session = [];
+      
+    }
+
     static ellipsoid(a, b, c, x, y, z) {
         let session = [];
         for (let i = -a; i <= a; i++) {

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "nopexD": "exit",
-    "start":"node Main"
+    "start": "node Main"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/CAIMEOX/FastBuilder",
   "dependencies": {
+    "get-pixels": "^3.3.2",
     "ws": "^6.1.2"
   }
 }

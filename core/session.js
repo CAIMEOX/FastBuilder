@@ -1,7 +1,9 @@
 const readMessage = require('./argv');
 const Algorithms = require('./algorithms');
 const helps = require('./profile').helps;
+
 let $default = {};
+
 class BuildSession {
   static createAndBind (session){
     let r = new BuildSession();
@@ -97,21 +99,23 @@ class BuildSession {
       }
 
       else if(map.length === 0){
-        this.sendText('Input error.You can type \'' + build.type + ' help\' to get help');
+        this.sendText(now() + 'Input error.You can type \'' + build.type + ' help\' to get help');
         return;
       }
 
       else if((map.length * delays) / 1000 >= 120 && !root){
-        sendText('Permission denied: Time takes more than 2 minutes.Are you root?');
+        sendText(now() + 'Permission denied: Time takes more than 2 minutes.Are you root?');
         return;
       }
 
       if(build.entityMod){
-        this.sendText('Time need: ' + ((map.length * delays * build.height) / 1000) + 's.');
+        this.sendText(now() + 'Time need: ' + ((map.length * delays * build.height) / 1000) + 's.');
       }
       else{
-        this.sendText('Time need: ' + ((map.length * delays) / 1000) + 's.')
+        this.sendText(now() + 'Time need: ' + ((map.length * delays) / 1000) + 's.')
       }
+
+      this.sendText(now() + 'Please wait patiently!');
 
         switch (foo) {
           case 'setTile':
@@ -131,7 +135,7 @@ class BuildSession {
             break;
 
           default:
-            console.log('Unknown error!!Exiting...');
+            console.log(now() + 'Unknown error!!Exiting...');
             process.exit();
             break;
         }
@@ -151,7 +155,8 @@ class BuildSession {
       let $t = setTimeout(() => {
         let $a = that.getValue('locate').join(' ');
         that.session.sendCommand(['tp','@s',$a].join(' '));
-      }, 250);
+        that.sendText([now(),'FastLocate: ',collect.locate].join(' '));
+      }, 150);
     }
   }
 
@@ -161,13 +166,19 @@ class BuildSession {
       this.session.sendCommand(['testforblock','~','~','~','air'].join(' '));
        let $b = setTimeout(() =>{
          $default.position = this.session.getHistory('position','last');
-         that.sendText('Position get: ' + $default.position.join(' '));
-       }, 250);
+         that.sendText(now() + 'Position get: ' + $default.position.join(' '));
+       },150);
     }else if(type == 'player' || type == 'players'){
       this.session.sendCommand('listd');
       let $c = setTimeout(() => {
-        that.sendText('Online players: ' + that.session.getHistory('players','last'));
-      }, 250);
+        let $arr = toArray(that.session.getHistory('players','last'));
+        console.log($arr)
+        let $p = '';
+        for(let i = 0 ; i < $arr.length ; i++){
+          $p = [$p,i,'.',$arr[i],'; '].join('');
+        }
+        that.sendText(now() + 'Online players: ' + $p);
+      }, 500);
     }else if(type == 'locate'){
       let $d = this.session.getHistory('locate','last');
       return $d;
@@ -175,7 +186,6 @@ class BuildSession {
   }
 
   setTile(root, list, block, data, mod, delays){
-    this.sendText('Please wait patiently!');
     let t = 0;
     let that = this;
     let interval = setInterval(() => {
@@ -189,14 +199,13 @@ class BuildSession {
       ].join(' '));
       t++;
       if(t == list.length){
-        that.sendText('Structure has been generated!');
+        that.sendText(now() + 'Structure has been generated!');
         clearInterval(interval);
       }
     }, delays);
   }
 
   setLongTile(root, list, len, direction, block, data, mod, delays){
-    this.sendText('Please wait patiently!');
     let t = 0;
     let dx = direction == 'x' ? len : 0;
     let dy = direction == 'y' ? len : 0;
@@ -213,14 +222,13 @@ class BuildSession {
       ].join(' '));
       t++;
       if(t == list.length){
-        that.sendText('Structure has been generated!');
+        that.sendText(now() + 'Structure has been generated!');
         clearInterval(interval);
       }
     }, delays);
   }
 
   fillTile(root, list, block, data, mod, delays){
-    this.sendText('Please wait patiently!');
     let that = this;
     let t = 0;
     let interval = setInterval(function () {
@@ -234,14 +242,13 @@ class BuildSession {
       ].join(' '));
       t++;
       if(t == list.length){
-        that.sendText('Structure has been generated!');
+        that.sendText(now() + 'Structure has been generated!');
         clearInterval(interval);
       }
     }, delays);
   }
 
   setEntity(root, list, entity, delays){
-    this.sendText('Please wait patiently!');
     let t = 0;
     let that = this;
     let interval = setInterval(() => {
@@ -252,14 +259,13 @@ class BuildSession {
       ].join(' '));
       t++;
       if(t == list.length){
-        that.sendText('Entity structure has been generated!');
+        that.sendText(now() + 'Entity structure has been generated!');
         clearInterval(interval);
       }
     }, delays);
   }
 
   setLongEntity(root, list, len, direction, entity, delays){
-    this.sendText('Please wait patiently!');
     let t = 0;
     let that = this;
     let dx = direction == 'x' ? len : 1;
@@ -270,7 +276,7 @@ class BuildSession {
       for(let i = 0 ; i < dx ; i ++){
         for(let j = 0 ; j < dy ; j ++){
           for(let k = 0 ; k < dz ; k ++){
-            $List.push([map[s] + i -1,map[s] + j -1,map[s] + k -1]);
+            $List.push([list[s] + i -1,list[s] + j -1,list[s] + k -1]);
           }
         }
       }
@@ -283,7 +289,7 @@ class BuildSession {
       ].join(' '));
       t++;
       if(t == $List.length){
-        that.sendText('Entity structure has been generated!');
+        that.sendText(now() + 'Entity structure has been generated!');
         clearInterval(interval);
       }
     }, delays);
@@ -292,7 +298,6 @@ class BuildSession {
 
 function $header(r,opts){
   if(r){
-
     $default.position = opts.position;
     $default.block = opts.block;
     $default.data = opts.data;
@@ -307,6 +312,15 @@ function onPlayerMessage(body){
   let properties = body.properties;
   if (properties.MessageType != 'chat') return;
   this.onChatMessage(properties.Message, properties.Sender, properties);
+}
+
+function toArray(str){
+  return arr = str.split(',');
+}
+
+function now(){
+  let date = new Date();
+  return ['[',date.toTimeString().slice(0, 8),']'].join('');
 }
 
 module.exports = BuildSession;

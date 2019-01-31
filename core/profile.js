@@ -6,7 +6,7 @@ module.exports  = {
       " / __/ / /_/ (__  ) /_/ /_/ / /_/ / / / /_/ /  __/ /     \n" +
       "/_/    \\__,_/____/\\__/_____/\\__,_/_/_/\\__,_/\\___/_/ \n" +
       "                                                         \n",
-  version:2.0,
+  version:3.0,
   helps:{
     'help':'help <commandName:String>  --Show help of command.\n --list: All command\'s descriptions.',
     'let':'let <variable:String> <value:String>  --Set the value of the variable.',

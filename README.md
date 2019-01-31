@@ -2,6 +2,7 @@
 ![](./images/FastBuilder.jpg)
 一个为Minecraft Bedrock设计的快速建造程序.
 FastBuilder是一个NodeJS程序，它让Minecraft复杂的结构设计变得简单！
+
 * 用更少的时间创建更令人印象深刻且更大的建筑！
 * 在几秒钟内快速创建，替换或删除数千个方块
 * 生成球体，圆柱体，椭圆，环等复杂结构
@@ -117,29 +118,18 @@ $ node Main.js -debug
 用于查找bug.
 
 ## 开发笔记
-* [2019-1-9]添加了椭圆和椭球算法
-
-* [2019-1-12]修复help的bug
-
-* [2019-1-13]添加参数支持
-
-* [2019-1-14]添加了Torus（圆环）算法
-
-* [2019-1-15]添加实体生成算法
-
-* [2019-1-16]输入close或disconnet使客户端与FastBuilder断开连接,加入cone算法
-
-* [2019-1-17]改进ellipse和ellipsoid算法，现在不会有瑕疵了
-
-* [2019-1-18]添加su模式，现在不会因为方块太多而溢出了（也许吧）
-
-* [2019-1-20]使用'close'命令可以关闭连接
-
-* [2019-1-21]作者计划加入GUI,从此毁了FastBuilder:D
-
-* [2019-1-22]使用Electron开发GUI
-
-* [2019-1-23]Nothing happened.
+- [2019-1-9]添加了椭圆和椭球算法
+- [2019-1-12]修复help的bug
+- [2019-1-13]添加参数支持
+- [2019-1-14]添加了Torus（圆环）算法
+- [2019-1-15]添加实体生成算法
+- [2019-1-16]输入close或disconnet使客户端与FastBuilder断开连接,加入cone算法
+- [2019-1-17]改进ellipse和ellipsoid算法，现在不会有瑕疵了
+- [2019-1-18]添加su模式，现在不会因为方块太多而溢出了（也许吧）
+- [2019-1-20]使用'close'命令可以关闭连接
+- [2019-1-21]作者计划加入GUI,从此毁了FastBuilder:D
+- [2019-1-22]使用Electron开发GUI
+- [2019-1-23-30]源码重构
 ## 开发相关
 
 * [Nodejs](http://nodejs.org) - 程序语言
@@ -173,4 +163,3 @@ $ node Main.js -debug
 * LNSSPsd  -参考了LNSSPsd的[MyAgent](https://github.com/mcpews/MyAgent.git)项目
 * Torrekie  -修复bug
 * Jocopa3  -API 提供
-

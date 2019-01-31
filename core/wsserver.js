@@ -1,5 +1,6 @@
 const EventEmitter = require('events');
 const WebSocket = require('ws');
+const crypto = require('crypto');
 let History = {
   position:[],
   locate:[],
@@ -22,7 +23,7 @@ class Session extends EventEmitter {
         this.eventListeners = new Map();
         this.responsers = new Map();
         socket.on('message', onMessage.bind(this))
-            .on('close', onClose.bind(this));
+        socket.on('close', onClose.bind(this));
     }
 
     subscribe (event, callback) {
@@ -84,7 +85,8 @@ class Session extends EventEmitter {
           break;
           default:break;
         }
-      }else{
+      }
+      else{
         switch (type) {
           case 'position':
           return History.position[key];
@@ -131,6 +133,7 @@ function onMessage(message) {
             this.responsers.delete(header.requestId);
             if(!!body.position){
               History.position.push([body.position.x,body.position.y,body.position.z]);
+              this.emit('position',History.position);
             }
             if(!!body.feature){
               History.locate.push([body.destination.x,body.destination.y,body.destination.z]);
@@ -156,7 +159,6 @@ function onClose() {
     this.server.sessions.delete(this);
 }
 
-const crypto = require('crypto');
 
 const UUIDGeneratorNode = () =>
   ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
