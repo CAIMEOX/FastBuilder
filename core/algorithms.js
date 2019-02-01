@@ -15,7 +15,8 @@ class Algorithms {
             width,
             length,
             height,
-            entityMod
+            entityMod,
+            path
         } = build;
 
         switch (type) {
@@ -60,6 +61,12 @@ class Algorithms {
                   map:this.cone(direction, height, radius, x, y, z, accuracy),
                   foo: entityMod ? 'setEntity':'setTile'
               };
+              break;
+          case 'paint':
+              return {
+                  foo:'paint',
+                  map:[0,0,0]
+              }
               break;
           default:break;
           }
@@ -206,7 +213,7 @@ class Algorithms {
 
     static ellipseh(d, a, b, x, y, z){
       let session = [];
-      
+
     }
 
     static ellipsoid(a, b, c, x, y, z) {

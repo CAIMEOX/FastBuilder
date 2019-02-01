@@ -14,7 +14,7 @@ function hasFlags(argv, input, alias){
 
 function isCmd(args) {
 	if(args == undefined)return false;
-	cmdList = ['round','circle','ellipse','ellipsoid','cone','torus','sphere','su','help','let']
+	cmdList = ['round','circle','ellipse','ellipsoid','cone','torus','sphere','su','help','let','paint']
 	for(let key in cmdList){
 		if(!!~args.indexOf(cmdList[key])){
 			return true;
@@ -87,7 +87,8 @@ function read(msg, opts){
 		width:parseInt(hasFlags(args, '-w', '--width') || 0),
 		length:parseInt(hasFlags(args, '-l', '--length') || 0),
 		height:parseInt(hasFlags(args, '-h', '--height') || 1),
-		entityMod:hasFlags(args, '-y', '--entityMod') || false
+		entityMod:hasFlags(args, '-y', '--entityMod') || false,
+		path:hasFlags(args, '-z', '--path') || false
 	};
 
 	return out;

@@ -9,6 +9,7 @@ function getMin(arr){
 }
 return min;
 }
+
 function get_color(r, g, b) {
     List = [];
     for (let a = 0; a < color.length; a++) {
@@ -20,33 +21,54 @@ function get_color(r, g, b) {
     return [color[List.indexOf(getMin(List))].name,color[List.indexOf(getMin(List))].data];
 }
 
-function Paint(path){
+function Paint(path, x, y, z){
+  const BuildList = [];
   get_pixels(path, (err, pixels) => {
     if(err){
-      console.log(err)
-      return ;
+      return;
     }
 
-    let arr = [];
+    let arr = pixels.data;
     let All = [];
     let $d = [];
 
-    for (let i in arr){
+    for (let i = 0 ; i < arr.length; i++){
       $d.push(arr[i]);
       if(i != 0 && (i + 1) % 4 == 0){
         All.push($d);
         $d = [];
       }
     }
-    console.log(All)
-    BuildList = [];
 
-    for(let i in All){
+    for(let i = 0 ; i < All.length ; i ++){
       BuildList.push(get_color(All[i][0], All[i][1], All[i][2]));
     }
 
-    console.log(BuildList);
+    draw(BuildList, pixels.shape[0], pixels.shape[1], parseInt(x), parseInt(y), parseInt(z));
   });
 }
 
-Paint('/home/caimeo/图片/logo2.png')
+function draw(map, w, h, x, y, z){
+  let t = 0;
+  let that = this
+  let $i = setInterval( () => {
+    if(x == w){
+      y = y + 1;
+      x=0;
+    }
+
+    console.log([
+      'setblock',
+      x = x +1,
+      y,
+      z,
+      map[t][0],
+      map[t][1]
+    ].join(' '));
+
+    t++;
+    if(t == map.length){
+      clearInterval($i);
+    }
+  }, 10);
+}
