@@ -308,4 +308,165 @@ module.exports = [
     'data': 9,
     'name': 'wool',
     'color': [47, 111, 138, 255]
-}]
+},
+{
+	"data":0,
+	"name":"concrete",
+	"color":[207,213,214,255]
+},
+{
+	"data":1,
+	"name":"concrete",
+	"color":[224,97,0,255]
+},
+{
+	"data":2,
+	"name":"concrete",
+	"color":[169,48,159,255]
+},
+{
+	"data":3,
+	"name":"concrete",
+	"color":[35,137,198,255]
+},
+{
+	"data":4,
+	"name":"concrete",
+	"color":[241,175,21,255]
+},
+{
+	"data":5,
+	"name":"concrete",
+	"color":[94,169,25,255]
+},
+{
+	"data":6,
+	"name":"concrete",
+	"color":[213,101,142,255]
+},
+{
+	"data":7,
+	"name":"concrete",
+	"color":[55,58,62,255]
+},
+{
+	"data":8,
+	"name":"concrete",
+	"color":[125,125,115,255]
+},
+{
+	"data":9,
+	"name":"concrete",
+	"color":[21,119,136,255]
+},
+{
+	"data":10,
+	"name":"concrete",
+	"color":[100,32,156,255]
+},
+{
+	"data":11,
+	"name":"concrete",
+	"color":[45,47,143,255]
+},
+{
+	"data":12,
+	"name":"concrete",
+	"color":[96,60,32,255]
+},
+{
+	"data":13,
+	"name":"concrete",
+	"color":[73,91,36,255]
+},
+{
+	"data":14,
+	"name":"concrete",
+	"color":[142,33,33,255]
+},
+{
+	"data":15,
+	"name":"concrete",
+	"color":[8,10,15,255]
+}/*, //
+{
+	"data":0,
+	"name":"concretepowder",
+	"color":[207,213,214,255]
+},
+{
+	"data":1,
+	"name":"concretepowder",
+	"color":[224,97,0,255]
+},
+{
+	"data":2,
+	"name":"concretepowder",
+	"color":[169,48,159,255]
+},
+{
+	"data":3,
+	"name":"concretepowder",
+	"color":[35,137,198,255]
+},
+{
+	"data":4,
+	"name":"concretepowder",
+	"color":[241,175,21,255]
+},
+{
+	"data":5,
+	"name":"concretepowder",
+	"color":[94,169,25,255]
+},
+{
+	"data":6,
+	"name":"concretepowder",
+	"color":[213,101,142,255]
+},
+{
+	"data":7,
+	"name":"concretepowder",
+	"color":[55,58,62,255]
+},
+{
+	"data":8,
+	"name":"concretepowder",
+	"color":[125,125,115,255]
+},
+{
+	"data":9,
+	"name":"concretepowder",
+	"color":[21,119,136,255]
+},
+{
+	"data":10,
+	"name":"concretepowder",
+	"color":[100,32,156,255]
+},
+{
+	"data":11,
+	"name":"concretepowder",
+	"color":[45,47,143,255]
+},
+{
+	"data":12,
+	"name":"concretepowder",
+	"color":[96,60,32,255]
+},
+{
+	"data":13,
+	"name":"concretepowder",
+	"color":[73,91,36,255]
+},
+{
+	"data":14,
+	"name":"concretepowder",
+	"color":[142,33,33,255]
+},
+{
+	"data":15,
+	"name":"concretepowder",
+	"color":[8,10,15,255]
+}*/
+]
