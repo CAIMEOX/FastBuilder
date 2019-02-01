@@ -221,7 +221,8 @@ class BuildSession {
   }
 
   draw(map, w, h, x, y, z){
-    console.log(w,h)
+    this.sendText(now() + 'Drawing image...');
+    this.sendText(now() + 'Paint: time need: ' + (map.length / 100) + 's.');
     let max = w + x;
     let min = x;
     let t = 0;
