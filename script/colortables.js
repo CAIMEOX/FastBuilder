@@ -1,8 +1,4 @@
-module.exports = [{
-    'data': 0,
-    'name': 'air',
-    'color': [0, 0, 0, 0]
-},
+module.exports = [
 {
     'data': 0,
     'name': 'dirt',
@@ -35,11 +31,6 @@ module.exports = [{
 },
 {
     'data': 0,
-    'name': 'glowingobsidian',
-    'color': [198, 0, 3, 255]
-},
-{
-    'data': 0,
     'name': 'emerald_block',
     'color': [103, 235, 141, 255]
 },
@@ -59,12 +50,12 @@ module.exports = [{
     'color': [20, 69, 179, 255]
 },
 {
-    'data': 2,
+    'data': 14,
     'name': 'log',
-    'color': [0, 0, 0, 255]
+    'color': [266, 266, 219, 255]
 },
 {
-    'data': 3,
+    'data': 15,
     'name': 'log',
     'color': [93, 74, 45, 255]
 },
@@ -115,11 +106,6 @@ module.exports = [{
 },
 {
     'data': 0,
-    'name': 'portal',
-    'color': [71, 1, 181, 183]
-},
-{
-    'data': 0,
     'name': 'purpur_block',
     'color': [170, 123, 170, 255]
 },
@@ -132,16 +118,6 @@ module.exports = [{
     'data': 0,
     'name': 'redstone_block',
     'color': [146, 12, 0, 255]
-},
-{
-    'data': 1,
-    'name': 'sand',
-    'color': [163, 85, 30, 255]
-},
-{
-    'data': 0,
-    'name': 'sand',
-    'color': [216, 209, 155, 255]
 },
 {
     'data': 0,
