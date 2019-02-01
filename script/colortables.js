@@ -1,8 +1,4 @@
-module.exports = [{
-    'data': 0,
-    'name': 'air',
-    'color': [0, 0, 0, 0]
-},
+module.exports = [
 {
     'data': 0,
     'name': 'dirt',

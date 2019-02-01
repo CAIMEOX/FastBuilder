@@ -173,7 +173,7 @@ class BuildSession {
        let $b = setTimeout(() =>{
          $default.position = this.session.getHistory('position','last');
          that.sendText(now() + 'Position get: ' + $default.position.join(' '));
-       },150);
+       },500);
     }else if(type == 'player' || type == 'players'){
       this.session.sendCommand('listd');
       let $c = setTimeout(() => {
