@@ -2,9 +2,6 @@ const Read = require('./argv');
 const Algorithms = require('./algorithms');
 const helps = require('./profile').helps;
 const crypto = require('crypto');
-const lolcat = require('lolcatjs');
-lolcat.options.colors = true;
-lolcat.options.seed = Math.round(Math.random() * 1000);
 let $on = true;
 let $default = {};
 let $history = {
@@ -87,7 +84,7 @@ class BuildSession {
   sendText (text, opts){
     opts = opts ||'§b';
     this.session.sendCommand(['say',opts+'§\"'+text+'§\"'].join(' '));
-    lolcat.fromString('SendText: ' + text);
+    console.log('SendText: ' + text);
   }
 
   showhelp(args){
@@ -113,7 +110,6 @@ class BuildSession {
   }
 
   doit(args, player, msg){
-    //lolcat.fromString(JSON.stringify(args));
     let {main, header, build, collect, server} = args;
     let {position, block, data, method, block2, data2, entity} = header;
     let delays = main.delays;
@@ -310,15 +306,7 @@ class BuildSession {
         list[t][3],
         list[t][4],
         mod
-      ].join(' '),() =>{
-        done++;
-        lolcat.fromString(["title", "@s", "actionbar", "§b§\""
-        + done + "/" + list.length, "(" + ((done / list.length).toFixed(2) * 100) + "/100)",
-          "", "Speed:", (done / (((new Date()).getTime() - time) / 1000)).toFixed(3) +
-          "blocks/s" + "\nTime remaining:",
-          ((list.length * (((new Date()).getTime() - time)) / done) - ((new Date()).getTime() - time)) / 1000 + "s§\""
-        ].join(" "));
-      }),[
+      ].join(' ')),[
         'fill',
         list[t][0],list[t][1],list[t][2],
         list[t][0],list[t][1],list[t][2],

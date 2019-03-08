@@ -1,0 +1,36 @@
+{
+  "name": "parsley-builder",
+  "version": "3.0.0",
+  "description": "FastBuilder",
+  "main": "Main.js",
+  "scripts": {
+    "test": "node Main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CAIMEOX/parsley.git"
+  },
+  "keywords": [
+    "fastbuilder",
+    "mcpe",
+    "mcbe",
+    "minecraft",
+    "minecraftpe"
+  ],
+  "author": "CAIMEO",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CAIMEOX/parsley/issues"
+  },
+  "homepage": "https://github.com/CAIMEOX/parsley#readme",
+  "dependencies": {
+    "delta-e": "0.0.7",
+    "get-pixels": "^3.3.2",
+    "ws": "^6.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "rimraf": "^2.6.3"
+  }
+}
