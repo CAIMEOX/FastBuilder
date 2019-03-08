@@ -13,23 +13,23 @@ FastBuilder是开源的！我们希望更多人参与到FastBuilder的开发和�
 ## 快速开始
 ### Android(安卓)　快速安装
 下载并安装Termux，然后打开Termux，输入下面内容(不按照顺序后果自负):
-```
+```shell
 apt update -y && apt upgrade -y
 apt install git nodejs　-y
-npm i parsley-builder -g
-parsley-builder
+npm i parsley-builder
+node ./node_modules/parsley-builder
 ```
 安装成功之后，以后启动FastBuilder只需要使用下面命令即可
-```
-parsley-builder
+```sh
+node ./node_modules/parsley-builder
 ```
 更新FastBuilder:
-```
+```shell
 npm update parsley-builder
 ```
 
 ### Linux 快速安装
-```
+```shell
 npm i parsley-builder -g
 parsley-builder
 ```
