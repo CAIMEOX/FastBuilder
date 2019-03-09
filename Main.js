@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 
 const colorize = require('./core/colorize');
 const WSServer = require('./core/wsserver');

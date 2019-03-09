@@ -318,7 +318,7 @@ class BuildSession {
       if(t == list.length){
         that.stop = true;
         that.sendText(now() + 'Structure has been generated!');
-        //hat.session.clearTable();
+        //that.session.clearTable();
         clearInterval(interval);
       }
     }, delays);
@@ -357,7 +357,7 @@ class BuildSession {
       if(t == list.length){
         that.sendText(now() + 'Structure has been generated!');
         that.stop = true;
-        that.clearTable();
+        that.session.clearTable();
         clearInterval(interval);
       }
     }, delays);
