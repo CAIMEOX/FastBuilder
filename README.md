@@ -16,22 +16,24 @@ FastBuilder是开源的！我们希望更多人参与到FastBuilder的开发和�
 ```shell
 apt update -y && apt upgrade -y
 apt install git nodejs　-y
-npm i parsley-builder
-node ./node_modules/parsley-builder
+git clone https://github.com/CAIMEOX/FastBuilder.git
+cd FastBuilder && npm i && cd ..
+node ./FastBuilder/Main
 ```
 安装成功之后，以后启动FastBuilder只需要使用下面命令即可
 ```sh
-node ./node_modules/parsley-builder
+node ./FastBuilder/Main
 ```
 更新FastBuilder:
 ```shell
-npm update parsley-builder
+cd FastBuilder && git pull
 ```
 
 ### Linux 快速安装
 ```shell
-npm i parsley-builder -g
-parsley-builder
+git clone https://github.com/CAIMEOX/FastBuilder.git
+cd FastBuilder && npm i && cd ..
+node ./FastBuilder/Main
 ```
 
 ### 开始使用
@@ -44,7 +46,9 @@ FastBuilder的使用并不复杂，请耐心看完操作流程（不然存档暴
 开启作弊，并打开聊天窗口，输入ip(ip就是你运行FastBuilder时输出的)：  
 
 ```
-/connect ip
+/connect ip:port
+example:
+/connect ws://192.168.1.111:8080
 ```
 
 连接成功就可以开始使用FastBuilder命令了（不能加/)  
