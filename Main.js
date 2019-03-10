@@ -20,7 +20,7 @@ if(os.type == 'Linux'){
 }
 let wss = new WSServer(8080);
 console.log(colorize(profile.server + localhost).yellow);
-console.log(colorize('FastBuilder by CAIMEO.').yellow);
+console.log(colorize('FastBuilder Parsley by CAIMEO.').yellow);
 console.log(colorize(profile.logo).yellow);
 wss.on('client', function(session, request) {
   BuildSession.createAndBind(session);
