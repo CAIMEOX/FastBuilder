@@ -1,4 +1,3 @@
-
 const colorize = require('./core/colorize');
 const WSServer = require('./core/wsserver');
 const BuildSession = require('./core/session');
@@ -19,14 +18,13 @@ if(os.type == 'Linux'){
     localhost = '127.0.0.1:8080';
   }
 }
-
 let wss = new WSServer(8080);
-console.log(colorize('Server is running at ws://' + localhost).yellow);
+console.log(colorize(profile.server + localhost).yellow);
+console.log(colorize('FastBuilder by CAIMEO.').yellow);
 console.log(colorize(profile.logo).yellow);
-console.log(colorize('FastBuilder Parsley by CAIMEO.').yellow);
 wss.on('client', function(session, request) {
   BuildSession.createAndBind(session);
-  console.log(colorize(request.connection.remoteAddress.replace('::ffff:','') + ' connected!').yellow);
+  console.log(colorize(request.connection.remoteAddress.replace('::ffff:','') + profile.connected).blue);
 });
 
 

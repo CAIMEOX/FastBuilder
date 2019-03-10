@@ -60,6 +60,7 @@ class Session extends EventEmitter {
     }
 
     clearTable(){
+        console.log(MessageTable)
         MessageTable.clear();
     }
 
@@ -78,20 +79,6 @@ class Session extends EventEmitter {
             }
         });
         return json.header.requestId;
-    }
-
-    sendCommandSync (command, callback) {
-        let json = {
-            header: buildHeader('commandRequest'),
-            body: {
-                version: 1,
-                commandLine: command
-            }
-        };
-        return new Promise(resolve => {
-            this.responsers.set(json.header.requestId, callback);
-            this.socket.send(JSON.stringify(json));
-        })
     }
 }
 

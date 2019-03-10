@@ -1,4 +1,5 @@
 const methods = new Map();
+const profile = require('./profile');
 methods.set('round', (x, y, z, input) =>{
     let {
         direction,
@@ -616,9 +617,9 @@ class Algorithms {
         for (let i in scripts) {
             methods.delete(scripts[i].name);
             methods.set(scripts[i].name, scripts[i].bin);
-            env.sendText(now() + 'Script: ' + scripts[i].name + ' Loaded!','§e');
+            env.sendText(now() + 'Script: ' + scripts[i].name + profile.script,'§e');
         }
-        env.sendText(now() + 'Script loaded.');
+        env.sendText(now() + profile.loaded_script);
     }
 
     static WhileBuilder(input, build) {

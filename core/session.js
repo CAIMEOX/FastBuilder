@@ -2,6 +2,7 @@ const Read = require('./argv');
 const Algorithms = require('./algorithms');
 const helps = require('./profile').helps;
 const crypto = require('crypto');
+const profile = require('./profile');
 let $on = true;
 let $default = {};
 let $history = {
@@ -24,27 +25,29 @@ class BuildSession {
   }
 
   init(){
-    this.sendText('FastBuilder connected!');
-    this.sendText(now() + 'Loading Script...','§e');
+    this.sendText(profile.client_connected);
+    this.sendText(profile.showAuthor);
+    this.sendText(now() + profile.load_script,'§e');
     let that = this;
     let $sender = setInterval(()=>{
       if(that.stop){
-        that.session.socket.send(JSON.stringify({
-          header: {
-            version: 1,
-            requestId: UUIDGeneratorNode(),
-            messagePurpose: 'commandRequest',
-            messageType: 'commandRequest'
-          },
-          body: {
-            version: 1,
-            commandLine: 'title @s actionbar §bCAIMEO@FastBuilder:Ready!'
-          }
-        }),(e)=>{
-          if(e){
-            clearInterval($sender);
-          }
-        });
+        that.showActionbar('CAIMEO@FastBuilder$:' + profile.ready,'§b');
+        // that.session.socket.send(JSON.stringify({
+        //   header: {
+        //     version: 1,
+        //     requestId: UUIDGeneratorNode(),
+        //     messagePurpose: 'commandRequest',
+        //     messageType: 'commandRequest'
+        //   },
+        //   body: {
+        //     version: 1,
+        //     commandLine: 'title @s actionbar CAIMEO@FastBuilder:Ready!'
+        //   }
+        // }),(e)=>{
+        //   if(e){
+        //     clearInterval($sender);
+        //   }
+        // });
       }
     },1000);
     Algorithms.LoadScript(this);
@@ -64,19 +67,13 @@ class BuildSession {
   onChatMessage (msg, player, files){
     let x = Read.read(msg, $default);
     if(x.server.close){
-      this.sendText('FastBuilder disconnecting...');
+      this.sendText(profile.disconnect);
       this.session.sendCommand('closewebsocket');
     }else if(x.server.screenfetch){
-      this.sendText('screenfetch' +
-      '\n§bMinecraftVersion: §a' + files.Build +
-      '\n§bUser: §a' + player +
-      '\n§bLanguage: §a' + files.locale +
-      '\n§bUserGamemode: §a' + files.PlayerGameMode +
-      '\n§bBiome: §a' + files.Biome +
-      '\n§bOS: §a' + (files.Plat != '' ? files.Plat : files.ClientId));
+      this.screenfetch(files)
       }else if(x.main.stop){
         this.stop = true;
-        this.sendText(now() + 'Stopped');
+        this.sendText(now() + profile.stopped);
       }
     this.doit(x, player, msg);
   }
@@ -87,6 +84,18 @@ class BuildSession {
     console.log('SendText: ' + text);
   }
 
+  screenfetch(files) {
+    this.sendText([
+        '§bscreenfetch:' +
+        '§bMinecraftVersion: §a' + files.Build,
+        '§bUser: §a' + player,
+        '§bLanguage: §a' + files.locale,
+        '§bUserGamemode: §a' + files.PlayerGameMode,
+        '§bBiome: §a' + files.Biome,
+        '§bOS: §a' + (files.Plat != '' ? files.Plat : files.ClientId)
+    ].join('\n'))
+  }
+
   showhelp(args){
     if(args.helpMessage){
       let $help = '';
@@ -94,7 +103,7 @@ class BuildSession {
         $help += i + ' ';
       }
       this.sendText($help);
-      this.sendText('For more helps , type \'help -l\'.');
+      this.sendText(profile.help);
       return true;
     }else if(args.listHelp){
       for(let i in helps){
@@ -110,6 +119,7 @@ class BuildSession {
   }
 
   doit(args, player, msg){
+    console.log(JSON.stringify(args));
     let {main, header, build, collect, server} = args;
     let {position, block, data, method, block2, data2, entity} = header;
     let delays = main.delays;
@@ -134,7 +144,7 @@ class BuildSession {
 
     if(collect.writeData){
       $default = header;
-      this.sendText(now() + 'Data wrote!');
+      this.sendText(now() + profile.wrote);
     }
 
     if(this.showhelp(server)){
@@ -154,23 +164,23 @@ class BuildSession {
       }
 
       else if(map.length === 0){
-        this.sendText(now() + 'Input error.You can type \'' + build[0].type + ' help\' to get help');
+        this.sendText(now() + profile.inputerror1 + build[0].type + profile.inputerror2);
         return;
       }
 
       else if((map.length * delays) / 1000 >= 240 && !root){
-        this.sendText(now() + 'Permission denied: Time takes more than 4 minutes.Are you root?');
+        this.sendText(now() + profile.noroot);
         return;
       }
 
       else if(build.entityMod){
-        this.sendText(now() + 'Time need: ' + ((map.length * delays * build[0].height) / 1000) + 's.');
+        this.sendText(now() + profile.timeneed + ((map.length * delays * build[0].height) / 1000) + 's.');
       }
       else{
-        this.sendText(now() + 'Time need: ' + ((map.length * delays) / 1000) + 's.')
+        this.sendText(now() + profile.timeneed + ((map.length * delays) / 1000) + 's.')
       }
 
-      this.sendText(now() + 'Please wait patiently!');
+      this.sendText(now() + profile.wait);
 
         switch (foo) {
           case 'setTile':
@@ -214,7 +224,7 @@ class BuildSession {
         let pos = [body.position.x,body.position.y,body.position.z];
         $default.position = pos;
         $history.position.push(pos);
-        this.sendText('Position get: ' + $default.position.join(' '));
+        this.sendText(profile.posget + $default.position.join(' '));
       });
     }
 
@@ -227,20 +237,20 @@ class BuildSession {
           $p = [$p,i,'.',$history.players[$history.players.length - 1][i],'; '].join('');
         }
 
-        this.sendText(now() + 'Online players: ' + $p);
+        this.sendText(now() + profile.online + $p);
       });
     }
 
     else if(type == 'locate'){
       this.session.sendCommand(['locate',other].join(' '),(body) => {
         if(!body.destination){
-          this.sendText('Feature not found!');
+          this.sendText(profile.notfound);
           return;
         }
         else{
           let $locate = [body.destination.x,body.destination.y,body.destination.z];
           $history.locate.push($locate);
-          this.sendText('Feature found: ' + $locate.join(' '));
+          this.sendText(profile.found + $locate.join(' '));
           this.session.sendCommand('tp '+ $locate.join(' '));
         }
       });
@@ -275,18 +285,11 @@ class BuildSession {
       });
       t++;
       if(t == list.length){
-        that.sendText(now() + 'Structure has been generated!');
+        that.sendText(now() + profile.generated);
         that.stop = true;
         clearInterval(interval);
       }
     }, delays);
-  }
-
-  async isTile(x, y, z, b, d){
-    //It does not work :(
-    d = d || 0;
-    let matches = await this.session.sendCommandSync(['testforblock',x,y,z,b,d].join(' '));
-    return matches.matches;
   }
 
   setblock(list, mod, delays){
@@ -306,7 +309,15 @@ class BuildSession {
         list[t][3],
         list[t][4],
         mod
-      ].join(' ')),[
+      ].join(' '),() =>{
+        done++;
+        // lolcat.fromString(["title", "@s", "actionbar", "§b§\""
+        // + done + "/" + list.length, "(" + ((done / list.length).toFixed(2) * 100) + "/100)",
+        //   "", "Speed:", (done / (((new Date()).getTime() - time) / 1000)).toFixed(3) +
+        //   "blocks/s" + "\nTime remaining:",
+        //   ((list.length * (((new Date()).getTime() - time)) / done) - ((new Date()).getTime() - time)) / 1000 + "s§\""
+        // ].join(" "));
+      }),[
         'fill',
         list[t][0],list[t][1],list[t][2],
         list[t][0],list[t][1],list[t][2],
@@ -317,11 +328,32 @@ class BuildSession {
       t++;
       if(t == list.length){
         that.stop = true;
-        that.sendText(now() + 'Structure has been generated!');
-        //that.session.clearTable();
+        that.sendText(now() + profile.generated);
+        that.session.clearTable();
         clearInterval(interval);
       }
     }, delays);
+  }
+
+  showActionbar(text, opts, cb){
+    console.log([
+      'title',
+      '@s',
+      'actionbar',
+      opts + text
+    ].join(' '));
+    this.session.sendCommand([
+        'title',
+        '@s',
+        'actionbar',
+        opts + text
+    ].join(' '),cb);
+  }
+
+  copyTile(list){
+    this.stop = false;
+    let t = 0;
+    let that = this;
   }
 
   setLongTile(root, list, len, direction, block, data, mod, delays){
@@ -355,7 +387,7 @@ class BuildSession {
       });
       t++;
       if(t == list.length){
-        that.sendText(now() + 'Structure has been generated!');
+        that.sendText(now() + profile.generated);
         that.stop = true;
         that.session.clearTable();
         clearInterval(interval);
@@ -377,7 +409,7 @@ class BuildSession {
       ].join(' '));
       t++;
       if(t == list.length){
-        that.sendText(now() + 'Structure has been generated!');
+        that.sendText(now() + profile.generated);
         clearInterval(interval);
       }
     }, delays);
@@ -408,7 +440,7 @@ class BuildSession {
       });
       t++;
       if(t == list.length){
-        that.sendText(now() + 'Entity structure has been generated!');
+        that.sendText(now() + profile.generated);
         that.stop = true;
         clearInterval(interval);
       }
@@ -430,7 +462,7 @@ class BuildSession {
       ].join(' '));
       t++;
       if(t == list.length){
-        that.sendText(now() + 'Entity structure has been generated!');
+        that.sendText(now() + profile.generated);
         clearInterval(interval);
       }
     }, delays);
