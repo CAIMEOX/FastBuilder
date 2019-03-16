@@ -18,12 +18,17 @@ get player
 locate village
 ```
 将玩家传送到最近的村庄.
+
+### 停止任务
+```stop```
+停止当前全部任务
+
 ### 圈 & 柱(circle)
 先来看一条命令:
 ```
 circle -r 5 -h 0
 ```
-创建一个半径为``5``,高度为1的,铁块组成的圆圈(朝向y轴,默认值),等价于
+创建一个半径为5,高度为1的,铁块组成的圆圈(朝向y轴,默认值),等价于
 ```
 circle -f y -r 5 -h 0 -b iron_block -d 0
 ```
@@ -76,7 +81,7 @@ cone -r 5 -h 20 -a 20
 ```
 创建一个高度为20,半径为5的圆锥,且计算精度为20.
 
-### 像素画 (paint)
+### 像素画 (paint)(Pro only)
 ```
 # Linux 示例:
 paint -z /home/caimeo/Pictures/Pixiv/0001.png
@@ -91,9 +96,15 @@ paint -z /sdcard/Download/Pixiv/05976.png
 ```
 NBT -z /home/caimeo/ship.nbt
 ```
-根据指定路径的NBT生成建筑,
+根据路径的NBT生成建筑
 
-### 执行命令(exec)(Pro only)
+### Schematic建筑生成(Pro only)
+```
+schematic -z /home/caimeo/miku.schematic
+```
+根据路径的schematic生成建筑
+
+### 执行命令(exec)
 ```
 # 创建agent:
 exec agent create
@@ -102,7 +113,7 @@ exec agent move up
 ```
 EXEC可以执行隐藏命令,如agent命令.
 
-### 执行NodeJS(eval)(Pro only)
+### 执行NodeJS(eval)
 ```
 eval process.exit()
 eval this.sendText('Hello world!')
