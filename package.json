@@ -1,23 +1,23 @@
 {
   "name": "fastbuilder",
-  "version": "6.0.0",
-  "description": "一个为Minecraft Bedrock设计的快速建造程序. FastBuilder是一个NodeJS程序，它让Minecraft复杂的结构设计变得简单！",
+  "version": "1.0.0",
+  "description": "Minecraft Bedrock Structure Generator based on WebSocket",
   "main": "Main.js",
   "scripts": {
-    "test": "node Main"
+    "start": "bun run main.ts"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CAIMEOX/FastBuilder.git"
   },
   "author": "CAIMEO",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/CAIMEOX/FastBuilder/issues"
   },
   "homepage": "https://github.com/CAIMEOX/FastBuilder#readme",
   "dependencies": {
-    "meowslib": "^8.0.0",
-"uuid":"^3.3.2"
+    "@pureeval/voxel-geometry": "^1.2.20",
+    "mcpews": "^4.0.0"
   }
 }
