@@ -4,6 +4,7 @@
   "description": "FastBuilder",
   "main": "Main.js",
   "scripts": {
+    "start": "node Main",
     "test": "node Main"
   },
   "repository": {
