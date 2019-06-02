@@ -24,7 +24,7 @@ console.log(colorize('FastBuilder Parsley by CAIMEO.').yellow);
 console.log(colorize(profile.logo).yellow);
 wss.on('client', function(session, request) {
   BuildSession.createAndBind(session);
-  console.log(colorize(request.connection.remoteAddress.replace('::ffff:','') + profile.connected).blue);
+  console.log(colorize(request.connection.remoteAddress + profile.connected).blue);
 });
 
 
