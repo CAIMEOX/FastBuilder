@@ -26,6 +26,6 @@
   "dependencies": {
     "delta-e": "0.0.7",
     "get-pixels": "^3.3.2",
-    "ws": "6.1.2"
+    "ws": "6.0.0"
   }
 }
