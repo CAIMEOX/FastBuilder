@@ -156,8 +156,8 @@ FastBuilder命令允许玩家在结尾追加参数，此参数的使用范围为
 ## 贡献者(Contributors)
 ### Maintainer
 * [**CAIMEO**](https://github.com/CAIMEOX)
-
-一位极不起眼的开发者,可以在QQ联系他（1843884864）
+QQ : 1853884864
+喜欢这个项目别忘记给我们个Star!
 
 ### Other Contributors
 * [**Torrekie**](https://github.com/Torrekie)
@@ -170,12 +170,12 @@ t.me/FastBuilder
 790245783
 ##  LICENSE
 * 仅使用权
-* 禁止以任何形式使用FastBuilder获取利润，以FastBuilder创建的作品必须是开源的，免费的
+* 禁止以任何形式使用FastBuilder获取利润，以FastBuilder创建的作品必须是CC协议
 * 禁止修改并传播FastBuilder
 
 当然你可以购买商业许可:
-* 1000CNY/Lifetime
-* 600CNY/6month 
+* 600CNY/Lifetime
+* 300CNY/6month 
 ## 鸣谢
 
 * Nodejs
