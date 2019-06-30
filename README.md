@@ -1,5 +1,5 @@
-# FastBUilder
-# ![](./images/FastBuilder.png)
+# FastBilder
+# ![](https://github.com/CAIMEOX/FbFiles/blob/master/FastBuilder.png)
 
 一个为Minecraft Bedrock设计的快速建造程序.
 FastBuilder是一个NodeJS程序，它让Minecraft复杂的结构设计变得简单！
