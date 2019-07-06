@@ -9,7 +9,7 @@
 3. 打开Termux;
 4. 执行 apt update -y && apt upgrade -y 
 5. 执行 apt install nodejs -y
-6. 执行 node -v 查看node版本好,如果报错则安装失败,重新进行第4, 第5步,如果输出了版本则进行下一步
+6. 执行 node -v 查看node版本号,如果报错则安装失败,重新进行第4, 第5步,如果输出了版本号则进行下一步
 7. 执行 mkdir pro
 8. 执行 cd pro
 9. 找到 FastBuilderPro文件路径(如果你是从QQ下载,那么文件保存在/sdcard/tencent/QQfile_recv/文件夹中)
