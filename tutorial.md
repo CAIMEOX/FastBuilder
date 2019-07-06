@@ -12,13 +12,14 @@ Minecraft基岩版与教育版有用于连接WebSocket服务器的命令——/w
 WebSocket很有潜力让第三方程序利用它们.
 大家不必特地去了解Websocket的工作方式,只需要明白它在Minecraft中的应用.因此,我们为了方便,称呼其为MCWS（Minecraft WebSocket）.
 
-很少人掌握这项技术,甚至很少有人知道/wsserver命令的真正用途.我们最早是从MOJANG的工作人员Jocopa3那里得知并获取API的.
+很少人掌握这项技术,甚至很少有人知道/wsserver命令的真正用途.我们最早是从MOJANG的工作人员Matt(Jocopa3)那里得知并获取API的.
 
 觉得挺有意思,于是查了很多相关资料,但是能够检索到的信息寥寥无几,比如下面几个是我们所认为较有参考价值的内容,但即便如此,我们也能看见大众对MCWS的关注和重视几乎很少.
 
 https://www.reddit.com/r/MCPE/comments/5qf4ah/websockets_huge_potential_currently_unusable
 
 https://youtu.be/d15sQRKmXPA
+
 etc.
 
 最后决定用NodeJS完成.
@@ -51,8 +52,7 @@ FastBuilder这个想法诞生之前,我们开发过不少ws试验品；当时还
 - 算法在不断更新
 - 可以在服务器(BDS除外)或领域使用
 - 0.16+就能连接MCWS了
-
-# 巨大的未被发掘的潜力
+- 巨大的未被发掘的潜力
 
 # 什么是FastBuilder
 
@@ -124,18 +124,29 @@ FB的命令不同于Minecraft的"斜杠"命令,用户只需要在聊天窗口直
 
 得益于FB强大的命令解析器,FB的命令不像MC命令语法要求那么严格,比如我要造个半径为5,方向朝y轴的圆:
 你可以这么写:
+
 `round -r 5 -f y`
+
 当然这么写也可以:
+
 `-r 5 round -f y`
+
 甚至像这样:
+
 `-r 5 Useless words round -y f`
+
 也可以用全称:
+
 `round --radius 5 -facing y`
 
 当然,命令中不能有多个关键字符,这会造成冲突:
+
 `round circle -f y -r 5 `
+
 或者涉及一些关键符号:
+
 `round -r 5 | -f y `
+
 Linux用户应该明白这是什么:)
 
 # 生成器设置
@@ -146,11 +157,15 @@ Linux用户应该明白这是什么:)
 `get`
 
 手动设置默认值:
+
 `set -p x y z -b tileName`
+
 set命令不仅仅可以设置坐标默认值,其他的参数也可以设置,像radius和data
 
 如果不设置默认值,就必须在使用几何命令时加上:
+
 `round -r 5 -f y -p 233 128 -10`
+
 (不过大部分默认值系统会自动设置好)
 
 # 几何命令
@@ -277,13 +292,35 @@ exec agent create
 exec agent move up/down/forward/back/left/right
 关于agent的更多命令可查看wiki.
 
-## 4.Paint像素画
 
+## 4.Paint像素画
 生成一副像素画:
 
+## 更多功能等待发掘
 
 
-# 这里应该有更多,但我忘记FB还有什么功能了.
+# TO DO List
+不少功能被提出但是我们还未完成(甚至还未开始)
+## print 
+打印文字,格式如下:
+
+`print --font <fontType> --text <Text> --size <fontSize>`
+
+## dump
+从存档中导出方块为schematic,在结尾追加dump参数
+
+- -z --path 保存路径
+
+例如导出一片长方体区域:
+
+oblong --start 0 0 0 --end 10 10 10 dump -z 
+
+## paintMap
+打印适合地图的像素画,用法与paint一致.
+
+## wfc
+使用Wave function collapse自动扩张建筑.
+
 
 # 疑难解答
 
@@ -342,4 +379,12 @@ node --max-old-space-size=8192 Main.js
 问题:FastBuilder Bug或网络连接/后台问题
 解决方法:如果FB的服务器和客户端不在同一种设备,很可能就是网络连接问题,请检查网络连接.如果在同一设备,则可能是后台被系统吞了.
 如果以上情况都不是,那FB很可能发生了错误,请确认后提交issues.
+
+### 3.Permission denied
+问题:权限不够
+解决方法:在设置里给予Termux存储权限
+
+### 4.没有报错，但也没有建筑
+问题:坐标设置有误
+解决方法:get -t position
 
