@@ -26,17 +26,18 @@ FastBuilder分为2个版本:免费版(Free)和专业版(Pro)
 - 将FB运用于付费地图的建造
 - 其他盈利目的(但不包括倒卖)
 
-商业授权在免费版和专业版通用
+商业授权在免费版和专业版通用,且提供商业版本。
 
 ### 价格
-- FastBuilderFree :   0 CNY / Lifetime
-- FastBuilderPro  :   80 CNY / Lifetime (Summer promotion)
-- FastBuilder商业许可 : 
+- FastBuilder Free:   0 CNY / Lifetime / Non-Commercial Use
+- FastBuilder Pro  :   80 CNY / Lifetime (Summer promotion) / Non-Commercial Use / Personal
+- FastBuilder Commercial (Personal)  : 
   - Plan 1 : 300 CNY / 6 month
   - Plan 2 : 600 CNY / 1 year
   - Plan 3 : 1000 CNY / Lifetime
-
-商业许可允许团队购买
+- FastBuilder Commercial For Teams and Companies  :
+  - 价格需面议
+  - 签署协议后，在协议允许范围内自由使用
 
 [**购买流程点我**](./buy.md)
 
