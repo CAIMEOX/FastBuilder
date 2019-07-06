@@ -367,7 +367,7 @@ node --max-old-space-size=8192 Main.js
 
 
 
-# 二.使用问题
+## 二.使用问题
 
 ### 1.输入命令无反应
 
@@ -387,4 +387,9 @@ node --max-old-space-size=8192 Main.js
 ### 4.没有报错，但也没有建筑
 问题:坐标设置有误
 解决方法:get -t position
+
+### 5.No such file or directory
+问题:没有文件或路径
+解决方法:检查路径是否输入正确,输入完整
+
 
