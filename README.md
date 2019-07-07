@@ -7,8 +7,9 @@ FastBuilder是一个NodeJS程序，它让Minecraft复杂的结构设计变得简
 如果你正在寻找适合Minecraft PE 的小木斧,那么恭喜你来对地方了!
 
 ## 使用教程
-免费版(Free)使用教程: [**中文简体**](./tutorial.md)
-专业版(Pro)使用教程: [**中文简体**](./protutorial.md)
+- 免费版(Free)使用教程: [**中文简体**](./tutorial.md)
+
+- 专业版(Pro)使用教程: [**中文简体**](./protutorial.md)
 
 ## 版本区分
 FastBuilder分为2个版本:免费版(Free)和专业版(Pro)
@@ -57,13 +58,8 @@ FastBuilder分为2个版本:免费版(Free)和专业版(Pro)
 * [**LNSSPsd**](https://github.com/LNSSPsd)
 
 ## License
-* 仅使用权
-* 禁止以任何形式使用FastBuilder获取利润，以FastBuilder创建的作品必须是CC协议
-* 禁止修改并传播FastBuilder
+详细协议请查看[LICENSE.md](./LICENSE.md)
 
-### 商业许可
-* 600CNY/Lifetime
-* 300CNY/6month 
 
 ## 技术交流
 ### Telegram:
