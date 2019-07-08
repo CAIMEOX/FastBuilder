@@ -1,32 +1,22 @@
 {
-  "name": "parsley-builder",
-  "version": "3.0.5",
-  "description": "FastBuilder",
+  "name": "fastbuilder",
+  "version": "6.0.0",
+  "description": "一个为Minecraft Bedrock设计的快速建造程序. FastBuilder是一个NodeJS程序，它让Minecraft复杂的结构设计变得简单！",
   "main": "Main.js",
   "scripts": {
-    "start": "node Main",
     "test": "node Main"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CAIMEOX/FastBuilder.git"
   },
-  "keywords": [
-    "fastbuilder",
-    "mcpe",
-    "mcbe",
-    "minecraft",
-    "minecraftpe"
-  ],
   "author": "CAIMEO",
-  "license": "None",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/CAIMEOX/FastBuilder/issues"
   },
   "homepage": "https://github.com/CAIMEOX/FastBuilder#readme",
   "dependencies": {
-    "delta-e": "0.0.7",
-    "get-pixels": "^3.3.2",
-    "ws": "6.0.0"
+    "meowslib": "^8.0.0"
   }
 }
