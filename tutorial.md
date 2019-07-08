@@ -173,7 +173,7 @@ set命令不仅仅可以设置坐标默认值,其他的参数也可以设置,像
 FB带有很多几何建筑命令,像圆,圈,球,线,椭圆等.
 使用也非常简单.
 
-1.圆&圈
+## 圆&圈
 圆和圈命令是最简单的命令之一,它们的区别在于是否空心,命令和参数如下:
 
 - -r --radius 圆或圈的半径
@@ -187,14 +187,14 @@ FB带有很多几何建筑命令,像圆,圈,球,线,椭圆等.
 
   高度默认值为1,可以不写.更改高度可以实现圆柱.
 
-2.球
+## 球
 (Sphere)球体也是比较常见的几何体.和圆一样,也需要半径,不同的是,球多了-s(shape)参数:
 
 - -s --shape 可选值有soild(实心)/hollow(空心)
   格式:
   sphere -r 半径 -s 形状
 
-3.椭圆
+## 椭圆
 (Ellipse)椭圆有4个参数:
 
 - -h --height 高度,更改可以生成椭圆柱
@@ -204,7 +204,7 @@ FB带有很多几何建筑命令,像圆,圈,球,线,椭圆等.
   格式:
   ellipse -l 长度 -w 宽度 -h 高度 -f 方向
 
-4.椭球
+## 椭球
 (Ellipsoid)椭球有3个参数
 
 - -h --height 高度
@@ -213,7 +213,7 @@ FB带有很多几何建筑命令,像圆,圈,球,线,椭圆等.
   格式:
   ellipsoid -l 长度 -w 宽度 -h 高度
 
-5.圆环
+## 圆环
 (Torus)圆环有以下参数
 
 - -r --radius 半径
@@ -227,8 +227,8 @@ FB有很多不同的生成器,默认为setblock(方块构建器)
 比如:
 
 ```
-round -r 5 -f y $clone -bp 10 10 10 -ep 50 60 80 -m filtered -om move -b iron_block
-sphere -r 10 -s solid $summon -e ender_crystal
+round -r 5 -f y clone -bp 10 10 10 -ep 50 60 80 -m filtered -om move -b iron_block
+sphere -r 10 -s solid summon -e ender_crystal
 ```
 
 此外还有:
@@ -236,17 +236,17 @@ sphere -r 10 -s solid $summon -e ender_crystal
 - clone: 方块复制器
 - summon: 实体生成器
 
-1. setblock:
+## setblock:
    - -b --block 方块
    -   -d --data 特殊值
    -   -m --method 处理方式
-2. clone:
+## clone:
    - -bp --begin 起始坐标
    - -ep --end 结束坐标
    -   -m --method 处理方式
    -   -m2 --method2 原方块处理方式
    -   -b 如果处理方式为filtered时使用
-3. summon:
+## summon:
    - -e --entity 实体
 
 # 其他算法
