@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/CAIMEOX/FastBuilder#readme",
   "dependencies": {
-    "meowslib": "^8.0.0"
+    "meowslib": "^8.0.0",
+"uuid":"^3.3.2"
   }
 }
