@@ -35,7 +35,7 @@ FastBuilder分为2个版本:免费版(Free)和专业版(Pro)
 - FastBuilder Commercial (Personal)  : 
   - Plan 1 : 300 CNY / 6 month
   - Plan 2 : 600 CNY / 1 year
-  - Plan 3 : 1000 CNY / Lifetime
+  - Plan 3 : 999 CNY / Lifetime
 - FastBuilder Commercial For Teams and Companies  :
   - 价格需面议
   - 签署协议后，在协议允许范围内自由使用
