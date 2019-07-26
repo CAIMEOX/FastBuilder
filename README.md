@@ -1,4 +1,4 @@
-# FastBilder
+# FastBuilder
 # ![](https://github.com/CAIMEOX/FbFiles/blob/master/FastBuilder.png)
 
 一个为Minecraft Bedrock设计的快速建造程序.
