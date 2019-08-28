@@ -91,7 +91,7 @@ FB服务端可以在Android, Windows, Linux, MacOS甚至iOS等平台搭建,客�
 # Windows安装FB
 
 1. 前往nodejs.org下载并安装Node.js
-2. 前往https://github.com/CAIMEOX/FastBuilder,找到“Clone or Download”下载ZIP文件
+2. 前往https://github.com/CAIMEOX/FastBuilder ，找到“Clone or Download”下载ZIP文件
 3. 将ZIP放到合适的位置并解压
 4. 按下Win+r,在弹出的窗口中输入cmd
 5. 在cmd窗口中输入命令：cd 你解压后的ZIP文件夹所在路径
