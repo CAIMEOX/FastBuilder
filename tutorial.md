@@ -108,7 +108,7 @@ FB服务端可以在Android, Windows, Linux, MacOS甚至iOS等平台搭建,客�
 # MacOS安装FB
 
 1. 前往nodejs.org下载并安装Node.js
-2. 前往https://github.com/CAIMEOX/FastBuilder,找到“Clone or Download”下载ZIP文件
+2. 前往https://github.com/CAIMEOX/FastBuilder 找到“Clone or Download”下载ZIP文件
 3. 将ZIP放到合适的位置并解压
 4. 打开Finder-应用程序-实用工具-终端
 5. 在终端窗口中输入命令：cd 你解压后的ZIP文件夹所在路径
@@ -197,7 +197,7 @@ FB带有很多几何建筑命令,像圆,圈,球,线,椭圆等.
 ## 椭圆
 (Ellipse)椭圆有4个参数:
 
-- -h --height 高度,更改可以生成椭圆柱
+- -h --height 高度,更改可以生成椭圆柱(搞砸了)
 - -l --length 长度
 - -w --width 宽度
 - -f --facing 朝向,可选值有x,y,z
@@ -320,8 +320,3 @@ oblong --start 0 0 0 --end 10 10 10 dump -z
 
 ## wfc
 使用Wave function collapse自动扩张建筑.
-
-
-
-
-
