@@ -12,9 +12,9 @@
 6. 执行 node -v 查看node版本号,如果报错则安装失败,重新进行第4, 第5步,如果输出了版本号则进行下一步
 7. 执行 mkdir pro
 8. 执行 cd pro
-9. 找到 FastBuilderPro文件路径(如果你是从QQ下载,那么文件保存在/sdcard/tencent/QQfile_recv/文件夹中)
-10. 执行 mv 文件路径 ~/pro
-11. 执行 unzip 文件名 
+9. 找到 FastBuilderPro文件路径(如果你是从QQ下载,那么文件保存在/sdcard/tencent/QQfile_recv/或/storage/emulated/0/tencent/QQfile_recv/文件夹中)
+10. 执行 mv 文件路径 ~/pro（文件路径例如/storage/emulated/0/tencent/QQfile_recv/Thor.zip）
+11. 执行 unzip 文件名（文件名如Thor或Thor.zip） 
 12. 执行 node Thor
 
 安装教程到这里也就结束了,后续启动FB不需要再反复安装,重复第8,第12步即可.
