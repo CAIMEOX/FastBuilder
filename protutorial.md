@@ -1,23 +1,94 @@
 # 专业版使用教程
 
-## 安装教程
+## 基本概念/知识介绍
+
+FastBuilder与其他类似工具的共同点在于，存在“客户端”与“服务端”概念。玩家运行游戏的手机，或者说玩家正在运行的游戏，就是客户端；FastBuilder就是服务端，远程向游戏发送操作命令来达到速建目的。
+因此，服务端可以与客户端不在同一台设备上，只需要它们处于同一网络环境就可以正常使用。
+但是由于使用命令行操作，需要用户具备如下基础：
+1. 文件操作能力，能够理解路径和文件层级
+2. 英语能力，能够认出‘Error’、‘Permission denied’、‘not found’等字眼并明白其含义
+3. 能够区分全角符号与半角符号
+4. (非必须，但最好会)在命令行界面输入并执行命令的能力
+请确保您具备以上能力，避免因后续的各种麻烦而给我们带来不必要的服务时长。
+
+## 前置条件（重要）
+
+### 安卓 Android
+
+1. 从[**Termux官网提供的下载渠道**](https://f-droid.org/packages/com.termux/)下载软件Termux
+2. **打开设置，给予Termux存储空间权限**
+
+### Windows/Linux/macOS/Unix
+
+1. 电脑需具备正常的网卡，以及连接到与需使用设备相同的局域网
+
+### iOS/iPad OS
+
+1. 如需安装FastBuilder，请移步免费版安装教程；如需在电脑运行通用版本，请跟随Windows/Linux/macOS/Unix教程
+
+## 安装运行FastBuilder所需要的环境
 
 当你完成购买流程到FB Pro群后,
 
-1. 从群文件下载FastBuilderPro的zip文件
-2. 下载Termux并给予存储权限
-3. 打开Termux;
-4. 执行 apt update -y && apt upgrade -y 
-5. 执行 apt install nodejs -y
-6. 执行 node -v 查看node版本号,如果报错则安装失败,重新进行第4, 第5步,如果输出了版本号则进行下一步
-7. 执行 mkdir pro
-8. 执行 cd pro
-9. 找到 FastBuilderPro文件路径(如果你是从QQ下载,那么文件保存在/sdcard/tencent/QQfile_recv/或/storage/emulated/0/tencent/QQfile_recv/文件夹中)
-10. 执行 mv 文件路径 ~/pro（文件路径例如/storage/emulated/0/tencent/QQfile_recv/Thor.zip）
-11. 执行 unzip 文件名（文件名如Thor或Thor.zip） 
-12. 执行 node Thor
+### 安卓 Android
 
-安装教程到这里也就结束了,后续启动FB不需要再反复安装,重复第8,第12步即可.
+1. 从群文件下载FastBuilderPro的zip文件
+3. 打开Termux
+4. 执行 <code>apt update -y && apt upgrade -y<code>
+5. 执行 <code>apt install nodejs -y<code>
+6. 执行 <code>node -v</code> 查看node版本号,如果报错则安装失败,重新进行第4, 第5步,如果输出了版本号则进行下一步
+7. 执行 <code>mkdir ~/pro</code>，这一步执行正常的情况下不会返回任何信息
+8. 执行 <code>cd ~/pro</code>，这一步执行正常的情况下不会返回任何信息，如出现“no such file or directory”字样，请从第6步重新开始
+9. 找到 FastBuilderPro文件路径(如果你是从QQ下载,那么文件保存在/sdcard/tencent/QQfile_recv/或/storage/emulated/0/tencent/QQfile_recv/文件夹中)
+10. 执行 <code>mv 文件路径 ~/pro</code>（文件路径，例如/storage/emulated/0/tencent/QQfile_recv/Thor.zip），这一步执行正常的情况下不会返回任何信息，如出现“Permission denied”字样，请从设置打开Termux的存储权限后重新执行本步；如出现“no such file or directory”字样，请确保第1步执行正常后重新执行本步
+11. 执行 <code>unzip 文件名</code>（文件名如Thor或Thor.zip），如出现“no such file or directory”字样，请重新执行上一步
+
+### Windows
+
+1. 从群文件下载FastBuilderPro的zip文件，解压到你需要的目录
+1. 进入[**Node.js官网**](https://nodejs.org)下载Node.js安装包并安装
+
+### macOS
+
+1. 从群文件下载FastBuilderPro的zip文件，解压到你需要的目录
+2. 进入[**Node.js官网**](https://nodejs.org)下载Node.js安装包并安装
+
+### Linux/Unix
+
+1. 根据系统不同，安装方法不同，此处不再阐述
+
+## 启动并开始使用FastBuilder Pro
+确保前置环境配置好且没有问题后
+
+### 安卓 Android
+
+1. 打开Termux
+2. 执行 <code>cd ~/pro && node Thor</code>，此时显示“Thor”大字即为执行成功，如报错请确保前置环境配置正常
+3. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
+
+### Windows
+
+1. 按下<code>win+r</code>，在弹出的窗口输入<code>cmd</code>，进入cmd程序
+2. 执行 <code>cd /d 你解压后的路径</code>
+3. 执行 <code>node Thor</code>，此时显示“Thor”大字即为执行成功，如报错请确保前置环境配置正常
+4. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
+
+### macOS
+
+1. 按下<code>control+space(空格)</code>，输入“Terminal”或“终端”，按下return
+2. 执行 <code>cd 你解压后的路径 && node Thor</code>，此时显示“Thor”大字即为执行成功，如报错请确保前置环境配置正常
+3. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
+
+## 常见错误
+
+### 游戏中连接，显示无法连接到服务器？
+检查FastBuilder是否正常运行，以及您输入的地址是否正确，如不处于相同设备请检查是否处在相同局域网
+
+### 游戏中连接，显示连接已关闭？
+查看FastBuilder报错信息，如显示“Websocket is not open”，则是底层问题，可尝试执行<code>node Thor</code>重新运行FastBuilder，并在游戏中重新连接直到成功为止
+
+### 游戏中连接成功，但没有任何反应？
+这种情况通常发生在FastBuilder运行于Windows时，可以尝试在游戏中输入<code>/connect out</code>后重新连接，或回到FastBuilder按下<code>ctrl(control)+c</code>，输入<code>node Thor</code>重新运行并在游戏重新连接
 
 ## 使用教程
 在查看使用教程之前,我建议先看看FastBuilderFree的[**教程**](./tutorial.md),因为这里的部分操作也会涉及到Free版
