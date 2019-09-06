@@ -34,8 +34,8 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 1. 从群文件下载FastBuilderPro的zip文件
 3. 打开Termux
-4. 执行 <code>apt update -y && apt upgrade -y<code>
-5. 执行 <code>apt install nodejs -y<code>
+4. 执行 <code>apt update -y && apt upgrade -y</code>
+5. 执行 <code>apt install nodejs -y</code>
 6. 执行 <code>node -v</code> 查看node版本号,如果报错则安装失败,重新进行第4, 第5步,如果输出了版本号则进行下一步
 7. 执行 <code>mkdir ~/pro</code>，这一步执行正常的情况下不会返回任何信息
 8. 执行 <code>cd ~/pro</code>，这一步执行正常的情况下不会返回任何信息，如出现“no such file or directory”字样，请从第6步重新开始
