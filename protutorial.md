@@ -95,7 +95,8 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 这种情况通常发生在FastBuilder运行于Windows时，可以尝试在游戏中输入<code>/connect out</code>后重新连接，或回到FastBuilder按下<code>ctrl(control)+c</code>，输入<code>node Thor</code>重新运行并在游戏重新连接
 
 ## 使用教程
-在查看使用教程之前,我建议先看看FastBuilderFree的[**教程**](./tutorial.md),因为这里的部分操作也会涉及到Free版
+在查看使用教程之前,我们建议先查看FastBuilder Free的[**教程**](./tutorial.md),因为这里的部分操作也会涉及到Free版
+
 您可以连接成功后，在聊天框发送<code>help</code>来获取完整可用命令列表
 
 ### 建筑生成
