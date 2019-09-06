@@ -9,12 +9,16 @@ iOS/iPad OS用户需注意，在最新版本（1.14.0-更高）的中国版**无
 ## 基本概念/知识介绍
 
 FastBuilder与其他类似工具的共同点在于，存在“客户端”与“服务端”概念。玩家运行游戏的手机，或者说玩家正在运行的游戏，就是客户端；FastBuilder就是服务端，远程向游戏发送操作命令来达到速建目的。
+
 因此，服务端可以与客户端不在同一台设备上，只需要它们处于同一网络环境就可以正常使用。
+
 但是由于使用命令行操作，需要用户具备如下基础：
+
 1. 文件操作能力，能够理解路径和文件层级
 2. 英语能力，能够认出‘Error’、‘Permission denied’、‘not found’等字眼并明白其含义
 3. 能够区分全角符号与半角符号
 4. (非必须，但最好会)在命令行界面输入并执行命令的能力
+
 请确保您具备以上能力，避免因后续的各种麻烦而给我们带来不必要的服务时长。
 
 ## 前置条件（重要）
@@ -30,15 +34,15 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 ### iOS/iPad OS
 
-1. 如需安装FastBuilder，请移步免费版安装教程；如需在电脑运行通用版本，请跟随Windows/Linux/macOS/Unix教程
+1. 如需安装FastBuilder Pro，请移步免费版安装教程；如需在电脑运行通用版本，请跟随Windows/Linux/macOS/Unix教程
 
 ## 安装运行FastBuilder所需要的环境
 
-当你完成购买流程到FB Pro群后,
+当你完成购买流程到FastBuilder Pro群后,
 
 ### 安卓 Android
 
-1. 从群文件下载FastBuilderPro的zip文件
+1. 从群文件下载FastBuilder Pro的zip文件（当前版本号：Thor）
 3. 打开Termux
 4. 执行 <code>apt update -y && apt upgrade -y</code>
 5. 执行 <code>apt install nodejs -y</code>
@@ -51,12 +55,12 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 ### Windows
 
-1. 从群文件下载FastBuilderPro的zip文件，解压到你需要的目录
+1. 从群文件下载FastBuilder Pro的zip文件，解压到你需要的目录
 1. 进入[**Node.js官网**](https://nodejs.org)下载Node.js安装包并安装
 
 ### macOS
 
-1. 从群文件下载FastBuilderPro的zip文件，解压到你需要的目录
+1. 从群文件下载FastBuilder Pro的zip文件，解压到你需要的目录
 2. 进入[**Node.js官网**](https://nodejs.org)下载Node.js安装包并安装
 
 ### Linux/Unix
@@ -70,28 +74,28 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 1. 打开Termux
 2. 执行 <code>cd ~/pro && node Thor</code>，此时显示“Thor”大字即为执行成功，如报错请确保前置环境配置正常
-3. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
+3. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder Pro运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
 
 ### Windows
 
 1. 按下<code>win+r</code>，在弹出的窗口输入<code>cmd</code>，进入cmd程序
 2. 执行 <code>cd /d 你解压后的路径</code>
 3. 执行 <code>node Thor</code>，此时显示“Thor”大字即为执行成功，如报错请确保前置环境配置正常
-4. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
+4. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder Pro运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
 
 ### macOS
 
 1. 按下<code>control+space(空格)</code>，输入“Terminal”或“终端”，按下return
 2. 执行 <code>cd 你解压后的路径 && node Thor</code>，此时显示“Thor”大字即为执行成功，如报错请确保前置环境配置正常
-3. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
+3. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder Pro运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
 
 ## 常见错误
 
 ### 游戏中连接，显示无法连接到服务器？
-检查FastBuilder是否正常运行，以及您输入的地址是否正确，如不处于相同设备请检查是否处在相同局域网
+检查FastBuilder Pro是否正常运行，以及您输入的地址是否正确，如不处于相同设备请检查是否处在相同局域网
 
 ### 游戏中连接，显示连接已关闭？
-查看FastBuilder报错信息，如显示“Websocket is not open”，则是底层问题，可尝试执行<code>node Thor</code>重新运行FastBuilder，并在游戏中重新连接直到成功为止
+查看FastBuilder Pro报错信息，如显示“Websocket is not open”，则是底层问题，可尝试执行<code>node Thor</code>重新运行FastBuilder，并在游戏中重新连接直到成功为止
 
 ### 游戏中连接成功，但没有任何反应？
 这种情况通常发生在FastBuilder运行于Windows时，可以尝试在游戏中输入<code>/connect out</code>后重新连接，或回到FastBuilder按下<code>ctrl(control)+c</code>，输入<code>node Thor</code>重新运行并在游戏重新连接
@@ -102,7 +106,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 您可以连接成功后，在聊天框发送<code>help</code>来获取完整可用命令列表
 
 ### 建筑生成
-建筑生成器带有nbt/schematic 生成器.允许用户从nbt和schematic文件中读取建筑到存档
+大部分购买FastBuilder Pro的用户需要这些功能，建筑生成器带有nbt/schematic 生成器，允许用户从nbt和schematic文件中读取建筑到存档
 
 1. nbt命令
 
