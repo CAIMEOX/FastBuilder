@@ -96,6 +96,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 ## 使用教程
 在查看使用教程之前,我建议先看看FastBuilderFree的[**教程**](./tutorial.md),因为这里的部分操作也会涉及到Free版
+您可以连接成功后，在聊天框发送<code>help</code>来获取完整可用命令列表
 
 ### 建筑生成
 建筑生成器带有nbt/schematic 生成器.允许用户从nbt和schematic文件中读取建筑到存档
