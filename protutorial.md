@@ -57,7 +57,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 4. 执行 <code>apt update -y && apt upgrade -y</code>
 5. 执行 <code>apt install nodejs -y</code>
 6. 执行 <code>node -v</code> 查看node版本号,如果报错则安装失败,重新进行第4, 第5步,如果输出了版本号则进行下一步
-7. 执行 <code>mkdir ~/pro</code>，这一步执行正常的情况下不会返回任何信息
+7. 执行 <code>mkdir ~/pro</code>，这一步执行正常的情况下不会返回任何信息，如出现“File exists”字样可以也可以继续执行下一步
 8. 执行 <code>cd ~/pro</code>，这一步执行正常的情况下不会返回任何信息，如出现“no such file or directory”字样，请从第6步重新开始
 9. 找到 FastBuilderPro文件路径(如果你是从QQ下载,那么文件保存在/sdcard/tencent/QQfile_recv/或/storage/emulated/0/tencent/QQfile_recv/文件夹中)
 10. 执行 <code>mv 文件路径 ~/pro</code>（文件路径，例如/storage/emulated/0/tencent/QQfile_recv/Thor.zip），这一步执行正常的情况下不会返回任何信息，如出现“Permission denied”字样，请从设置打开Termux的存储权限后重新执行本步；如出现“no such file or directory”字样，请确保第1步执行正常后重新执行本步
