@@ -1,0 +1,55 @@
+echo "Welcome to FastBuilder Installer For Android!"
+echo "Updating available APT packs..."
+apt update -y && apt upgrade -y
+echo "APT updated!"
+echo "Install required APT packs..."
+apt install nodejs -y
+if [ $? -eq 0 ]; then
+    echo "Successfully installed Nodejs!"
+else
+    echo -e "\033[31mUnable to install Nodejs!\033[0m"
+fi
+apt install unzip -y
+if [ $? -eq 0 ]; then
+    echo "Successfully installed Unzip!"
+else
+    echo "Unable to install Unzip, it might already installed in your device."
+fi
+echo "Creating directory..."
+cd ~/
+fbfolder="pro"
+if [ ! -d "$fbfolder" ]; then
+    mkdir "$fbfolder"
+else
+    echo "Removing FastBuilder..."
+    rm -rf ~/pro
+    mkdir "$fbfolder"
+fi
+echo "Created!"
+file="/storage/emulated/0/tencent/QQfile_recv/Thor.zip"
+if [ ! -f "$file" ]; then
+    echo -e "\033[31mFailed to move files! You need to download FastBuilder's zip package, then retry again.\033[0m"
+    exit
+fi
+echo "Moving archive..."
+mv $file ~/pro
+echo "Moved!"
+cd ~/pro
+unzip Thor.zip
+if [ $? -eq 0 ]; then
+    echo "Successfully Unzip!"
+else
+    echo -e "\033[31mFailed to Unzip! Please check your permission and retry again!\033[0m"
+    exit
+fi
+cd ~/
+echo "Creating script..."
+rm -rf ~/fbpro
+touch ~/fbpro
+echo "File created!"
+echo "Setting permission"
+chmod +x ~/fbpro
+echo "Set: 777"
+echo "Writing file..."
+echo "cd ~/pro && node Thor --max-old-space-size=4096" > ~/fbpro
+echo "Installation finished, execute \'./fbpro\' to run FastBuilder Pro Thor."
