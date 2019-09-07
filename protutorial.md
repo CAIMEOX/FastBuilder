@@ -36,7 +36,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 1. 如需安装FastBuilder Pro，请移步免费版安装教程；如需在电脑运行通用版本，请跟随Windows/Linux/macOS/Unix教程
 
-## 安装运行FastBuilder所需要的环境
+## 安装FastBuilder Pro及需要的运行环境
 
 当你完成购买流程到FastBuilder Pro群后,
 
