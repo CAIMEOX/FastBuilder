@@ -44,7 +44,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 复制如下命令到Termux并执行
 
-<code>cd ~/ && apt install wget -y && wget https://raw.githubusercontent.com/CAIMEOX/FastBuilder/master/installer/FBInstallAndroid && chmod +x FBInstallAndroid && ./FBInstallAndroid</code>
+><code>cd ~/ && apt install wget -y && wget https://raw.githubusercontent.com/CAIMEOX/FastBuilder/master/installer/FBInstallAndroid && chmod +x FBInstallAndroid && ./FBInstallAndroid</code>
 
 执行完成后，执行<code>cd ~/ && ./fbpro</code>来启动FastBuilder Pro，如出现Thor字样则代表启动成功，不需要再查看下方的安卓安装步骤。
 
