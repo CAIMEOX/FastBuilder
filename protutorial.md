@@ -100,6 +100,12 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 ### 游戏中连接成功，但没有任何反应？
 这种情况通常发生在FastBuilder运行于Windows时，可以尝试在游戏中输入<code>/connect out</code>后重新连接，或回到FastBuilder按下<code>ctrl(control)+c</code>，输入<code>node Thor</code>重新运行并在游戏重新连接
 
+### 游戏中连接成功，但试图读取较大的文件时显示连接已关闭？
+通常情况下原因是内存不足，可以运行<code>node Thor --max-old-space-size=4096</code>来给FastBuilder Pro分配2G内存，单位MB，根据需要调整
+
+### 游戏中连接成功，但读取并搭建文件的过程中显示连接已关闭？
+建议参考上一问题，重试，如多次在同一个进度断开连接，则代表您读取的文件存在问题，请更换。
+
 ## 使用教程
 在查看使用教程之前,我们建议先查看FastBuilder Free的[**教程**](./tutorial.md),因为这里的部分操作也会涉及到Free版
 
