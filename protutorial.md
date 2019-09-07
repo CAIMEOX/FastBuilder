@@ -42,7 +42,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 ### 安卓傻瓜式安装
 
-复制如下命令到Termux并执行
+从FastBuilder Pro群文件中下载Thor.zip后并保证安卓安装的前置条件已经满足后，复制如下命令到Termux并执行
 
 ><code>cd ~/ && apt install wget -y && wget https://raw.githubusercontent.com/CAIMEOX/FastBuilder/master/installer/FBInstallAndroid && chmod +x FBInstallAndroid && ./FBInstallAndroid</code>
 
