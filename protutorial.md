@@ -1,12 +1,32 @@
 # 专业版使用教程
 
-## 购买前须知/注意
+目录：
+ - 一、购买前须知
+ - 二、基本概念/知识介绍
+ - 三、前置条件（重要）
+   -   安卓 Android
+   -   Windows/Linux/macOS/Unix
+   -   iOS/iPad OS
+ - 四、安装FastBuilder Pro及需要的运行环境
+   -   安卓傻瓜式安装
+   -   安卓 Android
+   -   Windows
+   -   macOS
+   -   Linux/Unix
+ - 五、启动并开始使用FastBuilder Pro
+   -   安卓 Android
+   -   Windows
+   -   macOS
+ - 六、常见错误
+ - 七、使用教程
+
+## 一、购买前须知/注意
 
 我们的大量已购用户反馈，FastBuilder Pro及其安卓软件版本在**华为设备**上运行存在问题，因此如果您使用**华为设备且没有其他系统的设备**，请谨慎购买。
 
 iOS/iPad OS用户需注意，在最新版本（1.14.0-更高）的中国版**无法执行**<code>/wsserver</code> <code>/connect</code>命令，导致用户不能正常使用FastBuilder，但国际版及旧版的中国版仍然可以正常使用，请谨慎购买。
 
-## 基本概念/知识介绍
+## 二、基本概念/知识介绍
 
 FastBuilder与其他类似工具的共同点在于，存在“客户端”与“服务端”概念。玩家运行游戏的手机，或者说玩家正在运行的游戏，就是客户端；FastBuilder就是服务端，远程向游戏发送操作命令来达到速建目的。
 
@@ -21,11 +41,11 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 请确保您具备以上能力，避免因后续的各种麻烦而给我们带来不必要的服务时长。
 
-## 前置条件（重要）
+## 三、前置条件（重要）
 
 ### 安卓 Android
 
-1. 从[**Termux官网提供的下载渠道**](https://f-droid.org/packages/com.termux/)下载软件Termux
+1. 从[**Termux官网提供的下载渠道**](https://f-droid.org/packages/com.termux/)下载软件Termux，当前版本：[0.75](https://f-droid.org/repo/com.termux_75.apk)
 2. **打开设置，给予Termux存储空间权限**
 
 ### Windows/Linux/macOS/Unix
@@ -36,7 +56,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 1. 如需安装FastBuilder Pro，请移步免费版安装教程；如需在电脑运行通用版本，请跟随Windows/Linux/macOS/Unix教程
 
-## 安装FastBuilder Pro及需要的运行环境
+## 四、安装FastBuilder Pro及需要的运行环境
 
 当你完成购买流程到FastBuilder Pro群后,
 
@@ -44,7 +64,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 从FastBuilder Pro群文件中下载Thor.zip后并保证安卓安装的前置条件已经满足后，复制如下命令到Termux并执行
 
-><code>cd ~/ && apt install wget -y && wget https://raw.githubusercontent.com/CAIMEOX/FastBuilder/master/installer/FBInstallAndroid && chmod +x FBInstallAndroid && ./FBInstallAndroid</code>
+`cd ~/ && apt install wget -y && wget https://raw.githubusercontent.com/CAIMEOX/FastBuilder/master/installer/FBInstallAndroid && chmod +x FBInstallAndroid && ./FBInstallAndroid`
 
 执行完成后，执行<code>cd ~/ && ./fbpro</code>来启动FastBuilder Pro，如出现Thor字样则代表启动成功，不需要再查看下方的安卓安装步骤。
 
@@ -77,7 +97,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 1. 根据系统不同，安装方法不同，此处不再阐述
 
-## 启动并开始使用FastBuilder Pro
+## 五、启动并开始使用FastBuilder Pro
 确保前置环境配置好且没有问题后
 
 ### 安卓 Android
@@ -99,10 +119,11 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 2. 执行 <code>cd 你解压后的路径 && node Thor</code>，此时显示“Thor”大字即为执行成功，如报错请确保前置环境配置正常
 3. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder Pro运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
 
-## 常见错误
+## 六、常见错误
 
 ### 游戏中连接，显示无法连接到服务器？
 检查FastBuilder Pro是否正常运行，以及您输入的地址是否正确，如不处于相同设备请检查是否处在相同局域网
+  - 查看FastBuilder Pro报错信息，如显示“Invalid Websocket frame”，则是终端问题，建议从[**Termux官网提供的下载渠道**](https://f-droid.org/packages/com.termux/)下载软件Termux，并重新配置
 
 ### 游戏中连接，显示连接已关闭？
 查看FastBuilder Pro报错信息，如显示“Websocket is not open”，则是底层问题，可尝试执行<code>node Thor</code>重新运行FastBuilder，并在游戏中重新连接直到成功为止
@@ -116,7 +137,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 ### 游戏中连接成功，但读取并搭建文件的过程中显示连接已关闭？
 建议参考上一问题，重试，如多次在同一个进度断开连接，则代表您读取的文件存在问题，请更换。
 
-## 使用教程
+## 七、使用教程
 在查看使用教程之前,我们建议先查看FastBuilder Free的[**教程**](./tutorial.md),因为这里的部分操作也会涉及到Free版
 
 您可以连接成功后，在聊天框发送<code>help</code>来获取完整可用命令列表
