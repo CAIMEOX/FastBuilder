@@ -123,7 +123,9 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 ### 游戏中连接，显示无法连接到服务器？
 检查FastBuilder Pro是否正常运行，以及您输入的地址是否正确，如不处于相同设备请检查是否处在相同局域网
-  - 查看FastBuilder Pro报错信息，如显示“Invalid Websocket frame”，则是终端问题，建议从[**Termux官网提供的下载渠道**](https://f-droid.org/packages/com.termux/)下载软件Termux，并重新配置
+  - 查看FastBuilder Pro报错信息，如显示“Invalid Websocket frame”
+     -   终端问题，建议从[**Termux官网提供的下载渠道**](https://f-droid.org/packages/com.termux/)下载软件Termux，并重新配置
+     -   华为设备问题，华为可能存在不支持/无法运行的情况，建议更换设备
 
 ### 游戏中连接，显示连接已关闭？
 查看FastBuilder Pro报错信息，如显示“Websocket is not open”，则是底层问题，可尝试执行<code>node Thor</code>重新运行FastBuilder，并在游戏中重新连接直到成功为止
