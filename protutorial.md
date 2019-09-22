@@ -85,7 +85,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 8. 执行 <code>cd ~/pro</code>，这一步执行正常的情况下不会返回任何信息，如出现“no such file or directory”字样，请从第6步重新开始
 9. 找到 FastBuilderPro文件路径(如果你是从QQ下载,那么文件保存在/sdcard/tencent/QQfile_recv/或/storage/emulated/0/tencent/QQfile_recv/文件夹中)
 10. 执行 <code>mv 文件路径 ~/pro</code>（文件路径，例如/storage/emulated/0/tencent/QQfile_recv/Thor.zip），这一步执行正常的情况下不会返回任何信息，如出现“Permission denied”字样，请从设置打开Termux的存储权限后重新执行本步；如出现“no such file or directory”字样，请确保第1步执行正常后重新执行本步
-11. 执行 <code>unzip 文件名</code>（文件名如Thor或Thor.zip），如出现“no such file or directory”字样，请重新执行上一步
+11. 执行 <code>unzip 文件名</code>（文件名如Thor或Thor.zip），如出现“cannot find or open”字样，请重新执行上一步
 
 ### Windows
 
