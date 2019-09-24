@@ -173,7 +173,8 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 ### iOS 11.0-12.4
 
-1. QQ下载文件通常位于/var/mobile/Containers/Data/Application/`{UDID}`/Documents/`{QQ号}`/FileRecv/，例如用户下载了文件“1.nbt”，那么改文件位于/var/mobile/Containers/Data/Application/`{UDID}`/Documents/`{QQ号}`/FileRecv/1.nbt，其中`{UDID}`与`{QQ号}`会发生变化，因此我们不建议您通过该路径进行文件读取；因此，例如用户下载了文件“1.nbt”，需“用其他应用打开”，选择Filza。外部导入到Filza的文件默认路径为/var/mobile/Documents，所以导入后的路径为/var/mobile/Documents/1.nbt
+1. QQ下载文件通常位于/var/mobile/Containers/Data/Application/`{UDID}`/Documents/`{QQ号}`/FileRecv/，例如用户下载了文件“1.nbt”，那么改文件位于/var/mobile/Containers/Data/Application/`{UDID}`/Documents/`{QQ号}`/FileRecv/1.nbt，其中`{UDID}`与`{QQ号}`会发生变化，我们不建议您通过该路径进行文件读取；
+   -   解决方案：例如用户下载了文件“1.nbt”，需“用其他应用打开”，选择Filza。外部导入到Filza的文件默认路径为/var/mobile/Documents，所以导入后的路径为/var/mobile/Documents/1.nbt
 2. iOS后台机制可能不利于FastBuilder后台运行，因此您可以选择在Cydia安装Screen（bingner源）进行窗口管理（需要事先学习过screen操作，或参考下一条）
 3. iOS后台机制可能不利于Minecraft后台运行，因此您可以选择在Cydia安装BackgrounderAction for CCSupport（软件源：akusio.github.io）并操作：
    -   安装并重新启动Springboard后，打开设置-控制中心-自定控制
