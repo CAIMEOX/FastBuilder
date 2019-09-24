@@ -60,23 +60,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 ### iOS 11.0-12.4
 
-**重要：设备需unc0ver越狱，未越狱可以使用[爱思助手](https://www.i4.cn)等工具进行越狱，您也可以通过搜索引擎[搜索unc0ver在线安装](https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&ch=&tn=baiduerr&bar=&wd=unc0ver%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85)**
-1. 打开Cydia-软件源，单击右上角“编辑”-左上角“添加”
-2. 逐一添加如下软件源：
-   -   cydia.angelxwind.net
-   -   tigisoftware.com/cydia
-   -   apt.thebigboss.org/repofiles/cydia （通常自带，如列表中无，则需添加）
-   -   apt.bingner.com （通常自带，如列表中无，则需添加）
-3. 搜索Apple File Conduit "2"并将来自Bigboss的搜索结果设置队列
-4. 搜索Appsync Unified并将来自Karen's Repo的搜索结果设置队列
-5. 搜索MTerminal并将来自bingner的搜索结果设置队列
-6. 搜索Filza File Manager 64-bit并将来自TIGI Software的搜索结果设置队列
-7. 搜索Node并将来自bingner的搜索结果设置队列
-8. 搜索nano并将来自bingner的搜索结果设置队列
-8. 点击“已安装”，随后点击右上角“队列”
-9. 点击右上角“确认”，开始安装
-10. 安装完毕后，点击“重新启动 Springboard”，进行注销操作
-   -   也有可能显示“回到 Cydia”，如显示，按下即可
+1. 设备需unc0ver越狱，未越狱可以使用[爱思助手](https://www.i4.cn)等工具进行越狱，您也可以通过搜索引擎[搜索unc0ver在线安装](https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&ch=&tn=baiduerr&bar=&wd=unc0ver%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85)
 
 ### iOS 9.x-10.x
 
@@ -127,6 +111,22 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 ### iOS 11.0-12.4
 
+1. 打开Cydia-软件源，单击右上角“编辑”-左上角“添加”
+2. 逐一添加如下软件源：
+   -   cydia.angelxwind.net
+   -   tigisoftware.com/cydia
+   -   apt.thebigboss.org/repofiles/cydia （通常自带，如列表中无，则需添加）
+   -   apt.bingner.com （通常自带，如列表中无，则需添加）
+3. 搜索Apple File Conduit "2"并将来自Bigboss的搜索结果设置队列
+4. 搜索Appsync Unified并将来自Karen's Repo的搜索结果设置队列
+5. 搜索MTerminal并将来自bingner的搜索结果设置队列
+6. 搜索Filza File Manager 64-bit并将来自TIGI Software的搜索结果设置队列
+7. 搜索Node并将来自bingner的搜索结果设置队列
+8. 搜索nano并将来自bingner的搜索结果设置队列
+8. 点击“已安装”，随后点击右上角“队列”
+9. 点击右上角“确认”，开始安装
+10. 安装完毕后，点击“重新启动 Springboard”，进行注销操作
+   -   也有可能显示“回到 Cydia”，如显示，按下即可
 1. 从群文件下载FastBuilder Pro的zip文件，选择“用其他应用打开”，使用Filza打开
 2. 将文件在Filza中解压（单击压缩包自动解压）
 3. 回到主屏幕，打开Terminal
