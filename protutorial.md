@@ -30,7 +30,7 @@
 
 我们的大量已购用户反馈，FastBuilder Pro及其安卓软件版本在**华为设备**上运行存在问题，因此如果您使用**华为设备且没有其他系统的设备**，请谨慎购买。
 
-iOS/iPad OS用户需注意，在最新版本（1.14.0-更高）的中国版**无法执行**<code>/wsserver</code> <code>/connect</code>命令，导致用户不能正常使用FastBuilder，但国际版及旧版的中国版仍然可以正常使用，请谨慎购买。
+iOS/iPad OS用户需注意，在最新版本（1.14.0-更高）的中国版**无法执行**<code>/wsserver</code> <code>/connect</code>命令，导致用户不能正常使用FastBuilder，但国际版及旧版的中国版仍然可以正常使用，请谨慎购买。需要注意的是，这不是FastBuilder的问题，也不会是FastBuilder的问题，无法使用的根本原因在于中国版将如上命令禁用，并非FastBuilder不兼容。
 
 ## 二、基本概念/知识介绍
 
@@ -126,15 +126,16 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 8. 点击“已安装”，随后点击右上角“队列”
 9. 点击右上角“确认”，开始安装
 10. 安装完毕后，点击“重新启动 Springboard”，进行注销操作
-   -   也有可能显示“回到 Cydia”，如显示，按下即可
-1. 从群文件下载FastBuilder Pro的zip文件，选择“用其他应用打开”，使用Filza打开
-2. 将文件在Filza中解压（单击压缩包自动解压）
-3. 回到主屏幕，打开Terminal
-4. 执行`nano fbpro`，此时进入编辑页面
-5. 输入`cd ~/Documents/Thor && node Thor`
-6. 按住屏幕中间，出现“Ctrl Lock”后单击键盘x
-7. 单击键盘y，换行
-8. 执行`chmod +x fbpro`
+    -   也有可能显示“回到 Cydia”，如显示，按下即可
+    -   如控制台信息异常，请检查网络及设备情况，并从第三步开始
+11. 从群文件下载FastBuilder Pro的zip文件，选择“用其他应用打开”，使用Filza打开
+12. 将文件在Filza中解压（单击压缩包自动解压）
+13. 回到主屏幕，打开Terminal
+14. 执行`nano fbpro`，此时进入编辑页面
+15. 输入`cd ~/Documents/Thor && node Thor`
+16. 按住屏幕中间，出现“Ctrl Lock”后单击键盘x
+17. 单击键盘y，换行
+18. 执行`chmod +x fbpro`
 
 ## 五、启动并开始使用FastBuilder Pro
 确保前置环境配置好且没有问题后
