@@ -63,9 +63,10 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 1. 设备需unc0ver越狱，未越狱可以使用[爱思助手](https://www.i4.cn)等工具进行越狱，您也可以通过搜索引擎[搜索unc0ver在线安装](https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&ch=&tn=baiduerr&bar=&wd=unc0ver%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85)
 2. 如寻求免越狱方法，请跟随**iOS 9.x及更高**
 
-### iOS 9.x及更高
+### iOS 10.x及更高
 
 1. 如需安装FastBuilder Pro，请移步免费版安装教程；如需在电脑运行通用版本，请跟随Windows/Linux/macOS/Unix教程
+2. iOS 10之前的系统版本不支持
 
 ## 四、安装FastBuilder Pro及需要的运行环境
 
