@@ -61,6 +61,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 ### iOS 11.0-12.4
 
 1. 设备需unc0ver越狱，未越狱可以使用[爱思助手](https://www.i4.cn)等工具进行越狱，您也可以通过搜索引擎[搜索unc0ver在线安装](https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&ch=&tn=baiduerr&bar=&wd=unc0ver%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85)
+2. 如寻求免越狱方法，请跟随**iOS 9.x及更高**
 
 ### iOS 9.x及更高
 
