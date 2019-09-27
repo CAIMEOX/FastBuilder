@@ -193,7 +193,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 FastBuilder Pro总是发生崩溃？来回重启非常麻烦？
 1. 打开 cmd(Windows)/Termux(Android)/Terminal(iOS/macOS/Linux/Unix)
-2. 执行`npm i supervisor -g`（在macOS上可能需要执行`sudo npm i supervisor -g`才能成功，会要求输入密码）
+2. 执行`npm i supervisor -g`（在macOS及iOS上可能需要执行`sudo npm i supervisor -g`才能成功，会要求输入密码，iOS需前往Cydia安装sudo）
 3. 执行`cd ~/pro`，进入FastBuilder Pro所在目录
 4. 执行`supervisor Thor.js`，即可运行FastBuilder Pro，同时运行自重启
 5. 回到游戏中进行连接，如发生“连接已关闭”情况，可以等待自动重连或手动重连，无需手动重启FastBuilder
