@@ -200,11 +200,12 @@ FastBuilder Pro总是发生崩溃？来回重启非常麻烦？
    -   -  2.1.3 执行`visudo`，进入设置文件
    -   -  2.1.4 增加一行 `mobile ALL=(ALL) ALL`
    -   -  2.1.5 按住屏幕中间，出现Ctrl Lock字样后按下x，随后按下y，按下换行
-   -   -  2.1.6 由于当前登录root账号，可以直接执行`npm i supervisor -g`，上方步骤用于将默认账户mobile设置为sudoer以便允许用户不访问root权限的情况下使用更高权限的命令，无需重复执行
+   -   -  2.1.6 由于当前登录root账号，可以直接执行`npm i supervisor -g`。上方步骤用于将默认账户mobile设置为sudoer以便允许用户不访问root权限的情况下使用更高权限的命令，无需重复执行
    -   -  2.1.7 执行`su mobile`，切换回mobile用户，继续下一步
 3. 执行`cd ~/pro`，进入FastBuilder Pro所在目录（iOS用户执行`cd ~/Documents/Thor`）
 4. 执行`supervisor Thor.js`，即可运行FastBuilder Pro，同时运行自重启
 5. 回到游戏中进行连接，如发生“连接已关闭”情况，可以等待自动重连或手动重连，无需手动重启FastBuilder
+6. 结束可以按下ctrl+c来终止（iOS按住Terminal中间，出现Ctrl Lock后按c）
 
 ## 七、常见错误
 
