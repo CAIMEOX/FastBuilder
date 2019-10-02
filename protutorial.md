@@ -35,7 +35,7 @@
 
 我们的大量已购用户反馈，FastBuilder Pro及其安卓软件版本在**华为设备**上运行存在问题，因此如果您使用**华为设备且没有其他系统的设备**，请谨慎购买。
 
-iOS/iPad OS用户需注意，在最新版本（1.14.0-更高）的中国版**无法执行**<code>/wsserver</code> <code>/connect</code>命令，导致用户不能正常使用FastBuilder，但国际版及旧版的中国版仍然可以正常使用，请谨慎购买。需要注意的是，这不是FastBuilder的问题，也不会是FastBuilder的问题，无法使用的根本原因在于中国版将如上命令禁用，并非FastBuilder不兼容。
+iOS/iPad OS用户需注意，在最新版本（1.14.0-更高）的中国版**无法执行**<code>/wsserver</code> <code>/connect</code>命令，导致用户不能正常使用FastBuilder，但国际版及旧版的中国版仍然可以正常使用，请谨慎购买。需要注意的是，这不是也不会是FastBuilder的问题，无法使用的根本原因在于中国版将如上命令禁用，并非FastBuilder不兼容。
 
 ## 二、基本概念/知识介绍
 
@@ -82,6 +82,8 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 从FastBuilder Pro群文件中下载Thor.zip后并保证安卓安装的前置条件已经满足后，复制如下命令到Termux并执行
 
 `apt update -y && apt upgrade -y && cd ~/ && apt install wget -y && wget https://raw.githubusercontent.com/CAIMEOX/FastBuilder/master/installer/FBInstallAndroid && chmod +x FBInstallAndroid && ./FBInstallAndroid`
+
+如首次执行发生错误，请确保已经满足前置条件，并重试一次，成功后请勿重新执行。
 
 执行完成后，执行<code>cd ~/ && ./fbpro</code>来启动FastBuilder Pro，如出现Thor字样则代表启动成功，不需要再查看下方的安卓安装步骤。
 
