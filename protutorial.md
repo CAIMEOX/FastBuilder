@@ -89,6 +89,17 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 如未成功安装，请跟随下方安卓步骤完成安装。
 
+### iOS 11.0-12.4 傻瓜式安装
+
+1. 打开Cydia，添加托莱奇源`https://apt.torrekie.com`
+2. 在托莱奇源中找到“FastBuilder Pro”
+3. 点击安装，等待完成后按下“回到 Cydia”
+4. 安装来自bingner源的MTerminal（如已安装可忽略此步）
+
+执行完成后，打开Terminal，执行`fbpro`来启动FastBuilder Pro，如出现Thor字样则代表启动成功，不需要再查看下方的iOS安装步骤。
+
+如未成功安装，请跟随下方iOS步骤完成安装。
+
 ### 安卓 Android
 
 1. 从群文件下载FastBuilder Pro的zip文件（当前版本号：Thor）
