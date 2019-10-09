@@ -70,51 +70,146 @@ FastBuilder这个想法诞生之前,我们开发过不少ws试验品；当时还
 FB运行在服务端,通过客户端连接可以与其交互(像监听事件,发送命令等)
 FB服务端可以在Android, Windows, Linux, MacOS甚至iOS等平台搭建,客户端是你的Minecraft游戏本身,通过使用/connect <uri>或/wsserver <uri>命令连接到服务器.
 服务端和客户端不一定要在同一设备,但请确保服务端拥有公网IP或与客户端处于同一网络环境下.
+  
+## 前置条件（重要）
 
-# Linux安装FB
+### 安卓 Android
 
-我想会玩Linux的玩家只需要看下面的教程就知道该怎么做了
+1. 从[**Termux官网提供的下载渠道**](https://f-droid.org/packages/com.termux/)下载软件Termux，当前版本：[0.75](https://f-droid.org/repo/com.termux_75.apk)
+2. **打开设置，给予Termux存储空间权限**
 
-# Android安装FB
+### Windows/Linux/macOS/Unix
 
-1. 下载终端软件(如Termux),并给予其存储权限.
-2. 执行apt update && apt upgrade 如弹出(y/n)确认信息,输入y后回车,如果报错则重新输入.
-3. 执行apt install nodejs,如弹出(y/n)确认信息,输入y后回车
-4. 执行apt install git,如弹出(y/n)确认信息,输入y后回车  
-5. 执行git clone https://github.com/CAIMEOX/FastBuilder.git
-6. cd FastBuilder
-7. npm i 
-8. node Main
-9. 后续如需运行只需执行6、8步.
-   注意:如果哪一步报错了,必须重新执行,不然后续步骤会一错再错…
+1. 电脑需具备正常的网卡，以及连接到与需使用设备相同的局域网
 
-# Windows安装FB
+### iOS 11.0-12.4
 
-1. 前往nodejs.org下载并安装Node.js
-2. 前往https://github.com/CAIMEOX/FastBuilder ，找到“Clone or Download”下载ZIP文件
-3. 将ZIP放到合适的位置并解压
-4. 按下Win+r,在弹出的窗口中输入cmd
-5. 在cmd窗口中输入命令：cd 你解压后的ZIP文件夹所在路径
-6. 输入npm i
-7. 输入node Main即可运行
-8. 后续如需运行只需执行第4、5、7步
+1. 设备需unc0ver越狱，未越狱可以使用[爱思助手](https://www.i4.cn)等工具进行越狱，您也可以通过搜索引擎[搜索unc0ver在线安装](https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&ch=&tn=baiduerr&bar=&wd=unc0ver%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85)
+2. 如寻求免越狱方法，请跟随**iOS 10.x及更高**
 
-# IOS安装FB
+### iOS 10.x及更高
+
+1. 如需在电脑运行通用版本，请跟随Windows/Linux/macOS/Unix教程
+2. iOS 10之前的系统版本不支持
+
+## 安装FastBuilder及需要的运行环境
+
+### 安卓傻瓜式安装
+
+保证安卓安装的前置条件已经满足后，复制如下命令到Termux并执行
+
+`apt update -y && apt upgrade -y && cd ~/ && apt install git nodejs -y && git clone https://github.com/CAIMEOX/FastBuilder.git && cd FastBuilder && npm i && cd ~/ && touch fb && echo "cd FastBuilder && node Main" > fb && chmod +x fb`
+
+如首次执行发生错误，请确保已经满足前置条件，并重试一次，成功后请勿重新执行。
+
+执行完成后，执行<code>cd ~/ && ./fb</code>来启动FastBuilder，如出现Thor字样则代表启动成功，不需要再查看下方的安卓安装步骤。
+
+如未成功安装，请跟随下方安卓步骤完成安装。
+
+### iOS 11.0-12.4 傻瓜式安装
+
+1. 打开Cydia，添加托莱奇源`https://apt.torrekie.com`
+2. 在托莱奇源中找到“FastBuilder”
+3. 点击安装，等待完成后按下“回到 Cydia”
+4. 安装来自bingner源的MTerminal（如已安装可忽略此步）
+
+执行完成后，打开Terminal，执行`fastbuilder`来启动FastBuilder，如出现Thor字样则代表启动成功，不需要再查看下方的iOS安装步骤。
+
+如未成功安装，请跟随下方iOS步骤完成安装。
+
+### 安卓 Android
+
+1. 打开Termux
+4. 执行 <code>apt update -y && apt upgrade -y</code>
+   - 如出现“dpkg was interrupted”字样：
+     执行 `dpkg --configure -a`，中途出现所有询问选项输入y
+5. 执行 <code>apt install git nodejs -y</code>
+6. 执行 <code>node -v</code> 查看node版本号,如果报错则安装失败,重新进行第3步,如果输出了版本号则进行下一步
+6. 执行 <code>git clone https://github.com/CAIMEOX/FastBuilder.git</code> 如果报错则重新进行第3步
+8. 执行 <code>cd ~/FastBuilder</code>，这一步执行正常的情况下不会返回任何信息，如出现“no such file or directory”字样，请从第5步重新开始
+10. 执行 <code>npm i</code> 如果报错则重新进行
+
+### Windows
+
+1. 下载FastBuilder的zip文件，解压到你需要的目录
+1. 进入[**Node.js官网**](https://nodejs.org)下载Node.js安装包并安装
+
+### macOS
+
+1. 下载FastBuilder的zip文件，解压到你需要的目录
+2. 进入[**Node.js官网**](https://nodejs.org)下载Node.js安装包并安装
+
+### Linux/Unix
+
+1. 根据系统不同，安装方法不同，此处不再阐述
+
+### iOS 10.x及更高
 
 1. 在App Store中下载TestFlight
 2. 在浏览器中访问该链接https://testflight.apple.com/join/EtYOUbnX
 3. 按照网页提示步骤安装FastBuilder
 
-# MacOS安装FB
+### iOS 11.0-12.4
 
-1. 前往nodejs.org下载并安装Node.js
-2. 前往https://github.com/CAIMEOX/FastBuilder 找到“Clone or Download”下载ZIP文件
-3. 将ZIP放到合适的位置并解压
-4. 打开Finder-应用程序-实用工具-终端
-5. 在终端窗口中输入命令：cd 你解压后的ZIP文件夹所在路径
-6. 输入npm i 
-7. 输入node Main即可运行
-8. 后续如需运行只需执行第4、5、7步
+1. 打开Cydia-软件源，单击右上角“编辑”-左上角“添加”
+2. 逐一添加如下软件源：
+   -   cydia.angelxwind.net
+   -   tigisoftware.com/cydia
+   -   apt.thebigboss.org/repofiles/cydia （通常自带，如列表中无，则需添加）
+   -   apt.bingner.com （通常自带，如列表中无，则需添加）
+3. 搜索Apple File Conduit "2"并将来自Bigboss的搜索结果设置队列
+4. 搜索Appsync Unified并将来自Karen's Repo的搜索结果设置队列
+5. 搜索MTerminal并将来自bingner的搜索结果设置队列
+6. 搜索Filza File Manager 64-bit并将来自TIGI Software的搜索结果设置队列
+7. 搜索Node并将来自bingner的搜索结果设置队列
+8. 搜索nano并将来自bingner的搜索结果设置队列
+8. 搜索git并将来自bingner的搜索结果设置队列
+8. 点击“已安装”，随后点击右上角“队列”
+9. 点击右上角“确认”，开始安装
+10. 安装完毕后，点击“重新启动 Springboard”，进行注销操作
+    -   也有可能显示“回到 Cydia”，如显示，按下即可
+    -   如控制台信息异常，请检查网络及设备情况，并从第三步开始
+6. 执行 <code>git clone https://github.com/CAIMEOX/FastBuilder.git</code>
+8. 执行 <code>cd ~/FastBuilder</code>，这一步执行正常的情况下不会返回任何信息
+10. 执行 <code>npm i</code> 如果报错则重新进行
+14. 执行`nano ~/fb`，此时进入编辑页面
+15. 输入`cd ~/FastBuilder && node Main`
+16. 按住屏幕中间，出现“Ctrl Lock”后单击键盘x
+17. 单击键盘y，换行
+18. 执行`chmod +x ~/fb`
+
+## 启动并开始使用FastBuilder
+确保前置环境配置好且没有问题后
+
+### 安卓 Android
+
+1. 打开Termux
+2. 执行 <code>cd ~/FastBuilder && node Main</code>，此时显示“Thor”大字即为执行成功，如报错请确保前置环境配置正常
+3. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
+
+### Windows
+
+1. 按下<code>win+r</code>，在弹出的窗口输入<code>cmd</code>，进入cmd程序
+2. 执行 <code>cd /d 你解压后的路径</code>
+3. 执行 <code>node Main</code>，此时显示“Thor”大字即为执行成功，如报错请确保前置环境配置正常
+4. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
+
+### macOS
+
+1. 按下<code>control+space(空格)</code>，输入“Terminal”或“终端”，按下return
+2. 执行 <code>cd 你解压后的路径 && node Main</code>，此时显示“Thor”大字即为执行成功，如报错请确保前置环境配置正常
+3. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
+
+### iOS 11.0-12.4
+
+1. 打开Terminal
+2. 执行 `./fb`
+3. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
+
+### iOS 10.x及更高
+
+1. 点击主界面上的FastBuilder图标
+2. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
 
 # 使用教程
 
