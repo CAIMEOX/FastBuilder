@@ -285,7 +285,7 @@ FB带有很多几何建筑命令,像圆,圈,球,线,椭圆等.
 ## 球
 (Sphere)球体也是比较常见的几何体.和圆一样,也需要半径,不同的是,球多了-s(shape)参数:
 
-- -s --shape 可选值有soild(实心)/hollow(空心)
+- -s --shape 可选值有solid(实心)/hollow(空心)
   格式:
   sphere -r 半径 -s 形状
 
