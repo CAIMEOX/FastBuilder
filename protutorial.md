@@ -60,7 +60,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 ### 安卓 Android
 
-1. 从[**Termux官网提供的下载渠道**](https://f-droid.org/packages/com.termux/)下载软件Termux，当前版本：[0.75](https://f-droid.org/repo/com.termux_75.apk)
+1. 从[**Termux官网提供的下载渠道**](https://f-droid.org/packages/com.termux/)下载软件Termux，当前版本：[0.77](https://f-droid.org/repo/com.termux_77.apk)
 2. **打开设置，给予Termux存储空间权限**
 
 ### Windows/Linux/macOS/Unix
