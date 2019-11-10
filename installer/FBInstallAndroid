@@ -21,7 +21,7 @@ fbfolder="pro"
 if [ ! -d "$fbfolder" ]; then
     mkdir "$fbfolder"
 else
-    echo "Removing FastBuilder..."
+    echo "Removing & Updating FastBuilder..."
     rm -rf ~/pro
     mkdir "$fbfolder"
 fi
@@ -51,5 +51,5 @@ echo "Setting permission"
 chmod +x ~/fbpro
 echo "Set: 777"
 echo "Writing file..."
-echo "cd ~/pro && node Thor --max-old-space-size=4096" > ~/fbpro
-echo "Installation finished, execute \'./fbpro\' to run FastBuilder Pro Thor."
+echo "cd ~/pro && node SubF --max-old-space-size=2048" > ~/fbpro
+echo "Installation finished, execute './fbpro' to run FastBuilder Pro Thor."
