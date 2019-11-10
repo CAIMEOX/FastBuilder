@@ -31,7 +31,7 @@
 (**重要**)消歧义：
    +   本工具及其他类似工具不能实现（且不可能实现）**租赁服存档导入**，原因在于我的世界并未提供相关接口，非程序问题。FastBuilder Pro可以用于读取并在基岩版游戏中导入二进制建筑文件(.nbt)及蓝图建筑文件(.schematic)等文件的操作。
 
-   +   本工具基于Minecraft自带的WebSocket交互API接口进行开发，**不属于非法修改游戏程序的第三方软件(外挂)**，所有的接口均来自Mojang官方工作人员且得到维护支持，有关内容可参考[首页](/README.md)。
+   +   本工具基于Minecraft自带的WebSocket交互API接口进行开发，**不属于非法修改游戏程序的第三方软件(外挂)**，所有的接口均来自Mojang官方且得到维护支持，有关内容可参考[首页](/README.md)。
 
 我们的大量已购用户反馈，FastBuilder Pro及其安卓软件版本在**华为设备**上运行存在问题，因此如果您使用**华为设备且没有其他系统的设备**，请谨慎购买。
 
@@ -116,8 +116,8 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 7. 执行 <code>mkdir ~/pro</code>，这一步执行正常的情况下不会返回任何信息，如出现“File exists”字样可以也可以继续执行下一步
 8. 执行 <code>cd ~/pro</code>，这一步执行正常的情况下不会返回任何信息，如出现“no such file or directory”字样，请从第6步重新开始
 9. 找到 FastBuilderPro文件路径(如果你是从QQ下载,那么文件保存在/sdcard/tencent/QQfile_recv/或/storage/emulated/0/tencent/QQfile_recv/文件夹中)
-10. 执行 <code>mv 文件路径 ~/pro</code>（文件路径，例如/storage/emulated/0/tencent/QQfile_recv/Thor.zip），这一步执行正常的情况下不会返回任何信息，如出现“Permission denied”字样，请从设置打开Termux的存储权限后重新执行本步；如出现“no such file or directory”字样，请确保第1步执行正常后重新执行本步
-11. 执行 <code>unzip 文件名</code>（文件名如Thor或Thor.zip），如出现“cannot find or open”字样，请重新执行上一步
+10. 执行 <code>mv 文件路径 ~/pro</code>（文件路径，例如/storage/emulated/0/tencent/QQfile_recv/c_SubF.zip），这一步执行正常的情况下不会返回任何信息，如出现“Permission denied”字样，请从设置打开Termux的存储权限后重新执行本步；如出现“no such file or directory”字样，请确保第1步执行正常后重新执行本步
+11. 执行 <code>unzip 文件名</code>（文件名如c_SubF或c_SubF.zip），如出现“cannot find or open”字样，请重新执行上一步
 
 ### Windows
 
@@ -156,7 +156,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 12. 将文件在Filza中解压（单击压缩包自动解压）
 13. 回到主屏幕，打开Terminal
 14. 执行`nano fbpro`，此时进入编辑页面
-15. 输入`cd ~/Documents/Thor && node Thor`
+15. 输入`cd ~/Documents/c_SubF && node SubF`
 16. 按住屏幕中间，出现“Ctrl Lock”后单击键盘x
 17. 单击键盘y，换行
 18. 执行`chmod +x fbpro`
@@ -167,20 +167,20 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 ### 安卓 Android
 
 1. 打开Termux
-2. 执行 <code>cd ~/pro && node Thor</code>，此时显示“Thor”大字即为执行成功，如报错请确保前置环境配置正常
+2. 执行 <code>cd ~/pro && node SubF</code>，此时显示“-F”大字即为执行成功，如报错请确保前置环境配置正常
 3. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder Pro运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
 
 ### Windows
 
 1. 按下<code>win+r</code>，在弹出的窗口输入<code>cmd</code>，进入cmd程序
 2. 执行 <code>cd /d 你解压后的路径</code>
-3. 执行 <code>node Thor</code>，此时显示“Thor”大字即为执行成功，如报错请确保前置环境配置正常
+3. 执行 <code>node SubF</code>，此时显示“-F”大字即为执行成功，如报错请确保前置环境配置正常
 4. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder Pro运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
 
 ### macOS
 
 1. 按下<code>control+space(空格)</code>，输入“Terminal”或“终端”，按下return
-2. 执行 <code>cd 你解压后的路径 && node Thor</code>，此时显示“Thor”大字即为执行成功，如报错请确保前置环境配置正常
+2. 执行 <code>cd 你解压后的路径 && node SubF</code>，此时显示“-F”大字即为执行成功，如报错请确保前置环境配置正常
 3. 按照显示的地址在游戏中输入<code>/connect 地址</code>，如FastBuilder Pro运行在你需要运行游戏的设备，则可以简化为<code>/connect localhost:16384</code>
 
 ### iOS 11.0-12.4
@@ -219,14 +219,14 @@ FastBuilder Pro总是发生崩溃？来回重启非常麻烦？
    -   -  2.1.5 按住屏幕中间，出现Ctrl Lock字样后按下x，随后按下y，按下换行
    -   -  2.1.6 由于当前登录root账号，可以直接执行`npm i supervisor -g`。上方步骤用于将默认账户mobile设置为sudoer以便允许用户不访问root权限的情况下使用更高权限的命令，无需重复执行
    -   -  2.1.7 执行`su mobile`，切换回mobile用户，继续下一步
-3. 执行`cd ~/pro`，进入FastBuilder Pro所在目录（iOS用户执行`cd ~/Documents/Thor`）
-4. 执行`supervisor Thor.js`，即可运行FastBuilder Pro，同时运行自重启
+3. 执行`cd ~/pro`，进入FastBuilder Pro所在目录（iOS用户执行`cd ~/Documents/c_SubF`）
+4. 执行`supervisor SubF.js`，即可运行FastBuilder Pro，同时运行自重启
 5. 回到游戏中进行连接，如发生“连接已关闭”情况，可以等待自动重连或手动重连，无需手动重启FastBuilder
 6. 结束可以按下ctrl+c来终止（iOS按住Terminal中间，出现Ctrl Lock后按c）
 
 ## 七、常见错误
 
-**注：出现崩溃可以直接执行`node Thor`来重新启动**
+**注：出现崩溃可以直接执行`node SubF`来重新启动**
 
 ### 游戏中连接，显示无法连接到服务器？
 检查FastBuilder Pro是否正常运行，以及您输入的地址是否正确，如不处于相同设备请检查是否处在相同局域网
@@ -235,13 +235,13 @@ FastBuilder Pro总是发生崩溃？来回重启非常麻烦？
      -   华为设备问题，华为可能存在不支持/无法运行的情况，建议更换设备
 
 ### 游戏中连接，显示连接已关闭？
-查看FastBuilder Pro报错信息，如显示“Websocket is not open”，则是底层问题，可尝试执行<code>node Thor</code>重新运行FastBuilder，并在游戏中重新连接直到成功为止
+查看FastBuilder Pro报错信息，如显示“Websocket is not open”，则是底层问题，可尝试执行<code>node SubF</code>重新运行FastBuilder，并在游戏中重新连接直到成功为止
 
 ### 游戏中连接成功，但没有任何反应？
-这种情况通常发生在FastBuilder运行于Windows时，可以尝试在游戏中输入<code>/connect out</code>后重新连接，或回到FastBuilder按下<code>ctrl(control)+c</code>，输入<code>node Thor</code>重新运行并在游戏重新连接
+这种情况通常发生在FastBuilder运行于Windows时，可以尝试在游戏中输入<code>/connect out</code>后重新连接，或回到FastBuilder按下<code>ctrl(control)+c</code>，输入<code>node SubF</code>重新运行并在游戏重新连接
 
 ### 游戏中连接成功，但试图读取较大的文件时显示连接已关闭？
-通常情况下原因是内存不足，可以运行<code>node Thor --max-old-space-size=4096</code>来给FastBuilder Pro分配2G内存，单位MB，根据需要调整
+通常情况下原因是内存不足，可以运行<code>node SubF --max-old-space-size=4096</code>来给FastBuilder Pro分配2G内存，单位MB，根据需要调整
 
 ### 游戏中连接成功，但读取并搭建文件的过程中显示连接已关闭？
 建议参考上一问题，重试，如多次在同一个进度断开连接，则代表您读取的文件存在问题，请更换。
