@@ -26,7 +26,7 @@ else
     mkdir "$fbfolder"
 fi
 echo "Created!"
-file="/storage/emulated/0/tencent/QQfile_recv/c_SubF.zip"
+file="/storage/emulated/0/tencent/QQfile_recv/SubF.zip"
 if [ ! -f "$file" ]; then
     echo -e "\033[31mFailed to move files! You need to download FastBuilder's zip package, then retry again.\033[0m"
     exit
@@ -35,7 +35,7 @@ echo "Moving archive..."
 mv $file ~/pro
 echo "Moved!"
 cd ~/pro
-unzip Thor.zip
+unzip SubF.zip
 if [ $? -eq 0 ]; then
     echo "Successfully Unzip!"
 else
@@ -52,4 +52,4 @@ chmod +x ~/fbpro
 echo "Set: 777"
 echo "Writing file..."
 echo "cd ~/pro && node SubF --max-old-space-size=2048" > ~/fbpro
-echo "Installation finished, execute './fbpro' to run FastBuilder Pro Thor."
+echo "Installation finished, execute './fbpro' to run FastBuilder Pro Thor(SubF)."
