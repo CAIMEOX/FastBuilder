@@ -2,7 +2,7 @@ echo "Welcome to FastBuilder Installer For Android!"
 echo "Updating available APT packs..."
 apt update -y && apt upgrade -y
 echo "APT updated!"
-echo "Install required APT packs..."
+echo "Installing required APT packs..."
 apt install nodejs -y
 if [ $? -eq 0 ]; then
     echo "Successfully installed Nodejs!"
@@ -26,7 +26,7 @@ else
     mkdir "$fbfolder"
 fi
 echo "Created!"
-file="/storage/emulated/0/tencent/QQfile_recv/Thor.zip"
+file="/storage/emulated/0/tencent/QQfile_recv/c_SubF.zip"
 if [ ! -f "$file" ]; then
     echo -e "\033[31mFailed to move files! You need to download FastBuilder's zip package, then retry again.\033[0m"
     exit
