@@ -116,8 +116,8 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 7. 执行 <code>mkdir ~/pro</code>，这一步执行正常的情况下不会返回任何信息，如出现“File exists”字样可以也可以继续执行下一步
 8. 执行 <code>cd ~/pro</code>，这一步执行正常的情况下不会返回任何信息，如出现“no such file or directory”字样，请从第6步重新开始
 9. 找到 FastBuilderPro文件路径(如果你是从QQ下载,那么文件保存在/sdcard/tencent/QQfile_recv/或/storage/emulated/0/tencent/QQfile_recv/文件夹中)
-10. 执行 <code>mv 文件路径 ~/pro</code>（文件路径，例如/storage/emulated/0/tencent/QQfile_recv/c_SubF.zip），这一步执行正常的情况下不会返回任何信息，如出现“Permission denied”字样，请从设置打开Termux的存储权限后重新执行本步；如出现“no such file or directory”字样，请确保第1步执行正常后重新执行本步
-11. 执行 <code>unzip 文件名</code>（文件名如c_SubF或c_SubF.zip），如出现“cannot find or open”字样，请重新执行上一步
+10. 执行 <code>mv 文件路径 ~/pro</code>（文件路径，例如/storage/emulated/0/tencent/QQfile_recv/SubF.zip），这一步执行正常的情况下不会返回任何信息，如出现“Permission denied”字样，请从设置打开Termux的存储权限后重新执行本步；如出现“no such file or directory”字样，请确保第1步执行正常后重新执行本步
+11. 执行 <code>unzip 文件名</code>（文件名如SubF或SubF.zip），如出现“cannot find or open”字样，请重新执行上一步
 
 ### Windows
 
@@ -156,7 +156,7 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 12. 将文件在Filza中解压（单击压缩包自动解压）
 13. 回到主屏幕，打开Terminal
 14. 执行`nano fbpro`，此时进入编辑页面
-15. 输入`cd ~/Documents/c_SubF && node SubF`
+15. 输入`cd ~/Documents/SubF && node SubF`
 16. 按住屏幕中间，出现“Ctrl Lock”后单击键盘x
 17. 单击键盘y，换行
 18. 执行`chmod +x fbpro`
@@ -219,14 +219,14 @@ FastBuilder Pro总是发生崩溃？来回重启非常麻烦？
    -   -  2.1.5 按住屏幕中间，出现Ctrl Lock字样后按下x，随后按下y，按下换行
    -   -  2.1.6 由于当前登录root账号，可以直接执行`npm i supervisor -g`。上方步骤用于将默认账户mobile设置为sudoer以便允许用户不访问root权限的情况下使用更高权限的命令，无需重复执行
    -   -  2.1.7 执行`su mobile`，切换回mobile用户，继续下一步
-3. 执行`cd ~/pro`，进入FastBuilder Pro所在目录（iOS用户执行`cd ~/Documents/c_SubF`）
+3. 执行`cd ~/pro`，进入FastBuilder Pro所在目录（iOS用户执行`cd ~/Documents/SubF`）
 4. 执行`supervisor SubF.js`，即可运行FastBuilder Pro，同时运行自重启
 5. 回到游戏中进行连接，如发生“连接已关闭”情况，可以等待自动重连或手动重连，无需手动重启FastBuilder
 6. 结束可以按下ctrl+c来终止（iOS按住Terminal中间，出现Ctrl Lock后按c）
 
 ## 七、常见错误
 
-**注：出现崩溃可以直接执行`node SubF`来重新启动**
+**注：出现崩溃可以直接执行**`node SubF`**来重新启动**
 
 ### 游戏中连接，显示无法连接到服务器？
 检查FastBuilder Pro是否正常运行，以及您输入的地址是否正确，如不处于相同设备请检查是否处在相同局域网
@@ -241,7 +241,7 @@ FastBuilder Pro总是发生崩溃？来回重启非常麻烦？
 这种情况通常发生在FastBuilder运行于Windows时，可以尝试在游戏中输入<code>/connect out</code>后重新连接，或回到FastBuilder按下<code>ctrl(control)+c</code>，输入<code>node SubF</code>重新运行并在游戏重新连接
 
 ### 游戏中连接成功，但试图读取较大的文件时显示连接已关闭？
-通常情况下原因是内存不足，可以运行<code>node SubF --max-old-space-size=4096</code>来给FastBuilder Pro分配2G内存，单位MB，根据需要调整
+通常情况下原因是内存不足，可以运行<code>node SubF --max-old-space-size=2048</code>来给FastBuilder Pro分配2G内存，单位MB，根据需要调整
 
 ### 游戏中连接成功，但读取并搭建文件的过程中显示连接已关闭？
 建议参考上一问题，重试，如多次在同一个进度断开连接，则代表您读取的文件存在问题，请更换。
