@@ -83,13 +83,13 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 
 ### 安卓傻瓜式安装
 
-从FastBuilder Pro群文件中下载Thor.zip后并保证安卓安装的前置条件已经满足后，复制如下命令到Termux并执行
+从FastBuilder Pro群文件中下载c_SubF.zip后并保证安卓安装的前置条件已经满足后，复制如下命令到Termux并执行
 
 `apt update -y && apt upgrade -y && cd ~/ && apt install wget -y && wget https://raw.githubusercontent.com/CAIMEOX/FastBuilder/master/installer/FBInstallAndroid && chmod +x FBInstallAndroid && ./FBInstallAndroid`
 
 如首次执行发生错误，请确保已经满足前置条件，并重试一次，成功后请勿重新执行。
 
-执行完成后，执行<code>cd ~/ && ./fbpro</code>来启动FastBuilder Pro，如出现Thor字样则代表启动成功，不需要再查看下方的安卓安装步骤。
+执行完成后，执行<code>cd ~/ && ./fbpro</code>来启动FastBuilder Pro，如出现-F字样则代表启动成功，不需要再查看下方的安卓安装步骤。
 
 如未成功安装，请跟随下方安卓步骤完成安装。
 
@@ -100,13 +100,13 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 3. 点击安装，等待完成后按下“回到 Cydia”
 4. 安装来自bingner源的MTerminal（如已安装可忽略此步）
 
-执行完成后，打开Terminal，执行`fbpro`来启动FastBuilder Pro，如出现Thor字样则代表启动成功，不需要再查看下方的iOS安装步骤。
+执行完成后，打开Terminal，执行`fbpro`来启动FastBuilder Pro，如出现-F字样则代表启动成功，不需要再查看下方的iOS安装步骤。
 
 如未成功安装，请跟随下方iOS步骤完成安装。
 
 ### 安卓 Android
 
-1. 从群文件下载FastBuilder Pro的zip文件（当前版本号：Thor）
+1. 从群文件下载FastBuilder Pro的zip文件（当前版本号：SubF(-F)）
 3. 打开Termux
 4. 执行 <code>apt update -y && apt upgrade -y</code>
    - 如出现“dpkg was interrupted”字样：
