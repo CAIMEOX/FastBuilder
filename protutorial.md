@@ -23,6 +23,7 @@
  - 六、特别注意
  - 七、常见错误
  - 八、使用教程
+ - 九、卸载
 
 ## 一、购买前须知/注意
 
@@ -273,4 +274,26 @@ FastBuilder Pro总是发生崩溃？来回重启非常麻烦？
 命令格式: 
 
 `paint -z 文件路径`
+
+## 九、卸载FastBuilder Pro
+
+### 安卓
+
+执行`rm -rf ~/pro`
+
+### Windows/macOS/Linux/Unix
+
+删除FastBuilder Pro的解压目录即可
+
+### iOS 软件版
+
+长按图标，等待图标右上角“x”标志出现后单击
+
+### iOS
+
+执行`rm -rf ~/Documents/SubF`
+
+### iOS 傻瓜式安装
+
+前往Cydia并卸载FastBuilder即可
 
