@@ -24,6 +24,7 @@
  - 七、常见错误
  - 八、使用教程
  - 九、卸载
+ - 十、更新
 
 ## 一、购买前须知/注意
 
@@ -73,10 +74,10 @@ FastBuilder与其他类似工具的共同点在于，存在“客户端”与“
 1. 设备需unc0ver越狱，未越狱可以使用[爱思助手](https://www.i4.cn)等工具进行越狱，您也可以通过搜索引擎[搜索unc0ver在线安装](https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&ch=&tn=baiduerr&bar=&wd=unc0ver%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85)
 2. 如寻求免越狱方法，请跟随**iOS 10.x及更高**
 
-### iOS 9.x及更高
+### iOS 10.x及更高
 
 1. 如需安装FastBuilder Pro，请移步免费版安装教程；如需在电脑运行通用版本，请跟随Windows/Linux/macOS/Unix教程
-2. iOS 9之前的系统版本不支持
+2. iOS 9及之前的系统版本不支持
 
 ## 四、安装FastBuilder Pro及需要的运行环境
 
@@ -297,3 +298,29 @@ FastBuilder Pro总是发生崩溃？来回重启非常麻烦？
 
 前往Cydia并卸载FastBuilder即可
 
+## 十、更新
+
+### 安卓
+
+1. 下载群文件最新版本的压缩包
+2. 执行`rm -rf ~/pro && wget https://raw.githubusercontent.com/CAIMEOX/FastBuilder/master/installer/FBInstallAndroid && chmod +x FBInstallAndroid && ./FBInstallAndroid`
+3. 此方法等同傻瓜式安装
+
+### Windows/macOS/Linux/Unix
+
+1. 下载群文件最新版本的压缩包
+2. 删除原有解压路径，并解压新的压缩包
+
+### iOS 软件版
+
+1. 打开TestFlight
+2. 更新FastBuilder Pro(如有更新提示)
+
+### iOS
+
+1. 下载群文件最新版本的压缩包
+2. 导入Filza并解压
+
+### iOS 傻瓜式安装
+
+1. 前往Cydia进行更新
