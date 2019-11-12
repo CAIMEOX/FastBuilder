@@ -1,19 +1,25 @@
 echo "Welcome to FastBuilder Installer For Android!"
-echo "Updating available APT packs..."
+echo "Updating available software packages..."
 apt update -y && apt upgrade -y
-echo "APT updated!"
-echo "Installing required APT packs..."
-apt install nodejs -y
-if [ $? -eq 0 ]; then
-    echo "Successfully installed Nodejs!"
-else
-    echo -e "\033[31mUnable to install Nodejs!\033[0m"
+apt list --installed nodejs|grep nodejs
+if [ $? != 0 ]; then
+    echo "Installing nodejs..."
+    apt install nodejs -y
+    if [ $? -eq 0 ]; then
+        echo "Successfully installed Nodejs!"
+    else
+        echo -e "\033[31mUnable to install Nodejs!\033[0m"
+        exit 1
+    fi
 fi
-apt install unzip -y
-if [ $? -eq 0 ]; then
-    echo "Successfully installed Unzip!"
-else
-    echo "Unable to install Unzip, it might already installed in your device."
+apt list --installed unzip|grep unzip
+if [ $? != 0 ]; then
+    apt install unzip -y
+    if [ $? -eq 0 ]; then
+        echo "Successfully installed Unzip!"
+    else
+        echo "Unable to install Unzip, it might already installed in your device."
+    fi
 fi
 echo "Creating directory..."
 cd ~/
@@ -48,8 +54,8 @@ rm -rf ~/fbpro
 touch ~/fbpro
 echo "File created!"
 echo "Setting permission"
-chmod +x ~/fbpro
-echo "Set: 777"
+chmod 0755 ~/fbpro
+echo "Set: 0755"
 echo "Writing file..."
 echo "cd ~/pro && node SubF --max-old-space-size=2048" > ~/fbpro
-echo "Installation finished, execute './fbpro' to run FastBuilder Pro Thor(SubF)."
+echo "Installation finished, execute './fbpro' to run FastBuilder Pro codename SubF."
