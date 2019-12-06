@@ -8,9 +8,9 @@ FastBuilder是一个NodeJS程序，它让Minecraft复杂的结构设计变得简
 
 ## 使用教程
 一定要先看完免费版简介再看Pro版教程,否则你可能会遇到很多问题!
-- 免费版(Free)使用教程及简介: [**中文简体**](./tutorial.md)
+- 免费版(Free)使用教程及简介: [**中文简体**](/../../wiki/tutorial)
 
-- 专业版(Pro)使用教程: [**中文简体**](./protutorial.md)
+- 专业版(Pro)使用教程: [**中文简体**](/../../wiki/Pro-tutorial)
 
 ## 版本区分
 FastBuilder分为2个版本:免费版(Free)和专业版(Pro)
@@ -41,22 +41,15 @@ FastBuilder分为2个版本:免费版(Free)和专业版(Pro)
   - 价格需面议
   - 签署协议后，在协议允许范围内自由使用
 
-[**购买流程点我**](./buy.md)
+[**购买流程**](/../../wiki/Buy)
 
 ## 遇到问题?
 如果在使用FB的过程中遇到问题,可以进入交流群提问.
 
-在此之前,我建议你先看看[提问的智慧](./ask.md)和[疑难解答](./faq.md)
+在此之前,我建议你先看看[提问的智慧](/wiki/How-to-ask)和[疑难解答](/../../wiki/Frequently-Asked-Questions)
 
 避免你的问题与疑难解答中的问题重复.
 
-## 开发相关
-
-* [Nodejs](http://nodejs.org) - 程序语言
-* [PEWS-API](https://github.com/jocopa3/PEWS-API.git) - API
-
-## 重要公告
-由于种种原因,我们将会重写FastBuilder内核,使用Rust/Go重构,更快的运行速度和性能,敬请期待
 ## 贡献者(Contributors)
 ### Maintainer
 * [**CAIMEO**](https://github.com/CAIMEOX)
@@ -81,4 +74,3 @@ t.me/FastBuilder
 * LNSSPsd  -参考了LNSSPsd的[MyAgent](https://github.com/mcpews/MyAgent.git)项目
 * Torrekie
 * ProjectXero
-* Jocopa3  -API 提供
